@@ -78,4 +78,26 @@
     </select>
 
 
+    <!--根据场馆id查询教练列表-->
+    <select id="coachListByStadiumId" resultType="com.fitness.api.domain.Coach">
+        SELECT
+        c.id,
+        c.name,
+        c.phone,
+        c.description,
+        c.stadiumId,
+        c.createDate,
+        c.updateDate,
+        c.coachImgId,
+        c.organization,
+        c.orgDate,
+        c.validDate,
+        c.status,
+        s.name as stadiumName,
+        i.url as coachImgPath
+        FROM coach c LEFT JOIN stadium s ON  c.stadiumId=s.id
+        LEFT JOIN img i ON c.coachImgId
+        WHERE status='1'
+    </select>
+
 </mapper>
