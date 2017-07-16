@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.RemarkDao">
+
+    <sql id="Insert_Column_List">
+            score,impression,coachId,coachName,memberId,memberName,createDate</sql>
+
+    <insert id="insertRemark" parameterType="com.fitness.api.domain.Remark">
+        insert into remark (<include refid="Insert_Column_List"/>)
+        VALUES (
+        #{score},#{impression},#{coachId},#{coachName},#{memberId},#{memberName},now()
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <!-- 获取某位教练员的评分总和 -->
+    <select id="getScoreSum" parameterType="java.lang.Long" resultType="java.lang.Integer">
+      SELECT  sum(score) from remark where coachId = #{coachId}
+    </select>
+
+    <!-- 获取某位教练评分总条数 -->
+    <select id="getScoreCount" parameterType="java.lang.Long" resultType="java.lang.Integer">
+        SELECT count(1) FROM  remark where coachId = #{coachId}
+    </select>
+
+    <!-- 获取某位教练的评论次数最多的前三条印象 -->
+    <select id="getImpression" parameterType="java.lang.Long" resultType="java.lang.String">
+        SELECT tab1.impression from (
+          SELECT count(impression) as count,impression from remark where coachId = #{coachId} GROUP BY impression ORDER BY count DESC limit 0,3) tab1
+    </select>
+</mapper>

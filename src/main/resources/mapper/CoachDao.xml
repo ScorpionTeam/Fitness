@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.CoachDao">
+
+    <!--新增教练-->
+    <insert id="add" parameterType="com.fitness.api.domain.Coach">
+        INSERT INTO coach(name,
+        phone,
+        description,
+        stadiumId,
+        createDate,
+        updateDate,
+        organization,
+        orgDate,
+        validDate,
+        status)
+        VALUES (#{name},
+        #{phone},
+        #{description},
+        #{stadiumId},
+        NOW(),
+        NOW(),
+        #{organization},
+        #{orgDate},
+        #{validDate},
+        #{status})
+    </insert>
+
+    <!--关键字搜索教练信息-->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM coach WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND name LIKE #{key}
+        </if>
+    </select>
+
+    <!--关键字搜索教练列表-->
+    <select id="list" resultType="com.fitness.api.domain.Coach">
+        SELECT
+        c.id,
+        c.name,
+        c.phone,
+        c.description,
+        c.stadiumId,
+        c.createDate,
+        c.updateDate,
+        c.coachImgId,
+        c.organization,
+        c.orgDate,
+        c.validDate,
+        c.status,
+        s.name as stadiumName
+        FROM coach c LEFT JOIN stadium s on c.stadiumId=s.id WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND c.name LIKE #{key}
+        </if>
+    </select>
+
+    <!--根据id查询详情-->
+    <select id="coachInfo" resultType="com.fitness.api.domain.Coach">
+        SELECT
+        c.id,
+        c.name,
+        c.phone,
+        c.description,
+        c.stadiumId,
+        c.createDate,
+        c.updateDate,
+        c.coachImgId,
+        c.organization,
+        c.orgDate,
+        c.validDate,
+        c.status,
+        s.name as stadiumName
+        FROM coach c LEFT JOIN stadium s on c.stadiumId=s.id WHERE c.id=#{id}
+    </select>
+
+
+</mapper>

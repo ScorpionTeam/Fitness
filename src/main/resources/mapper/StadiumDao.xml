@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.StadiumDao">
+
+    <!--创建场馆  默认为启用状态 1-->
+    <insert id="add" parameterType="com.fitness.api.domain.Stadium">
+        INSERT  INTO stadium(name,
+        address,
+        stadiumImgId,
+        content,
+        city,
+        createDate,
+        updateDate,
+        status)
+        VALUES (#{name},
+        #{address},
+        #{stadiumImgId},
+        #{content},
+        #{city},
+        NOW(),
+        NOW(),
+        #{status})
+    </insert>
+
+    <!--修改场馆信息-->
+    <update id="update" parameterType="com.fitness.api.domain.Stadium">
+        UPDATE stadium SET name=#{name},
+        address=#{address},
+        stadiumImgId=#{stadiumImgId},
+        content=#{content},
+        city=#{city},
+        updateDate=NOW(),
+        status=#{status}
+        where id = #{id}
+    </update>
+
+    <!--根据场馆id  删除场馆信息  逻辑删除-->
+    <update id="del" parameterType="java.lang.Long">
+        UPDATE stadium SET status='0' WHERE id=#{id}
+    </update>
+
+    <!--查询场馆数量-->
+    <select id="count" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT COUNT(1) FROM  stadium WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND name LIKE #{key}
+        </if>
+    </select>
+
+    <!--查询场馆列表 -->
+    <select id="list" parameterType="java.lang.String" resultType="com.fitness.api.domain.Stadium">
+        SELECT s.id,
+        s.name,
+        s.address,
+        s.stadiumImgId,
+        s.content,
+        s.city,
+        s.createDate,
+        s.updateDate,
+        s.status,
+        i.url as imgPath
+        FROM stadium s LEFT JOIN img i on s.stadiumImgId=i.id
+        WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND s.name LIKE #{key}
+        </if>
+    </select>
+
+    <!--根据场馆id  查询场馆详情-->
+    <select id="stadiumInfo" parameterType="java.lang.Long" resultType="com.fitness.api.domain.Stadium">
+        SELECT s.id,
+          s.name,
+          s.address,
+          s.stadiumImgId,
+          s.content,
+          s.city,
+          s.createDate,
+          s.updateDate,
+          s.status,
+          i.url as imgPath
+          FROM stadium s LEFT JOIN img i on s.stadiumImgId=i.id
+          WHERE s.id=#{id}
+    </select>
+
+
+    <!--查询所有可用场馆列表-->
+    <select id="allStadium" resultType="com.fitness.api.domain.Stadium">
+        SELECT id,name FROM stadium WHERE status='1'
+    </select>
+
+
+</mapper>

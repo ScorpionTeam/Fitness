@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.MemberCardDao">
+
+    <!--根据会员id  查询对应场馆可用会员卡-->
+    <select id="availableMemberCard" resultType="com.fitness.api.domain.MemberCard">
+        select mc.id,
+         mc.card_no as cardNo,
+         mc.type,
+         mc.stadium_id as stadiumId,
+         mc.start_date as startDate,
+         mc.end_date as endDate,
+         mc.create_date as createDate,
+         mc.update_date as updateDate
+         from member_card mc left join member m on mc.id = m.stadium_id
+        where mc.status='1'
+        and m.id=#{memberId,jdbcType=BIGINT}
+    </select>
+
+    <!--修改会员卡状态-->
+    <update id="updateMemberCardStatus">
+        update member_card set status=#{status,jdbcType=VARCHAR} where id=#{id,jdbcType=BIGINT}
+    </update>
+
+    <!--创建会员卡-->
+    <insert id="add" parameterType="com.fitness.api.domain.MemberCard">
+        INSERT INTO member_card(cardNo,
+        type,
+        stadiumId,
+        startDate,
+        endDate,
+        createDate,
+        updateDate,
+        status,
+        classTotal,
+        money)
+        VALUES (#{cardNo},
+        #{type},
+        #{stadiumId},
+        #{startDate},
+        #{endDate},
+        NOW(),
+        NOW(),
+        #{status},
+        #{classTotal},
+        #{money})
+    </insert>
+
+    <!--查询会员卡数量-->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(1) from member_card WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND cardNo=#{key}
+        </if>
+    </select>
+
+    <!--查询会员卡列表-->
+    <select id="list" resultType="com.fitness.api.domain.MemberCard">
+        SELECT mc.id,
+        mc.cardNo,
+        mc.type,
+        mc.stadiumId,
+        mc.startDate,
+        mc.endDate,
+        mc.createDate,
+        mc.updateDate,
+        mc.status,
+        mc.classTotal,
+        mc.money
+        FROM member_card mc WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND cardNo=#{key}
+        </if>
+    </select>
+
+    <!--根据场馆id 查询会员卡列表-->
+    <select id="cardList" resultType="com.fitness.api.domain.MemberCard">
+        SELECT mc.id,
+        mc.cardNo,
+        mc.type,
+        mc.stadiumId,
+        mc.startDate,
+        mc.endDate,
+        mc.createDate,
+        mc.updateDate,
+        mc.status,
+        mc.classTotal,
+        mc.money
+        FROM member_card mc WHERE mc.status='1' AND mc.stadiumId=#{stadiumId}
+    </select>
+
+    <!--会员卡详情-->
+    <select id="memberCardInfo" resultType="com.fitness.api.domain.MemberCard">
+        SELECT mc.id,
+        mc.cardNo,
+        mc.type,
+        mc.stadiumId,
+        mc.startDate,
+        mc.endDate,
+        mc.createDate,
+        mc.updateDate,
+        mc.status,
+        mc.classTotal,
+        mc.money FROM member_card mc WHERE id=#{id} and status != '0'
+    </select>
+
+    <update id="del" parameterType="java.lang.Long" >
+        update member_card set status = '0' WHERE  id = #{id}
+    </update>
+
+</mapper>

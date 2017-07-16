@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.MemberDao">
+
+    <!--登录-->
+    <select id="login" resultType="com.fitness.api.domain.Member">
+        SELECT m.id,
+        m.name,
+        m.phone,
+        m.address,
+        m.sex,
+        m.bornDate,
+        m.tel,
+        m.memberCardId,
+        m.age,
+        m.stadiumId,
+        m.nick,
+        m.email,
+        m.memberImgId,
+        m.status,
+        i.url as imgPath,
+        mc.cardNo as memberCardNo
+        FROM member m LEFT JOIN img i ON m.memberImgId=i.id
+        LEFT JOIN member_card mc on m.memberCardId=mc.id
+        WHERE  m.phone=#{phone} AND m.password=#{password}
+    </select>
+
+    <!--注册-->
+    <insert id="register" parameterType="com.fitness.api.domain.Member">
+        insert into member(name,
+        phone,
+        address,
+        sex,
+        bornDate,
+        tel,
+        memberCardId,
+        password,
+        age,
+        stadiumId,
+        nick,
+        email,
+        memberImgId,
+        createDate,
+        updateDate,
+        status
+        )
+        values(#{name},
+        #{phone},
+        #{address},
+        #{sex},
+        #{bornDate},
+        #{tel},
+        #{memberCardId},
+        #{password},
+        #{age},
+        #{stadiumId},
+        #{nick},
+        #{email},
+        #{memberImgId},
+        NOW(),
+        NOW(),
+        '2')
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <!--修改昵称-->
+    <update id="updateNick">
+        update member set nick=#{nick,jdbcType=VARCHAR} where id=#{id,jdbcType=BIGINT}
+    </update>
+
+    <!--基本信息修改-->
+    <update id="update" parameterType="com.fitness.api.domain.Member">
+        update member set
+        name=#{name},
+        sex=#{sex},
+        age=#{age},
+        email=#{email},
+        tel=#{tel},
+        memberCardId=#{memberCardId}
+        where id=#{id}
+    </update>
+
+    <!--绑卡-->
+    <update id="bindCard">
+        update member set memberCardId=#{memberCardId,jdbcType=BIGINT}
+        where id=#{id,jdbcType=BIGINT}
+    </update>
+
+    <!--不予绑卡-->
+    <update id="auditFail" parameterType="com.fitness.api.domain.Member">
+        update member set status='2',remark=#{remark,jdbcType=VARCHAR} where id=#{id}
+    </update>
+
+    <!--会员详情-->
+    <select id="memberInfo" resultType="com.fitness.api.domain.Member">
+        SELECT m.id,
+          m.name,
+          m.phone,
+          m.address,
+          m.sex,
+          m.bornDate,
+          m.tel,
+          m.memberCardId,
+          m.age,
+          m.stadiumId,
+          m.nick,
+          m.email,
+          m.memberImgId,
+          m.createDate,
+          m.updateDate,
+          m.status,
+          m.remark,
+          i.url as imgPath,
+          mc.cardNo as memberCardNo,
+          mc.id as memberCardId
+          FROM member m LEFT JOIN img i ON m.memberImgId=i.id
+          LEFT JOIN member_card mc ON m.memberCardId=mc.id
+          WHERE m.id=#{id}
+    </select>
+
+
+    <!--注册检查手机号-->
+    <select id="checkPhoneForRegister" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM member WHERE status='1' AND phone=#{phone};
+    </select>
+
+    <!--查询会员数量-->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM member WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND phone LIKE #{key}
+        </if>
+    </select>
+
+    <!--会员列表-->
+    <select id="list" resultType="com.fitness.api.domain.Member">
+        SELECT m.id,
+        m.name,
+        m.phone,
+        m.address,
+        m.sex,
+        m.bornDate,
+        m.tel,
+        m.memberCardId,
+        m.age,
+        m.stadiumId,
+        m.nick,
+        m.email,
+        m.memberImgId,
+        m.createDate,
+        m.updateDate,
+        m.status,
+        m.remark,
+        i.url as imgPath,
+        mc.cardNo as memberCardNo
+        FROM member m LEFT JOIN img i on m.memberImgId=i.id
+        LEFT JOIN member_card mc ON m.memberCardId=mc.id
+        WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND phone LIKE #{key}
+        </if>
+    </select>
+
+    <!--会员注销-->
+    <update id="cancel">
+        UPDATE member SET status='4' WHERE id=#{id}
+    </update>
+
+</mapper>

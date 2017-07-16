@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.ActivityDao">
+
+    <!--1. 创建活动-->
+    <insert id="add" parameterType="com.fitness.api.domain.Activity">
+        INSERT INTO activity(name,
+        content,
+        closingDate,
+        visitTotal,
+        stadiumId,
+        createDate,
+        startDate,
+        endDate,
+        sort,
+        updateDate)
+        VALUES(#{name},
+        #{content},
+        #{closingDate},
+        0,
+        #{stadiumId},
+        NOW(),
+        #{startDate},
+        #{endDate},
+        #{sort},
+        NOW()
+        )
+    </insert>
+
+    <!--2. 修改活动-->
+    <update id="update" parameterType="com.fitness.api.domain.Activity">
+        UPDATE activity
+        SET name=#{name},
+        content=#{content},
+        closingDate=#{closingDate},
+        stadiumId=#{stadiumId},
+        startDate=#{startDate},
+        endDate=#{endDate},
+        sort=#{sort},
+        updateDate=NOW()
+        <if test="status!=null and status!=''">
+            ,status=#{statud}
+        </if>
+        WHERE id=#{id}
+    </update>
+
+    <!--3. 删除活动-->
+    <update id="del" parameterType="java.lang.Long">
+        UPDATE activity SET status='0' WHERE id=#{id}
+    </update>
+
+    <!--4. 活动列表关键字查询-->
+    <select id="" resultType="com.fitness.api.domain.Activity">
+      SELECT a.id,
+        a.name,
+        a.content,
+        a.closingDate,
+        a.visitTotal,
+        a.stadiumId,
+        a.createDate,
+        a.startDate,
+        a.endDate,
+        a.sort,
+        a.updateDate,
+        a.status
+        FROM activity a
+        WHERE a.stadiumId=#{stadiumId}
+        <if test="key!=null and key!=''">
+            AND a.name LIKE #{key}
+        </if>
+    </select>
+    <select id="activityCount" resultType="java.lang.Integer">
+        SELECT count(*) FROM activity a WHERE a.stadiumId=#{stadiumId}
+        <if test="key!=null and key!=''">
+            AND a.name LIKE #{key}
+        </if>
+    </select>
+    <!--5. 根据会员id查询我的活动-->
+    <select id="myActivity" parameterType="java.lang.Long">
+
+    </select>
+
+    <select id="myActivityCount" parameterType="java.lang.Long">
+
+    </select>
+    <!--6. 根据场馆id查询最新活动-->
+    <!--7. 活动详情-->
+    <!--8. 根据场馆id查询往期活动-->
+    <!--阅读次数+1-->
+    <update id="visitAdd" parameterType="java.lang.Long">
+        UPDATE activity SET visitTotal=visitTotal+1 WHERE id=#{id}
+    </update>
+</mapper>
