@@ -52,4 +52,9 @@ public class Constant {
      */
     public static final String ON_LINE = "on_line:";
 
+    /**
+     * 图片相对路径
+     */
+    public static final String PATH="/home/img";
+
 }
