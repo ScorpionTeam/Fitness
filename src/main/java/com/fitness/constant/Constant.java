@@ -55,6 +55,6 @@ public class Constant {
     /**
      * 图片相对路径
      */
-    public static final String PATH="/home/img";
+    public static final String PATH="/home/img/";
 
 }

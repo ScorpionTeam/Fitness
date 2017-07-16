@@ -25,19 +25,19 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
                     <list>
                         <value>text/html;charset=UTF-8</value>
                         <value>application/json;charset=UTF-8</value>
+                        <value>*/*;charset=UTF-8</value>
                     </list>
                 </property>
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-    <context:component-scan base-package="com.fitness.aspect"/>
     <context:component-scan base-package="com.fitness.api.controller"/>
     <context:component-scan base-package="com.fitness.exception"/>
     <mvc:interceptors>
         <bean class="com.fitness.interceptor.FitnessInterceptor"/>
     </mvc:interceptors>
     <mvc:cors>
-        <mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="3600" allowed-methods="GET,POST,OPTIONS"/>
+        <mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="3600" allowed-methods="GET,POST,OPTIONS" />
     </mvc:cors>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="UTF-8"/>
