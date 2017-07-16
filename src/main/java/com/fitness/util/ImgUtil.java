@@ -25,7 +25,7 @@ public class ImgUtil {
      */
     public static String upload(CommonsMultipartFile file,String path) throws IOException {
         existDir(path);
-        String filePath = path+file.getOriginalFilename();
+        String filePath = file.getOriginalFilename();
         File realUrl = new File(filePath);
         file.transferTo(realUrl);
         return filePath;
