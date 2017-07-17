@@ -28,7 +28,7 @@ public class StadiumController {
      * @param stadium
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public BaseResult add(@RequestBody Stadium stadium) {
         return stadiumService.add(stadium);
@@ -40,7 +40,7 @@ public class StadiumController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/del", method = RequestMethod.GET)
     public BaseResult del(Long id) {
         return stadiumService.del(id);
@@ -52,7 +52,7 @@ public class StadiumController {
      * @param stadium
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public BaseResult update(@RequestBody Stadium stadium) {
         return stadiumService.update(stadium);
@@ -66,7 +66,7 @@ public class StadiumController {
      * @param key
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public PageResult list(Integer pageNo, Integer pageSize, String key) {
         return stadiumService.list(pageNo, pageSize, key);
@@ -90,7 +90,7 @@ public class StadiumController {
      *
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/allStadium", method = RequestMethod.GET)
     public BaseResult allStadium() {
         return stadiumService.allStadium();

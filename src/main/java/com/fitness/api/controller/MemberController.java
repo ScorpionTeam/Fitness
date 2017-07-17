@@ -29,7 +29,6 @@ public class MemberController {
      * @param password
      * @return
      */
-    @OathAnnotation
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public BaseResult login(String phone, String password) throws Exception {
         return memberService.login(phone, password);
@@ -41,7 +40,6 @@ public class MemberController {
      * @param member
      * @return
      */
-    @OathAnnotation
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public BaseResult register(@RequestBody Member member) throws Exception {
         return memberService.register(member);
@@ -55,7 +53,6 @@ public class MemberController {
      * @param nick
      * @return
      */
-    @OathAnnotation
     @RequestMapping(value = "/updateNick", method = RequestMethod.POST)
     public BaseResult updateNick(Long id, String nick) {
         return memberService.updateNick(id, nick);
@@ -67,7 +64,7 @@ public class MemberController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public BaseResult logout(Long id) {
         return memberService.logout(id);
@@ -79,7 +76,7 @@ public class MemberController {
      * @param member
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public BaseResult update(@RequestBody Member member) {
         return memberService.update(member);
@@ -91,7 +88,7 @@ public class MemberController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
     public BaseResult memberInfo(Long id) {
         return memberService.memberInfo(id);
@@ -103,7 +100,7 @@ public class MemberController {
      * @param member
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/bindCard", method = RequestMethod.POST)
     public BaseResult bindCard(@RequestBody Member member) {
         return memberService.bindCard(member);
@@ -115,7 +112,7 @@ public class MemberController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/cancel", method = RequestMethod.POST)
     public BaseResult cancel(Long id) {
         return memberService.cancel(id);
@@ -129,7 +126,7 @@ public class MemberController {
      * @param key
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public PageResult list(Integer pageNo, Integer pageSize, String key) {
         return memberService.list(pageNo, pageSize, key);

@@ -28,7 +28,7 @@ public class CoachController {
      * @param coach
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public BaseResult add(@RequestBody Coach coach) {
         return coachService.add(coach);
@@ -42,7 +42,7 @@ public class CoachController {
      * @param pageSize
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public PageResult list(Integer pageNo, Integer pageSize, String key) {
         return coachService.list(pageNo, pageSize, key);
@@ -54,7 +54,7 @@ public class CoachController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/coachInfo", method = RequestMethod.GET)
     public BaseResult coachInfo(Long id) {
         return coachService.coachInfo(id);
@@ -66,7 +66,7 @@ public class CoachController {
      * @param coach
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public BaseResult update(@RequestBody Coach coach) {
         return coachService.update(coach);
@@ -78,7 +78,7 @@ public class CoachController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     public BaseResult del(Long id) {
         return coachService.del(id);
@@ -90,7 +90,7 @@ public class CoachController {
      * @param stadiumId
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/coachListByStadiumId", method = RequestMethod.GET)
     public BaseResult coachListByStadiumId(Long stadiumId) {
         return coachService.coachListByStadiumId(stadiumId);

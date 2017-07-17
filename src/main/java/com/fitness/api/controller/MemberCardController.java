@@ -27,7 +27,7 @@ public class MemberCardController {
      * @param memberCard
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public BaseResult add(@RequestBody MemberCard memberCard) {
         return memberCardService.add(memberCard);
@@ -39,7 +39,7 @@ public class MemberCardController {
      * @param memberCard
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public BaseResult update(@RequestBody MemberCard memberCard) {
         return memberCardService.update(memberCard);
@@ -53,7 +53,7 @@ public class MemberCardController {
      * @param key
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public BaseResult list(Integer pageNo, Integer pageSize, String key) {
         return memberCardService.list(pageNo, pageSize, key);
@@ -65,7 +65,7 @@ public class MemberCardController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/del", method = RequestMethod.GET)
     public BaseResult del(Long id) {
         return memberCardService.del(id);
@@ -77,7 +77,7 @@ public class MemberCardController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/memberCardInfo", method = RequestMethod.GET)
     public BaseResult memberCardInfo(Long id) {
         return memberCardService.memberCardInfo(id);
@@ -89,7 +89,7 @@ public class MemberCardController {
      * @param stadiumId
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "cardList", method = RequestMethod.GET)
     public BaseResult cardList(Long stadiumId) {
         return memberCardService.cardList(stadiumId);

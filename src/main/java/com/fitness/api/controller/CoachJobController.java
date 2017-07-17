@@ -22,7 +22,7 @@ public class CoachJobController {
      * @param coachJob
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public BaseResult add(@RequestBody CoachJob coachJob) {
         return null;
@@ -33,7 +33,7 @@ public class CoachJobController {
      * @param coachJob
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public BaseResult update(@RequestBody CoachJob coachJob) {
         return null;
@@ -44,7 +44,7 @@ public class CoachJobController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     public BaseResult del(Long id) {
         return null;
@@ -57,7 +57,7 @@ public class CoachJobController {
      * @param key
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public PageResult list(Integer pageNo, Integer pageSize, String key) {
         return null;

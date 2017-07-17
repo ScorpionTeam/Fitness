@@ -28,7 +28,7 @@ public class ActivityController {
      * @param activity
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public BaseResult add(@RequestBody Activity activity) {
         return activityService.add(activity);
@@ -40,7 +40,7 @@ public class ActivityController {
      * @param activity
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public BaseResult update(@RequestBody Activity activity) {
         return activityService.update(activity);
@@ -52,7 +52,7 @@ public class ActivityController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     public BaseResult del(Long id) {
         return activityService.del(id);
@@ -68,7 +68,7 @@ public class ActivityController {
      * @param key
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public PageResult list(Integer pageNo, Integer pageSize, Long stadiumId, String key) {
         return activityService.list(pageNo, pageSize, stadiumId, key);
@@ -82,7 +82,7 @@ public class ActivityController {
      * @param memberId
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/myActivity", method = RequestMethod.GET)
     public PageResult myActivity(Integer pageNo, Integer pageSize, Long memberId) {
         return activityService.myActivity(pageNo, pageSize, memberId);
@@ -96,7 +96,7 @@ public class ActivityController {
      * @param stadiumId
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/newActivity", method = RequestMethod.GET)
     public PageResult newActivity(Integer pageNo, Integer pageSize, Long stadiumId) {
         return activityService.newActivity(pageNo, pageSize, stadiumId);
@@ -108,7 +108,7 @@ public class ActivityController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/activityInfo", method = RequestMethod.GET)
     public BaseResult activityInfo(Long id) {
         return activityService.activityInfo(id);
@@ -122,7 +122,7 @@ public class ActivityController {
      * @param stadiumId
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/pastActivity", method = RequestMethod.GET)
     public PageResult pastActivity(Integer pageNo, Integer pageSize, Long stadiumId) {
         return activityService.pastActivity(pageNo, pageSize, stadiumId);
@@ -133,7 +133,7 @@ public class ActivityController {
      * @param id
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/visitNewest",method = RequestMethod.GET)
     public BaseResult visitNewest(Long id){
         return null;

@@ -26,7 +26,7 @@ public class RemarkController {
      * @param remark
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value="insertRemark",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public BaseResult insertRemark(@RequestBody Remark remark){
         return remarkService.insertRemark(remark);
@@ -37,7 +37,7 @@ public class RemarkController {
      * @param coachId
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value="getCoachScoreById",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public BaseResult getCoachScoreById(Long coachId){
         return remarkService.getCoachScoreById(coachId);
@@ -48,7 +48,7 @@ public class RemarkController {
      * @param coachId
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value="getImpression",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public BaseResult getImpression(Long coachId){
         return remarkService.getImpression(coachId);

@@ -27,7 +27,7 @@ public class PrivateClassController {
      *
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public BaseResult add(@RequestBody PrivateClass privateClass) {
         return privateClassService.add(privateClass);
@@ -41,7 +41,7 @@ public class PrivateClassController {
      * @param coachId
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/listByCoachId", method = RequestMethod.GET)
     public PageResult listByCoachId(Integer pageNo, Integer pageSize, Long coachId) {
         return privateClassService.listByCoachId(pageNo, pageSize, coachId);
@@ -53,7 +53,7 @@ public class PrivateClassController {
      * @param privateClass
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public BaseResult update(@RequestBody PrivateClass privateClass) {
         return privateClassService.update(privateClass);
@@ -65,7 +65,7 @@ public class PrivateClassController {
      * @param memberId
      * @return
      */
-    @OathAnnotation
+
     @RequestMapping(value = "/myClass", method = RequestMethod.GET)
     public PageResult myClass(Integer pageNo, Integer pageSize, Long memberId) {
         return privateClassService.myClass(pageNo, pageSize, memberId);
@@ -77,7 +77,6 @@ public class PrivateClassController {
      * @param id
      * @return
      */
-    @OathAnnotation
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     public BaseResult del(Long id) {
         return privateClassService.del(id);
