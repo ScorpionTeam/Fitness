@@ -35,12 +35,12 @@ public interface CoachJobService {
     BaseResult del(Long id);
 
     /**
-     * 课程列表
+     * 工作经历列表
      * @param pageNo
      * @param pageSize
-     * @param coachId
+     * @param key
      * @return
      */
-    PageResult list(Integer pageNo, Integer pageSize, Long coachId);
+    PageResult list(Integer pageNo, Integer pageSize, String key);
 
 }

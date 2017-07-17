@@ -1,7 +1,9 @@
 package com.fitness.api.impl;
 
 import com.fitness.api.dao.CoachDao;
+import com.fitness.api.dao.CoachJobDao;
 import com.fitness.api.domain.Coach;
+import com.fitness.api.domain.CoachJob;
 import com.fitness.api.service.CoachService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
@@ -10,6 +12,7 @@ import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +24,9 @@ public class CoachServiceImpl implements CoachService, PageService {
 
     @Autowired
     private CoachDao coachDao;
+
+    @Autowired
+    private CoachJobDao coachJobDao;
 
     /**
      * 新增教练
@@ -63,9 +69,18 @@ public class CoachServiceImpl implements CoachService, PageService {
      */
     @Override
     public BaseResult coachInfo(Long id) {
+
+        //根据教练id查询基本信息
         Coach coach = coachDao.coachInfo(id);
         if (null == coach)
             return BaseResult.nonSuchResult();
+
+        //根据教练id查询工作经历集合
+        List<CoachJob> coachJobList = coachJobDao.coachJobList(coach.getId());
+        if (null == coachJobList || coachJobList.size() <= 0)
+            coach.setJobList(new ArrayList<>());
+
+        coach.setJobList(coachJobList);
         return BaseResult.success(coach);
     }
 

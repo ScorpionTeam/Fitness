@@ -14,15 +14,14 @@ import org.springframework.stereotype.Service;
  * Created on 2017/7/2.
  */
 @Service
-public class CoachJobServiceImpl implements CoachJobService, PageService {
+public class CoachJobServiceImpl implements CoachJobService,PageService {
 
     @Autowired
     private CoachJobDao coachJobDao;
 
 
     /**
-     * 新增工作经历
-     *
+     *  新增工作经历
      * @param coachJob
      * @return
      */
@@ -33,7 +32,6 @@ public class CoachJobServiceImpl implements CoachJobService, PageService {
 
     /**
      * 更新工作经历
-     *
      * @param coachJob
      * @return
      */
@@ -44,7 +42,6 @@ public class CoachJobServiceImpl implements CoachJobService, PageService {
 
     /**
      * 删除工作经历
-     *
      * @param id
      * @return
      */
@@ -54,15 +51,14 @@ public class CoachJobServiceImpl implements CoachJobService, PageService {
     }
 
     /**
-     * 根据教练id查询工作经历列表
-     *
+     * 工作经历
      * @param pageNo
      * @param pageSize
-     * @param coachId
+     * @param key
      * @return
      */
     @Override
-    public PageResult list(Integer pageNo, Integer pageSize, Long coachId) {
+    public PageResult list(Integer pageNo, Integer pageSize, String key) {
         return null;
     }
 }

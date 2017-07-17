@@ -55,7 +55,7 @@ public class CoachJobController {
     }
 
     /**
-     * 根据工作经历描述头  查询工作经历  分页
+     * 查询工作经历  分页
      * @param pageNo
      * @param pageSize
      * @param coachId

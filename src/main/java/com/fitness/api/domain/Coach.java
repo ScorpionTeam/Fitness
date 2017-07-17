@@ -4,6 +4,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.data.annotation.Transient;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 教练
@@ -53,6 +54,10 @@ public class Coach {
 
     //状态  1在职   0 离职
     private String status;
+
+    //工作经历
+    @Transient
+    private List<CoachJob> jobList;
 
     public Long getId() {
         return id;
@@ -158,6 +163,14 @@ public class Coach {
         this.orgDate = orgDate;
     }
 
+    public List<CoachJob> getJobList() {
+        return jobList;
+    }
+
+    public void setJobList(List<CoachJob> jobList) {
+        this.jobList = jobList;
+    }
+
     @Override
     public String toString() {
         return "Coach{" +
@@ -174,6 +187,7 @@ public class Coach {
                 ", validDate=" + validDate +
                 ", orgDate=" + orgDate +
                 ", status='" + status + '\'' +
+                ", jobList=" + jobList +
                 '}';
     }
 }
