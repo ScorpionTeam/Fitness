@@ -6,6 +6,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 
 /**
  * 图片上传工具类
@@ -25,10 +26,14 @@ public class ImgUtil {
      */
     public static String upload(CommonsMultipartFile file,String path) throws IOException {
         existDir(path);
-        String filePath = file.getOriginalFilename();
-        File realUrl = new File(filePath);
+        //文件重命名
+        Calendar calendar = Calendar.getInstance();
+        String fileName = String.valueOf(calendar.getTime().getTime());
+        String type= file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1);
+        String result = fileName+"."+type;
+        File realUrl = new File(path+fileName+"."+type);
         file.transferTo(realUrl);
-        return filePath;
+        return result;
 
     }
 
