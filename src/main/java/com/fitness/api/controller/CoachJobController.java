@@ -2,8 +2,10 @@ package com.fitness.api.controller;
 
 import com.fitness.annotations.OathAnnotation;
 import com.fitness.api.domain.CoachJob;
+import com.fitness.api.service.CoachJobService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("coachJob")
 public class CoachJobController {
 
+    @Autowired
+    private CoachJobService coachJobService;
     /**
      * 创建工作经历
      * @param coachJob
@@ -54,12 +58,12 @@ public class CoachJobController {
      * 根据工作经历描述头  查询工作经历  分页
      * @param pageNo
      * @param pageSize
-     * @param key
+     * @param coachId
      * @return
      */
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public PageResult list(Integer pageNo, Integer pageSize, String key) {
+    public PageResult list(Integer pageNo, Integer pageSize, Long coachId) {
         return null;
 
     }
