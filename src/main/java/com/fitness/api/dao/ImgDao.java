@@ -15,10 +15,10 @@ public interface ImgDao {
 
     /**
      * 新增图片数据
-     * @param name
+     * @param img
      * @return
      */
-    Integer add(@Param(value = "name") String name);
+    Integer add(Img img);
 
     /**
      *

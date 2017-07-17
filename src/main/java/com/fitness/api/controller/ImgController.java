@@ -1,8 +1,11 @@
 package com.fitness.api.controller;
 
+import com.fitness.api.service.ImgService;
 import com.fitness.constant.Constant;
 import com.fitness.result.BaseResult;
 import com.fitness.util.ImgUtil;
+import com.mysql.jdbc.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +22,8 @@ import java.io.IOException;
 @RequestMapping("img")
 public class ImgController {
 
+    @Autowired
+    private ImgService imgService;
 
     /**
      * 上传图片
@@ -28,7 +33,9 @@ public class ImgController {
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public BaseResult upload(@RequestParam CommonsMultipartFile file) throws IOException {
         String url = ImgUtil.upload(file, Constant.PATH);
-        return BaseResult.success(url);
+        if(!StringUtils.isNullOrEmpty(url))
+            return imgService.addImg(url);
+        return BaseResult.error("FAIL","图片上传失败");
     }
 
     /**

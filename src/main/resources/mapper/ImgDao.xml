@@ -5,8 +5,11 @@
 <mapper namespace="com.fitness.api.dao.ImgDao">
 
     <!--新增图片数据-->
-    <insert id="add">
-        INSERT INTO img(url,createDate)VALUES (#{name},NOW())
+    <insert id="add" parameterType="com.fitness.api.domain.Img">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO img(url,createDate)VALUES (#{url},NOW())
     </insert>
 
 </mapper>
