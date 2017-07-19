@@ -27,6 +27,9 @@ public class PrivateClass {
     //教练id
     private Long coachId;
 
+    @Transient
+    private String coachName;
+
     //场馆id
     @Transient
     private Long stadiumId;
@@ -41,7 +44,7 @@ public class PrivateClass {
     //修改时间
     private Date updateDate;
 
-    //课程状态 1空闲 0 已预订
+    //课程状态 1满员 0 未满
     private String status;
 
     //开始时间
@@ -170,6 +173,14 @@ public class PrivateClass {
         this.stadiumName = stadiumName;
     }
 
+    public String getCoachName() {
+        return coachName;
+    }
+
+    public void setCoachName(String coachName) {
+        this.coachName = coachName;
+    }
+
     @Override
     public String toString() {
         return "PrivateClass{" +
@@ -178,6 +189,7 @@ public class PrivateClass {
                 ", classTime=" + classTime +
                 ", classDesc='" + classDesc + '\'' +
                 ", coachId=" + coachId +
+                ", coachName='" + coachName + '\'' +
                 ", stadiumId=" + stadiumId +
                 ", stadiumName='" + stadiumName + '\'' +
                 ", createDate=" + createDate +
