@@ -39,9 +39,16 @@ public class PrivateClass {
     //开始时间
     private Date startDate;
 
+    //主图  图片id
+    private Long mainImgId;
+
     @Transient
     //课程图片集合
     private List<Img> imgList;
+
+    //课程时间段
+    @Transient
+    private List<PrivateClassTime> privateClassTimeList;
 
     public Long getId() {
         return id;
@@ -123,6 +130,22 @@ public class PrivateClass {
         this.imgList = imgList;
     }
 
+    public Long getMainImgId() {
+        return mainImgId;
+    }
+
+    public void setMainImgId(Long mainImgId) {
+        this.mainImgId = mainImgId;
+    }
+
+    public List<PrivateClassTime> getPrivateClassTimeList() {
+        return privateClassTimeList;
+    }
+
+    public void setPrivateClassTimeList(List<PrivateClassTime> privateClassTimeList) {
+        this.privateClassTimeList = privateClassTimeList;
+    }
+
     @Override
     public String toString() {
         return "PrivateClass{" +
@@ -135,7 +158,9 @@ public class PrivateClass {
                 ", updateDate=" + updateDate +
                 ", status='" + status + '\'' +
                 ", startDate=" + startDate +
+                ", mainImgId=" + mainImgId +
                 ", imgList=" + imgList +
+                ", privateClassTimeList=" + privateClassTimeList +
                 '}';
     }
 }
