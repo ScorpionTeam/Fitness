@@ -21,7 +21,7 @@
 
     <!--修改会员卡状态-->
     <update id="updateMemberCardStatus">
-        update member_card set status=#{status,jdbcType=VARCHAR} where id=#{id,jdbcType=BIGINT}
+        update member_card set status=#{status} where id=#{id}
     </update>
 
     <!--创建会员卡-->

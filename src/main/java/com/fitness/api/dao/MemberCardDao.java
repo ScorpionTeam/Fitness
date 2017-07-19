@@ -33,7 +33,7 @@ public interface MemberCardDao {
      *
      * @param id
      */
-    void del(Long id);
+    void del(@Param(value = "id") Long id);
 
     /**
      * 根据会员卡卡号查询 会员卡列表  分页
@@ -58,7 +58,7 @@ public interface MemberCardDao {
      * @param id
      * @return
      */
-    MemberCard memberCardInfo(Long id);
+    MemberCard memberCardInfo(@Param(value = "id") Long id);
 
     /**
      * 根据卡类型 type 查询可用会员卡
@@ -66,14 +66,14 @@ public interface MemberCardDao {
      * @param type
      * @return
      */
-    MemberCard availableMemberCard(String type);
+    MemberCard availableMemberCard(@Param(value = "type") String type);
 
     /**
      * 根据会员卡id  修改状态
      * @param id
      * @param status
      */
-    void updateMemberCardStatus(Long id,String status);
+    void updateMemberCardStatus(@Param(value = "id") Long id,@Param(value = "status") String status);
 
     /**
      * 根据场馆id 查询会员卡列表

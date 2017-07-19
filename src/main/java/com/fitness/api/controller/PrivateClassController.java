@@ -1,6 +1,5 @@
 package com.fitness.api.controller;
 
-import com.fitness.annotations.OathAnnotation;
 import com.fitness.api.domain.PrivateClass;
 import com.fitness.api.service.PrivateClassService;
 import com.fitness.result.BaseResult;
