@@ -27,6 +27,14 @@ public class PrivateClass {
     //教练id
     private Long coachId;
 
+    //场馆id
+    @Transient
+    private Long stadiumId;
+
+    //场馆名称
+    @Transient
+    private String stadiumName;
+
     //创建时间
     private Date createDate;
 
@@ -146,6 +154,22 @@ public class PrivateClass {
         this.privateClassTimeList = privateClassTimeList;
     }
 
+    public Long getStadiumId() {
+        return stadiumId;
+    }
+
+    public void setStadiumId(Long stadiumId) {
+        this.stadiumId = stadiumId;
+    }
+
+    public String getStadiumName() {
+        return stadiumName;
+    }
+
+    public void setStadiumName(String stadiumName) {
+        this.stadiumName = stadiumName;
+    }
+
     @Override
     public String toString() {
         return "PrivateClass{" +
@@ -154,6 +178,8 @@ public class PrivateClass {
                 ", classTime=" + classTime +
                 ", classDesc='" + classDesc + '\'' +
                 ", coachId=" + coachId +
+                ", stadiumId=" + stadiumId +
+                ", stadiumName='" + stadiumName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 ", status='" + status + '\'' +
