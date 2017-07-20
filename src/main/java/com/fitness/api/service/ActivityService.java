@@ -81,4 +81,12 @@ public interface ActivityService {
      * @return
      */
     BaseResult visitNewest(Long id);
+
+    /**
+     * 参加活动
+     * @param memberId
+     * @param activityId
+     * @return
+     */
+    BaseResult apply(Long memberId,Long activityId);
 }

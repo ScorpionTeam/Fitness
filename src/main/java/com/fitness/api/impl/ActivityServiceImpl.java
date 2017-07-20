@@ -168,4 +168,15 @@ public class ActivityServiceImpl implements ActivityService, PageService {
         activityDao.visitAdd(id);
         return BaseResult.success(activity);
     }
+
+    /**
+     * 参加活动
+     * @param memberId
+     * @param activityId
+     * @return
+     */
+    @Override
+    public BaseResult apply(Long memberId, Long activityId) {
+        return null;
+    }
 }
