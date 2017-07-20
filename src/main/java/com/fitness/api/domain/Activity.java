@@ -35,7 +35,7 @@ public class Activity {
     //活动结束时间
     private Date endDate;
 
-    //活动状态
+    //活动状态 1进行中  2 已结束   0 未开始
     private String status;
 
     //活动排序
@@ -43,6 +43,9 @@ public class Activity {
 
     //活动修改时间
     private Date updateDate;
+
+    //是否置顶  1是 0否
+    private String showHome;
 
     public Long getId() {
         return id;
@@ -140,6 +143,14 @@ public class Activity {
         this.updateDate = updateDate;
     }
 
+    public String getShowHome() {
+        return showHome;
+    }
+
+    public void setShowHome(String showHome) {
+        this.showHome = showHome;
+    }
+
     @Override
     public String toString() {
         return "Activity{" +
@@ -155,6 +166,7 @@ public class Activity {
                 ", status='" + status + '\'' +
                 ", sort=" + sort +
                 ", updateDate=" + updateDate +
+                ", showHome='" + showHome + '\'' +
                 '}';
     }
 }
