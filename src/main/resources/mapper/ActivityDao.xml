@@ -92,4 +92,10 @@
     <update id="visitAdd" parameterType="java.lang.Long">
         UPDATE activity SET visitTotal=visitTotal+1 WHERE id=#{id}
     </update>
+    
+    
+    <!--参加活动-->
+    <insert id="applyActivity">
+        INSERT  INTO member_activity(memberId,activityId,createDate) VALUES (#{memberId},#{activityId},NOW())
+    </insert>
 </mapper>
