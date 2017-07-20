@@ -98,7 +98,7 @@ public class MemberServiceImpl implements MemberService, PageService {
             return BaseResult.error("USER_EXIST", "账号已存在");
 
         if (StringUtils.isNullOrEmpty(member.getPassword()))
-            member.setPassword("11111111");
+            member.setPassword(Constant.DEFAULT_PASSWORD);
         String password = PBKUtils.getEncryptedPassword(member.getPassword(), Constant.ENCRYPT_SALT);
         member.setPassword(password);
         Integer result1 = memberDao.register(member);
