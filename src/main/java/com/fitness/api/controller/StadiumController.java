@@ -78,7 +78,7 @@ public class StadiumController {
      * @param id
      * @return
      */
-    @OathAnnotation
+//    @OathAnnotation
     @RequestMapping(value = "/stadiumInfo", method = RequestMethod.GET)
     public BaseResult stadiumInfo(Long id) {
         return stadiumService.stadiumInfo(id);
