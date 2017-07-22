@@ -47,6 +47,17 @@ public class Activity {
     //是否置顶  1是 0否
     private String showHome;
 
+    //活动描述富文本
+    private String contentHtml;
+
+    public String getContentHtml() {
+        return contentHtml;
+    }
+
+    public void setContentHtml(String contentHtml) {
+        this.contentHtml = contentHtml;
+    }
+
     public Long getId() {
         return id;
     }
@@ -167,6 +178,7 @@ public class Activity {
                 ", sort=" + sort +
                 ", updateDate=" + updateDate +
                 ", showHome='" + showHome + '\'' +
+                ", contentHtml='" + contentHtml + '\'' +
                 '}';
     }
 }

@@ -15,7 +15,8 @@
         startDate,
         endDate,
         sort,
-        updateDate)
+        updateDate,
+        contentHtml)
         VALUES(#{name},
         #{content},
         #{closingDate},
@@ -25,7 +26,8 @@
         #{startDate},
         #{endDate},
         #{sort},
-        NOW()
+        NOW(),
+        #{contentHtml}
         )
     </insert>
 
