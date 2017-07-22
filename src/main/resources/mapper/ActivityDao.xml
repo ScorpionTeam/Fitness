@@ -100,4 +100,27 @@
     <insert id="applyActivity">
         INSERT  INTO member_activity(memberId,activityId,createDate) VALUES (#{memberId},#{activityId},NOW())
     </insert>
+
+    <!--最新活动  活动截止日期大于今天-->
+    <select id="newActivity"  resultType="com.fitness.api.domain.Activity">
+        SELECT a.id,
+        a.name,
+        a.content,
+        a.closingDate,
+        a.visitTotal,
+        a.stadiumId,
+        a.createDate,
+        a.startDate,
+        a.endDate,
+        a.sort,
+        a.updateDate,
+        a.status,
+        a.contentHtml,
+        s.name as stadiumName
+        FROM activity a LEFT  JOIN stadium s ON a.stadiumId=s.id
+        WHERE a.endDate > now() AND a.status='1'
+    </select>
+    <select id="newActivityCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM activity a where a.endDate > now() AND a.status='1'
+    </select>
 </mapper>

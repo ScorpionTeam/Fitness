@@ -42,7 +42,7 @@ public class Activity {
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date endDate;
 
-    //活动状态 1进行中  2 已结束   0 未开始
+    //活动状态 1正常 0 失效
     private String status;
 
     //活动排序
