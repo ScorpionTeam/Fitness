@@ -96,7 +96,7 @@ public interface ActivityDao {
      * @param id
      * @return
      */
-    Activity activityInfo(@Param(value = "id") Long id);
+    Activity activityInfo(Long id);
 
     /**
      * 阅读次数+1
