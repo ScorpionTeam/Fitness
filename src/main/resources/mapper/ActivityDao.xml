@@ -83,12 +83,36 @@
     </select>
 
     <!--5. 根据会员id查询我的活动-->
-    <select id="myActivity" parameterType="java.lang.Long">
-
+    <select id="myActivity" resultType="com.fitness.api.domain.Activity">
+        SELECT
+        a.id,
+        a.name,
+        a.content,
+        a.closingDate,
+        a.visitTotal,
+        a.stadiumId,
+        a.createDate,
+        a.startDate,
+        a.endDate,
+        a.sort,
+        a.updateDate,
+        a.status,
+        a.contentHtml,
+        a.applyTotal,
+        s.name as stadiumName
+        FROM activity a
+        LEFT JOIN stadium s ON a.stadiumId=s.id
+        LEFT JOIN member_activity ma ON a.id=ma.activityId
+        LEFT JOIN member m ON m.id=ma.memberId
+        WHERE m.id=#{memberId}
     </select>
 
-    <select id="myActivityCount" parameterType="java.lang.Long">
-
+    <select id="myActivityCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM activity a
+        LEFT JOIN stadium s ON a.stadiumId=s.id
+        LEFT JOIN member_activity ma ON a.id=ma.activityId
+        LEFT JOIN member m ON m.id=ma.memberId
+        WHERE m.id=#{memberId}
     </select>
     <!--6. 根据场馆id查询最新活动-->
     <!--7. 活动详情-->

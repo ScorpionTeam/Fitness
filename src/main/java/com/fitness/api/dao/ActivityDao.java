@@ -119,6 +119,7 @@ public interface ActivityDao {
      */
     Integer updateActivityApplyTotal(@Param(value = "activityId")Long activityId);
 
+
     /**
      * 根据活动id  会员id检查是否参加过该活动
      * @param memberId
