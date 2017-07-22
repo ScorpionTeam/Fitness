@@ -2,6 +2,7 @@ package com.fitness.api.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.data.annotation.Transient;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -61,6 +62,18 @@ public class MemberCard {
     //有效期拼接字符串
     @Transient
     private String validDate;
+
+    //场馆名称
+    @Transient
+    private String stadiumName;
+
+    public String getStadiumName() {
+        return stadiumName;
+    }
+
+    public void setStadiumName(String stadiumName) {
+        this.stadiumName = stadiumName;
+    }
 
     public String getValidDate() {
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
@@ -189,6 +202,7 @@ public class MemberCard {
                 ", classTotal=" + classTotal +
                 ", money=" + money +
                 ", validDate='" + validDate + '\'' +
+                ", stadiumName='" + stadiumName + '\'' +
                 '}';
     }
 }

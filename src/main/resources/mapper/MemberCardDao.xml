@@ -68,8 +68,9 @@
         mc.updateDate,
         mc.status,
         mc.classTotal,
-        mc.money
-        FROM member_card mc WHERE 1=1
+        mc.money,
+        s.name as stadiumName
+        FROM member_card mc LEFT  JOIN stadium s ON mc.stadiumId = s.id WHERE 1=1
         <if test="key!=null and key!=''">
             AND cardNo=#{key}
         </if>
