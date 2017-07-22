@@ -2,9 +2,7 @@ package com.fitness.api.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.data.annotation.Transient;
-import org.springframework.transaction.event.TransactionalEventListener;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
