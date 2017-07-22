@@ -74,6 +74,7 @@
         a.updateDate,
         a.status,
         a.contentHtml,
+        a.applyTotal,
         s.name as stadiumName
         FROM activity a LEFT  JOIN stadium s ON a.stadiumId=s.id
     </select>
@@ -118,6 +119,7 @@
         a.updateDate,
         a.status,
         a.contentHtml,
+        a.applyTotal,
         s.name as stadiumName
         FROM activity a LEFT  JOIN stadium s ON a.stadiumId=s.id
         WHERE a.endDate > now() AND a.status='1'
