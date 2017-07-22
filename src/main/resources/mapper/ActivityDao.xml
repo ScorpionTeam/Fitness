@@ -128,4 +128,30 @@
     <select id="newActivityCount" resultType="java.lang.Integer">
         SELECT COUNT(1) FROM activity a where a.endDate > now() AND a.status='1' AND a.stadiumId=#{stadiumId}
     </select>
+
+
+    <!--往期活动-->
+    <select id="pastActivity" resultType="com.fitness.api.domain.Activity">
+        SELECT a.id,
+        a.name,
+        a.content,
+        a.closingDate,
+        a.visitTotal,
+        a.stadiumId,
+        a.createDate,
+        a.startDate,
+        a.endDate,
+        a.sort,
+        a.updateDate,
+        a.status,
+        a.contentHtml,
+        a.applyTotal,
+        s.name as stadiumName
+        FROM activity a LEFT  JOIN stadium s ON a.stadiumId=s.id
+        WHERE a.endDate &lt; now() AND a.status='1'
+        AND a.stadiumId=#{stadiumId}
+    </select>
+    <select id="pastActivityCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM activity a where a.endDate &lt; now() AND a.status='1' AND a.stadiumId=#{stadiumId}
+    </select>
 </mapper>
