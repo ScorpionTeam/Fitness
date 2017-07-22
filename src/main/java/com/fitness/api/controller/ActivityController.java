@@ -126,17 +126,6 @@ public class ActivityController {
         return activityService.pastActivity(pageNo, pageSize, stadiumId);
     }
 
-    /**
-     * 根据最新活动id 查询最新活动
-     * @param id
-     * @return
-     */
-
-    @RequestMapping(value = "/visitNewest",method = RequestMethod.GET)
-    public BaseResult visitNewest(Long id){
-        return null;
-    }
-
 
     /**
      * 添加活动
@@ -146,7 +135,7 @@ public class ActivityController {
      */
     @RequestMapping(value = "/apply",method = RequestMethod.POST)
     public BaseResult apply(Long memberId,Long activityId){
-        return null;
+        return activityService.apply(memberId,activityId);
     }
 
 

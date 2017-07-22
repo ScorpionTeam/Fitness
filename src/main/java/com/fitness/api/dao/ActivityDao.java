@@ -3,6 +3,7 @@ package com.fitness.api.dao;
 import com.fitness.api.domain.Activity;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -110,5 +111,20 @@ public interface ActivityDao {
      * @return
      */
     Integer applyActivity(@Param(value = "memberId")Long memberId,@Param(value = "activityId")Long activityId);
+
+    /**
+     * 根据活动id修改报名人数
+     * @param activityId
+     * @return
+     */
+    Integer updateActivityApplyTotal(@Param(value = "activityId")Long activityId);
+
+    /**
+     * 根据活动id  会员id检查是否参加过该活动
+     * @param memberId
+     * @param activityId
+     * @return
+     */
+    Integer checkIsApply(@Param(value = "memberId")Long memberId,@Param(value = "activityId")Long activityId);
 
 }

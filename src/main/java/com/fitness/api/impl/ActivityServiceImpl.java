@@ -9,6 +9,7 @@ import com.fitness.result.page.PageService;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -167,12 +168,22 @@ public class ActivityServiceImpl implements ActivityService, PageService {
 
     /**
      * 参加活动
+     *
      * @param memberId
      * @param activityId
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public BaseResult apply(Long memberId, Long activityId) {
-        return null;
+
+        //检查是否已参加该活动
+        Integer count = activityDao.checkIsApply(memberId, activityId);
+        if (count > 0)
+            return BaseResult.error("NOT_APPLY", "已报名该活动,不可重复报名");
+        activityDao.applyActivity(memberId, activityId);
+        //修改活动报名人数
+        activityDao.updateActivityApplyTotal(activityId);
+        return BaseResult.success("活动报名成功");
     }
 }

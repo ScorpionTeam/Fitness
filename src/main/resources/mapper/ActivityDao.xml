@@ -97,15 +97,26 @@
     <update id="visitAdd" parameterType="java.lang.Long">
         UPDATE activity SET visitTotal=visitTotal+1 WHERE id=#{id}
     </update>
-    
-    
+
+
     <!--参加活动-->
     <insert id="applyActivity">
         INSERT  INTO member_activity(memberId,activityId,createDate) VALUES (#{memberId},#{activityId},NOW())
     </insert>
 
+    <!--修改活动报名人数-->
+    <update id="updateActivityApplyTotal">
+        UPDATE activity SET applyTotal=applyTotal+1 WHERE id=#{activityId}
+    </update>
+
+    <!--检查会员是否参加过该活动-->
+    <select id="checkIsApply" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM member_activity WHERE memberId=#{memberId} AND activityId=#{activityId}
+    </select>
+
+
     <!--最新活动  活动截止日期大于今天-->
-    <select id="newActivity"  resultType="com.fitness.api.domain.Activity">
+    <select id="newActivity" resultType="com.fitness.api.domain.Activity">
         SELECT a.id,
         a.name,
         a.content,
@@ -154,4 +165,7 @@
     <select id="pastActivityCount" resultType="java.lang.Integer">
         SELECT COUNT(1) FROM activity a where a.endDate &lt; now() AND a.status='1' AND a.stadiumId=#{stadiumId}
     </select>
+
+
+
 </mapper>
