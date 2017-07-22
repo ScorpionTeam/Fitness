@@ -1,5 +1,8 @@
 package com.fitness.api.domain;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.data.annotation.Transient;
+
 import java.util.Date;
 
 /**
@@ -18,6 +21,7 @@ public class Activity {
     private String content;
 
     //报名截止时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date closingDate;
 
     //访问量
@@ -27,12 +31,15 @@ public class Activity {
     private Long stadiumId;
 
     //活动创建时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
 
     //活动开始时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date startDate;
 
     //活动结束时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date endDate;
 
     //活动状态 1进行中  2 已结束   0 未开始
@@ -49,6 +56,19 @@ public class Activity {
 
     //活动描述富文本
     private String contentHtml;
+
+    //场馆名称
+    @Transient
+    private String stadiumName;
+
+
+    public String getStadiumName() {
+        return stadiumName;
+    }
+
+    public void setStadiumName(String stadiumName) {
+        this.stadiumName = stadiumName;
+    }
 
     public String getContentHtml() {
         return contentHtml;
@@ -179,6 +199,7 @@ public class Activity {
                 ", updateDate=" + updateDate +
                 ", showHome='" + showHome + '\'' +
                 ", contentHtml='" + contentHtml + '\'' +
+                ", stadiumName='" + stadiumName + '\'' +
                 '}';
     }
 }

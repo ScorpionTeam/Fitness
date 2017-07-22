@@ -32,14 +32,12 @@ public interface ActivityService {
     BaseResult del(Long id);
 
     /**
-     * 根据场馆查询活动列表  根据关键字搜索  分页
+     * 活动列表
      * @param pageNo
      * @param pageSize
-     * @param stadiumId
-     * @param key
      * @return
      */
-    PageResult list(Integer pageNo,Integer pageSize,Long stadiumId,String key);
+    PageResult list(Integer pageNo,Integer pageSize);
 
     /**
      * 根据会员id查询我的活动  分页

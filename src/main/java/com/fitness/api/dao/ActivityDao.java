@@ -36,21 +36,17 @@ public interface ActivityDao {
     Integer del(@Param(value = "id") Long id);
 
     /**
-     * 根据场馆id  关键字 查询活动列表 分页
+     * 活动列表
      * @param rowBounds
-     * @param stadiumId
-     * @param key
      * @return
      */
-    List<Activity> activityList(RowBounds rowBounds, Long stadiumId, @Param(value = "key") String key);
+    List<Activity> list(RowBounds rowBounds);
 
     /**
-     * 根据场馆id 关键字 查询活动数量
-     * @param stadiumId
-     * @param key
+     * 列表数量
      * @return
      */
-    Integer activityCount(@Param(value = "stadiumId") Long stadiumId,@Param(value = "key") String key);
+    Integer count();
     /**
      * 根据会员id查询我的活动  分页
      * @param rowBounds

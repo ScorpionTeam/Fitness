@@ -17,7 +17,8 @@
         sort,
         updateDate,
         contentHtml,
-        showHome)
+        showHome,
+        status)
         VALUES(#{name},
         #{content},
         #{closingDate},
@@ -29,7 +30,8 @@
         #{sort},
         NOW(),
         #{contentHtml},
-        #{showHome}
+        #{showHome},
+        #{status}
         )
     </insert>
 
@@ -56,7 +58,7 @@
     </update>
 
     <!--4. 活动列表关键字查询-->
-    <select id="" resultType="com.fitness.api.domain.Activity">
+    <select id="list" resultType="com.fitness.api.domain.Activity">
       SELECT a.id,
         a.name,
         a.content,
@@ -68,19 +70,15 @@
         a.endDate,
         a.sort,
         a.updateDate,
-        a.status
-        FROM activity a
-        WHERE a.stadiumId=#{stadiumId}
-        <if test="key!=null and key!=''">
-            AND a.name LIKE #{key}
-        </if>
+        a.status,
+        a.contentHtml,
+        s.name as stadiumName
+        FROM activity a LEFT  JOIN stadium s ON a.stadiumId=s.id
     </select>
-    <select id="activityCount" resultType="java.lang.Integer">
-        SELECT count(*) FROM activity a WHERE a.stadiumId=#{stadiumId}
-        <if test="key!=null and key!=''">
-            AND a.name LIKE #{key}
-        </if>
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(*) FROM activity a
     </select>
+
     <!--5. 根据会员id查询我的活动-->
     <select id="myActivity" parameterType="java.lang.Long">
 

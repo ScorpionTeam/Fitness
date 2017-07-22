@@ -67,23 +67,19 @@ public class ActivityServiceImpl implements ActivityService, PageService {
     }
 
     /**
-     * 根据场馆id查询活动列表  关键字搜索
+     * 活动列表
      *
      * @param pageNo
      * @param pageSize
-     * @param stadiumId
-     * @param key
      * @return
      */
     @Override
-    public PageResult list(Integer pageNo, Integer pageSize, Long stadiumId, String key) {
-        if (StringUtils.isNullOrEmpty(key)) {
-            key = "%" + key + "%";
-        }
-        Integer count = activityDao.activityCount(stadiumId, key);
+    public PageResult list(Integer pageNo, Integer pageSize) {
+
+        Integer count = activityDao.count();
         if (count <= 0)
             return new PageResult(null, 0);
-        List<Activity> list = activityDao.activityList(rowBounds(pageNo, pageSize), stadiumId, key);
+        List<Activity> list = activityDao.list(rowBounds(pageNo, pageSize));
         return new PageResult(list, count, pageNo, pageSize);
     }
 

@@ -64,14 +64,12 @@ public class ActivityController {
      *
      * @param pageNo
      * @param pageSize
-     * @param stadiumId
-     * @param key
      * @return
      */
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public PageResult list(Integer pageNo, Integer pageSize, Long stadiumId, String key) {
-        return activityService.list(pageNo, pageSize, stadiumId, key);
+    public PageResult list(Integer pageNo, Integer pageSize) {
+        return activityService.list(pageNo, pageSize);
     }
 
     /**
