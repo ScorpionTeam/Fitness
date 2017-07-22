@@ -92,6 +92,25 @@
     </select>
     <!--6. 根据场馆id查询最新活动-->
     <!--7. 活动详情-->
+    <select id="activityInfo" resultType="com.fitness.api.domain.Activity">
+        SELECT a.id,
+        a.name,
+        a.content,
+        a.closingDate,
+        a.visitTotal,
+        a.stadiumId,
+        a.createDate,
+        a.startDate,
+        a.endDate,
+        a.sort,
+        a.updateDate,
+        a.status,
+        a.contentHtml,
+        a.applyTotal,
+        s.name as stadiumName
+        FROM activity a LEFT  JOIN stadium s ON a.stadiumId=s.id
+        WHERE a.id=#{id}
+    </select>
     <!--8. 根据场馆id查询往期活动-->
     <!--阅读次数+1-->
     <update id="visitAdd" parameterType="java.lang.Long">
