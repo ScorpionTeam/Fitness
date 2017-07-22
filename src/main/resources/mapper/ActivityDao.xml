@@ -105,6 +105,7 @@
         LEFT JOIN member_activity ma ON a.id=ma.activityId
         LEFT JOIN member m ON m.id=ma.memberId
         WHERE m.id=#{memberId}
+        AND a.endDate &lt; now()
     </select>
 
     <select id="myActivityCount" resultType="java.lang.Integer">
@@ -113,6 +114,7 @@
         LEFT JOIN member_activity ma ON a.id=ma.activityId
         LEFT JOIN member m ON m.id=ma.memberId
         WHERE m.id=#{memberId}
+        AND a.endDate &lt;now()
     </select>
     <!--6. 根据场馆id查询最新活动-->
     <!--7. 活动详情-->
