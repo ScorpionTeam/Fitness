@@ -61,6 +61,17 @@ public class Activity {
     @Transient
     private String stadiumName;
 
+    //报名人数
+    private Integer applyTotal;
+
+
+    public Integer getApplyTotal() {
+        return applyTotal;
+    }
+
+    public void setApplyTotal(Integer applyTotal) {
+        this.applyTotal = applyTotal;
+    }
 
     public String getStadiumName() {
         return stadiumName;
@@ -200,6 +211,7 @@ public class Activity {
                 ", showHome='" + showHome + '\'' +
                 ", contentHtml='" + contentHtml + '\'' +
                 ", stadiumName='" + stadiumName + '\'' +
+                ", applyTotal=" + applyTotal +
                 '}';
     }
 }
