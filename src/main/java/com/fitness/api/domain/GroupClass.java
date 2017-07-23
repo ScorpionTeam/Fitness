@@ -3,6 +3,7 @@ package com.fitness.api.domain;
 import org.springframework.data.annotation.Transient;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 团课
@@ -57,6 +58,22 @@ public class GroupClass {
     //教练姓名
     @Transient
     private String coachName;
+
+    //主图
+    private String mainImgUrl;
+
+    //轮播图
+    @Transient
+    private List<Img> imgList;
+
+
+    public String getMainImgUrl() {
+        return mainImgUrl;
+    }
+
+    public void setMainImgUrl(String mainImgUrl) {
+        this.mainImgUrl = mainImgUrl;
+    }
 
     public Long getId() {
         return id;
@@ -178,6 +195,14 @@ public class GroupClass {
         this.coachName = coachName;
     }
 
+    public List<Img> getImgList() {
+        return imgList;
+    }
+
+    public void setImgList(List<Img> imgList) {
+        this.imgList = imgList;
+    }
+
     @Override
     public String toString() {
         return "GroupClass{" +
@@ -196,6 +221,8 @@ public class GroupClass {
                 ", stadiumName='" + stadiumName + '\'' +
                 ", stadiumId=" + stadiumId +
                 ", coachName='" + coachName + '\'' +
+                ", mainImgUrl='" + mainImgUrl + '\'' +
+                ", imgList=" + imgList +
                 '}';
     }
 }
