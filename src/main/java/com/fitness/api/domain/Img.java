@@ -17,6 +17,17 @@ public class Img {
     //创建时间
     private Date createDate;
 
+    //第三方对应id
+    private Long thirdId;
+
+    public Long getThirdId() {
+        return thirdId;
+    }
+
+    public void setThirdId(Long thirdId) {
+        this.thirdId = thirdId;
+    }
+
     public Long getId() {
         return id;
     }
@@ -47,6 +58,7 @@ public class Img {
                 "id=" + id +
                 ", url='" + url + '\'' +
                 ", createDate=" + createDate +
+                ", thirdId=" + thirdId +
                 '}';
     }
 }
