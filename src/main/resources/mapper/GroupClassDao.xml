@@ -27,7 +27,7 @@
         #{startDate},
         #{endDate},
         #{timeTotal},
-        #{status},
+        '1',
         now(),
         now(),
         #{mainImgUrl},
