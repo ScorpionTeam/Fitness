@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fitness.api.dao.GroupClassDao">
 
+    <!--创建团课-->
     <insert id="add" parameterType="com.fitness.api.domain.GroupClass">
         INSERT INTO group_class(name,
         total,
@@ -21,7 +22,7 @@
         VALUES (#{name},
         #{total},
         #{address},
-        #{total},
+        #{surplusNum},
         #{startDate},
         #{endDate},
         #{timeTotal},
@@ -31,4 +32,43 @@
         #{groupClassImgId},
         #{coachId})
     </insert>
+
+    <!--修改团课-->
+    <update id="update" parameterType="com.fitness.api.domain.GroupClass">
+        UPDATE group_class SET name=#{name},
+        total=#{total},
+        address=#{address},
+        surplusNum=#{surplusNum},
+        startDate=#{startDate},
+        endDate=#{endDate},
+        timeTotal=#{timeTotal},
+        status=#{status},
+        updateDate=now(),
+        groupClassImgId=#{groupClassImgId},
+        coachId=#{coachId}
+        WHERE id=#{id}
+    </update>
+
+    <!--团课详情-->
+    <select id="classInfo" resultType="com.fitness.api.domain.GroupClass">
+        SELECT
+         gc.id,
+         gc.name,
+         gc.total,
+         gc.address,
+         gc.surplusNum,
+         gc.startDate,
+         gc.endDate,
+         gc.time,
+         gc.status,
+         gc.createDate,
+         gc.updateDate,
+         gc.groupClassImgId,
+         gc.coachId,
+         c.name as coachName,
+         s.name as stadiumName,
+         s.id as stadiumId
+         FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id LEFT JOIN stadium s ON s.id=c.stadiumId
+        WHERE gc.id=#{id}
+    </select>
 </mapper>

@@ -45,7 +45,10 @@ public class GroupClassServiceImpl implements GroupClassService {
      */
     @Override
     public BaseResult update(GroupClass groupClass) {
-        return null;
+        Integer result = groupClassDao.update(groupClass);
+        if (result > 0)
+            return BaseResult.success("修改团课成功");
+        return BaseResult.error("ADD_FAIL", "修改团课失败");
     }
 
     /**

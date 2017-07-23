@@ -1,5 +1,7 @@
 package com.fitness.api.domain;
 
+import org.springframework.data.annotation.Transient;
+
 import java.util.Date;
 
 /**
@@ -43,6 +45,18 @@ public class GroupClass {
 
     //教练id
     private Long coachId;
+
+    //场馆名称
+    @Transient
+    private String stadiumName;
+
+    //场馆id
+    @Transient
+    private Long stadiumId;
+
+    //教练姓名
+    @Transient
+    private String coachName;
 
     public Long getId() {
         return id;
@@ -140,6 +154,30 @@ public class GroupClass {
         this.coachId = coachId;
     }
 
+    public String getStadiumName() {
+        return stadiumName;
+    }
+
+    public void setStadiumName(String stadiumName) {
+        this.stadiumName = stadiumName;
+    }
+
+    public Long getStadiumId() {
+        return stadiumId;
+    }
+
+    public void setStadiumId(Long stadiumId) {
+        this.stadiumId = stadiumId;
+    }
+
+    public String getCoachName() {
+        return coachName;
+    }
+
+    public void setCoachName(String coachName) {
+        this.coachName = coachName;
+    }
+
     @Override
     public String toString() {
         return "GroupClass{" +
@@ -155,6 +193,9 @@ public class GroupClass {
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 ", coachId=" + coachId +
+                ", stadiumName='" + stadiumName + '\'' +
+                ", stadiumId=" + stadiumId +
+                ", coachName='" + coachName + '\'' +
                 '}';
     }
 }
