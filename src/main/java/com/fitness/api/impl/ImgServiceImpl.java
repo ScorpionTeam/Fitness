@@ -7,6 +7,8 @@ import com.fitness.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 图片业务逻辑
  * Created on 2017/7/17.
@@ -28,5 +30,15 @@ public class ImgServiceImpl implements ImgService {
         img.setUrl(name);
         Integer result = imgDao.add(img);
         return BaseResult.success(img);
+    }
+
+    /**
+     * 新增 轮播图
+     * @param imgList
+     * @return
+     */
+    @Override
+    public BaseResult addBanner(List<Img> imgList) {
+        return null;
     }
 }

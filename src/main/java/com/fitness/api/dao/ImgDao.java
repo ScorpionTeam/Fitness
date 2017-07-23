@@ -27,4 +27,11 @@ public interface ImgDao {
      */
     List<Img> list(Long id);
 
+    /**
+     * 创建banner图
+     * @param imgList
+     * @return
+     */
+    Integer addBanner(List<Img> imgList);
+
 }

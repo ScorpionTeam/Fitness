@@ -12,4 +12,12 @@
         INSERT INTO img(url,createDate)VALUES (#{url},NOW())
     </insert>
 
+    <!--新增图片 集合-->
+    <insert id="addBanner" parameterType="com.fitness.api.domain.Img">
+        insert into img(url,createDate,thirdId) values
+        <foreach collection="imgList" item="item" index="index" separator=",">
+            (#{url},now(),#{thirdId})
+        </foreach>
+    </insert>
+
 </mapper>

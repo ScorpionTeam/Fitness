@@ -1,12 +1,18 @@
 package com.fitness.api.impl;
 
 import com.fitness.api.dao.GroupClassDao;
+import com.fitness.api.dao.ImgDao;
 import com.fitness.api.domain.GroupClass;
+import com.fitness.api.domain.Img;
 import com.fitness.api.service.GroupClassService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.beans.Transient;
+import java.util.List;
 
 /**
  * 团课-业务逻辑
@@ -18,6 +24,9 @@ public class GroupClassServiceImpl implements GroupClassService {
     @Autowired
     private GroupClassDao groupClassDao;
 
+    @Autowired
+    private ImgDao imgDao;
+
 
     /**
      * 创建团课
@@ -25,6 +34,7 @@ public class GroupClassServiceImpl implements GroupClassService {
      * @param groupClass
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public BaseResult add(GroupClass groupClass) {
         Integer count = groupClassDao.countByStartDate(groupClass.getStartDate());
@@ -32,8 +42,16 @@ public class GroupClassServiceImpl implements GroupClassService {
         if (count > 0)
             return BaseResult.error("EXIST", "该时间段已存在");
         Integer result = groupClassDao.add(groupClass);
-        if (result > 0)
+        if (result > 0){
+            List<Img> imgList = groupClass.getImgList();
+            imgList.forEach(item->{
+                item.setThirdId(groupClass.getId());
+            });
+            //新增轮播图
+            imgDao.addBanner(imgList);
             return BaseResult.success("创建团课成功");
+        }
+
         return BaseResult.error("ADD_FAIL", "创建团课失败");
     }
 
