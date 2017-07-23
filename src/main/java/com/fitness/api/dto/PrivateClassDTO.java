@@ -6,13 +6,16 @@ package com.fitness.api.dto;
  */
 public class PrivateClassDTO {
 
-    /* 课程名 */
+    //课程名
     private String name;
-    /* 私教课id */
+
+    //私教课id
     private Long privateClassId;
-    /* 时间点 */
+
+    //时间段
     private String times;
-    /* 教学时长 */
+
+    //教学时长
     private int classTime;
 
     public String getName() {
