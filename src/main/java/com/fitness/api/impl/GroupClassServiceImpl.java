@@ -57,4 +57,15 @@ public class GroupClassServiceImpl implements GroupClassService {
     public BaseResult classInfo(Long id) {
         return null;
     }
+
+    /**
+     * 报名团课
+     * @param memberId
+     * @param id
+     * @return
+     */
+    @Override
+    public BaseResult apply(Long memberId, Long id) {
+        return null;
+    }
 }

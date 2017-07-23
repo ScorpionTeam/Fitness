@@ -38,4 +38,12 @@ public interface GroupClassService {
      * @return
      */
     BaseResult classInfo(Long id);
+
+    /**
+     * 报名 团课
+     * @param memberId
+     * @param id
+     * @return
+     */
+    BaseResult apply(Long memberId,Long id);
 }
