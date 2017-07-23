@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
+ * 活动-业务逻辑层
  * Created on 2017/7/1.
  */
 @Service

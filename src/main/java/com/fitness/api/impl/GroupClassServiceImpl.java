@@ -42,9 +42,9 @@ public class GroupClassServiceImpl implements GroupClassService {
         if (count > 0)
             return BaseResult.error("EXIST", "该时间段已存在");
         Integer result = groupClassDao.add(groupClass);
-        if (result > 0){
+        if (result > 0) {
             List<Img> imgList = groupClass.getImgList();
-            imgList.forEach(item->{
+            imgList.forEach(item -> {
                 item.setThirdId(groupClass.getId());
             });
             //新增轮播图
@@ -66,7 +66,7 @@ public class GroupClassServiceImpl implements GroupClassService {
         Integer result = groupClassDao.update(groupClass);
         if (result > 0)
             return BaseResult.success("修改团课成功");
-        return BaseResult.error("ADD_FAIL", "修改团课失败");
+        return BaseResult.error("UPDATE_FAIL", "修改团课失败");
     }
 
     /**
@@ -77,7 +77,10 @@ public class GroupClassServiceImpl implements GroupClassService {
      */
     @Override
     public BaseResult del(Long id) {
-        return null;
+        Integer result = groupClassDao.del(id);
+        if (result > 0)
+            return BaseResult.error("DEL_FAIL", "删除失败");
+        return BaseResult.success("删除成功");
     }
 
     /**
@@ -88,7 +91,10 @@ public class GroupClassServiceImpl implements GroupClassService {
      */
     @Override
     public BaseResult classInfo(Long id) {
-        return null;
+        GroupClass groupClass = groupClassDao.classInfo(id);
+        if (null == groupClass)
+            return BaseResult.nonSuchResult();
+        return BaseResult.success(groupClass);
     }
 
     /**
@@ -100,7 +106,11 @@ public class GroupClassServiceImpl implements GroupClassService {
      */
     @Override
     public BaseResult apply(Long memberId, Long id) {
-        return null;
+        //TODO 团课报名
+        Integer result = groupClassDao.apply(memberId, id);
+        if (result > 0)
+            return BaseResult.success("团课报名成功");
+        return BaseResult.error("APPLY_FAIL", "团课报名失败");
     }
 
     /**

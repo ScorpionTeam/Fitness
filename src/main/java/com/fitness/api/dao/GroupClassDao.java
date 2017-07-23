@@ -1,6 +1,7 @@
 package com.fitness.api.dao;
 
 import com.fitness.api.domain.GroupClass;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -48,6 +49,14 @@ public interface GroupClassDao {
      * @return
      */
     Integer countByStartDate(Date startDate);
+
+    /**
+     * 团课报名
+     * @param memberId
+     * @param id
+     * @return
+     */
+    Integer apply(@Param(value = "memberId")Long memberId,@Param(value = "id")Long id);
 
 
 }
