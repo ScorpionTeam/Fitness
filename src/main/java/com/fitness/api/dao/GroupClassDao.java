@@ -44,11 +44,12 @@ public interface GroupClassDao {
     Integer update(GroupClass groupClass);
 
     /**
-     * 检查时间段是否有存在的课程
+     * 根据教练id  时间 检查有没有已存在的课程
      * @param startDate
+     * @param coachId
      * @return
      */
-    Integer countByStartDate(Date startDate);
+    Integer countByStartDate(@Param(value = "startDate") Date startDate,@Param(value = "coachId")Long coachId);
 
     /**
      * 团课报名

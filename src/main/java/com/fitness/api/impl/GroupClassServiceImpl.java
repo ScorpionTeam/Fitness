@@ -37,7 +37,7 @@ public class GroupClassServiceImpl implements GroupClassService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public BaseResult add(GroupClass groupClass) {
-        Integer count = groupClassDao.countByStartDate(groupClass.getStartDate());
+        Integer count = groupClassDao.countByStartDate(groupClass.getStartDate(),groupClass.getCoachId());
 
         if (count > 0)
             return BaseResult.error("EXIST", "该时间段已存在");

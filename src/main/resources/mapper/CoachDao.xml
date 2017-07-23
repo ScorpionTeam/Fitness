@@ -97,7 +97,7 @@
         i.url as coachImgPath
         FROM coach c LEFT JOIN stadium s ON  c.stadiumId=s.id
         LEFT JOIN img i ON c.coachImgId
-        WHERE c.status='1'
+        WHERE c.status='1' AND c.stadiumId=#{stadiumId}
     </select>
 
 </mapper>

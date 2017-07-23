@@ -16,8 +16,9 @@
         status,
         createDate,
         updateDate,
-        groupClassImgId,
-        coachId
+        mainImgUrl,
+        coachId,
+        status
         )
         VALUES (#{name},
         #{total},
@@ -29,8 +30,9 @@
         #{status},
         now(),
         now(),
-        #{groupClassImgId},
-        #{coachId})
+        #{mainImgUrl},
+        #{coachId},
+        '1')
     </insert>
 
     <!--修改团课-->
@@ -44,7 +46,7 @@
         timeTotal=#{timeTotal},
         status=#{status},
         updateDate=now(),
-        groupClassImgId=#{groupClassImgId},
+        mainImgUrl=#{mainImgUrl},
         coachId=#{coachId}
         WHERE id=#{id}
     </update>
@@ -63,12 +65,17 @@
          gc.status,
          gc.createDate,
          gc.updateDate,
-         gc.groupClassImgId,
+         gc.mainImgUrl,
          gc.coachId,
          c.name as coachName,
          s.name as stadiumName,
          s.id as stadiumId
          FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id LEFT JOIN stadium s ON s.id=c.stadiumId
         WHERE gc.id=#{id}
+    </select>
+
+    <!--检查教练当天有没有团课-->
+    <select id="countByStartDate" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM group_class gc WHERE gc.startDate=#{startDate} AND coachId=#{coachId}
     </select>
 </mapper>
