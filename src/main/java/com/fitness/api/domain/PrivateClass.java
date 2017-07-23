@@ -27,6 +27,7 @@ public class PrivateClass {
     //教练id
     private Long coachId;
 
+    //教练名称
     @Transient
     private String coachName;
 
@@ -44,11 +45,9 @@ public class PrivateClass {
     //修改时间
     private Date updateDate;
 
-    //课程状态 1满员 0 未满
-    private String status;
-
     //开始时间
     private Date startDate;
+
 
     //主图  图片id
     private Long mainImgId;
@@ -115,14 +114,6 @@ public class PrivateClass {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Date getStartDate() {
@@ -194,7 +185,6 @@ public class PrivateClass {
                 ", stadiumName='" + stadiumName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
-                ", status='" + status + '\'' +
                 ", startDate=" + startDate +
                 ", mainImgId=" + mainImgId +
                 ", imgList=" + imgList +
