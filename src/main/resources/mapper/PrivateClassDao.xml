@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.PrivateClassDao">
+
+    <sql id="Insert_Column">
+        classTime,classDesc,coachId,createDate,updateDate,startDate,mainImgId,name,status</sql>
+
+    <!-- 新增私教课 -->
+    <insert id="insertPrivateClass" parameterType="com.fitness.api.domain.PrivateClass">
+      insert INTO private_class(<include refid="Insert_Column"/>) VALUES
+        (
+          #{classTime},#{classDesc},#{coachId},now(),#{updateDate},#{startDate},#{mainImgId},#{name},'1'
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <!-- 通过id删除私教课 -->
+    <update id="del" parameterType="java.lang.Long">
+      update private_class set status = '0' where id = #{id}
+    </update>
+
+    <!-- 更改教练表的私教课状态 -->
+    <update id="updateCoachStatus" parameterType="com.fitness.api.domain.Coach">
+        update coach set privateClassStatus = '1' WHERE id = #{id}
+    </update>
+
+    <!-- 更新私教课 -->
+    <update id="updatePrivateClass" parameterType="com.fitness.api.domain.PrivateClass">
+        update private_class
+        <set>
+            <if test="classTime != null">classTime = #{classTime},</if>
+            <if test="classDesc ！= null">classDesc = #{classDesc},</if>
+            <if test="coachId != null">coachId = #{coachId},</if>
+            <if test="createDate != null">createDate = #{createDate},</if>
+            update = now(),
+            <if test="startDate != null">startDate = #{startDate},</if>
+            <if test="mainImgId != null">mainImgId = #{mainImgId},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE  id = #{id}
+    </update>
+
+    <!-- 根据教练id 查询课程列表 -->
+    <select id="listByCoachId" parameterType="java.lang.Long" resultType="com.fitness.api.dto.PrivateClassDTO">
+        SELECT  a.name,a.classTime,b.times,a.id as privateClassId FROM  private_class a inner JOIN  private_class_time b
+        on a.id = b.privateClassId
+        where a.coachId = #{id}
+    </select>
+
+    <!-- 根据教练id 查询课程列表数量 -->
+    <select id="listByCoachIdCount" parameterType="java.lang.Long">
+        SELECT count(1) ROM  private_class a inner JOIN  private_class_time b
+        on a.id = b.privateClassId
+        where a.coachId = #{id}
+    </select>
+
+</mapper>

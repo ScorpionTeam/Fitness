@@ -15,7 +15,9 @@
         organization,
         orgDate,
         validDate,
-        status)
+        status,
+        privateClassStatus,
+        teamClassStatus)
         VALUES (#{name},
         #{phone},
         #{description},
@@ -25,7 +27,9 @@
         #{organization},
         #{orgDate},
         #{validDate},
-        #{status})
+        #{status},
+        #{privateClassStatus},
+        #{teamClassStatus})
     </insert>
 
     <!--关键字搜索教练信息-->
@@ -51,6 +55,8 @@
         c.orgDate,
         c.validDate,
         c.status,
+        c.privateClassStatus,
+        c.teamClassStatus
         s.name as stadiumName
         FROM coach c LEFT JOIN stadium s on c.stadiumId=s.id WHERE 1=1
         <if test="key!=null and key!=''">
@@ -73,6 +79,8 @@
         c.orgDate,
         c.validDate,
         c.status,
+        c.privateClassStatus,
+        c.teamClassStatus
         s.name as stadiumName
         FROM coach c LEFT JOIN stadium s on c.stadiumId=s.id WHERE c.id=#{id}
     </select>
@@ -93,6 +101,8 @@
         c.orgDate,
         c.validDate,
         c.status,
+        c.privateClassStatus,
+        c.teamClassStatus
         s.name as stadiumName,
         i.url as coachImgPath
         FROM coach c LEFT JOIN stadium s ON  c.stadiumId=s.id

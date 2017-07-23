@@ -55,6 +55,11 @@ public class Coach {
     //状态  1在职   0 离职
     private String status;
 
+    /* 是否开私教课  0-未开课 1-开课 */
+    private String privateClassStatus;
+    /* 是否开团课  0-未开课 1-开课 */
+    private String teamClassStatus;
+
     //工作经历
     @Transient
     private List<CoachJob> jobList;
@@ -171,6 +176,22 @@ public class Coach {
         this.jobList = jobList;
     }
 
+    public String getPrivateClassStatus() {
+        return privateClassStatus;
+    }
+
+    public void setPrivateClassStatus(String privateClassStatus) {
+        this.privateClassStatus = privateClassStatus;
+    }
+
+    public String getTeamClassStatus() {
+        return teamClassStatus;
+    }
+
+    public void setTeamClassStatus(String teamClassStatus) {
+        this.teamClassStatus = teamClassStatus;
+    }
+
     @Override
     public String toString() {
         return "Coach{" +
@@ -187,7 +208,10 @@ public class Coach {
                 ", validDate=" + validDate +
                 ", orgDate=" + orgDate +
                 ", status='" + status + '\'' +
+                ", privateClassStatus='" + privateClassStatus + '\'' +
+                ", teamClassStatus='" + teamClassStatus + '\'' +
                 ", jobList=" + jobList +
                 '}';
     }
+
 }

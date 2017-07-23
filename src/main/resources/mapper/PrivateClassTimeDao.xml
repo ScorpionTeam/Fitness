@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.PrivateClassTimeDao">
+
+    <insert id="batchInsertPrivateClassTime" parameterType="java.util.List">
+      INSERT  into private_class_time(privateClassId,times,status) VALUES
+        <foreach collection="list" index="item" separator=",">
+          (#{item.privateClassId},#{item.times},#{item.status})
+      </foreach>
+        <selectKey resultType="java.lang.Long" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <update id="updatePrivateClassTime" parameterType="com.fitness.api.domain.PrivateClassTime">
+        update private_class_time
+        <set>
+            <if test="times != null">times = #{times},</if>
+            <if test="privateClassId != null">privateClassId = #{privateClassId}</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        where id =#{id}
+    </update>
+
+
+ </mapper>
