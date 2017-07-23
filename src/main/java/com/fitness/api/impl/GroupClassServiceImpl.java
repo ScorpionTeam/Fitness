@@ -43,15 +43,16 @@ public class GroupClassServiceImpl implements GroupClassService {
             return BaseResult.error("EXIST", "该时间段已存在");
         Integer result = groupClassDao.add(groupClass);
         if (result > 0) {
-            List<Img> imgList = groupClass.getImgList();
-            imgList.forEach(item -> {
-                item.setThirdId(groupClass.getId());
-            });
-            //新增轮播图
-            imgDao.addBanner(imgList);
+            if (null != groupClass.getImgList() && groupClass.getImgList().size() > 0) {
+                List<Img> imgList = groupClass.getImgList();
+                imgList.forEach(item -> {
+                    item.setThirdId(groupClass.getId());
+                });
+                //新增轮播图
+                imgDao.addBanner(imgList);
+            }
             return BaseResult.success("创建团课成功");
         }
-
         return BaseResult.error("ADD_FAIL", "创建团课失败");
     }
 

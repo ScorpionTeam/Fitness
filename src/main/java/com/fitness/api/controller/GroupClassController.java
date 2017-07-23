@@ -89,4 +89,5 @@ public class GroupClassController {
     public PageResult listByCoachAndDate(Long coachId,String date){
         return groupClassService.listByCoachIdAndDate(coachId,date);
     }
+
 }
