@@ -41,6 +41,9 @@ public class GroupClass {
     //修改时间
     private Date updateDate;
 
+    //教练id
+    private Long coachId;
+
     public Long getId() {
         return id;
     }
@@ -129,6 +132,14 @@ public class GroupClass {
         this.updateDate = updateDate;
     }
 
+    public Long getCoachId() {
+        return coachId;
+    }
+
+    public void setCoachId(Long coachId) {
+        this.coachId = coachId;
+    }
+
     @Override
     public String toString() {
         return "GroupClass{" +
@@ -143,6 +154,7 @@ public class GroupClass {
                 ", status='" + status + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
+                ", coachId=" + coachId +
                 '}';
     }
 }

@@ -3,6 +3,8 @@ package com.fitness.api.dao;
 import com.fitness.api.domain.GroupClass;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
+
 
 /**
  *
@@ -39,6 +41,13 @@ public interface GroupClassDao {
      * @return
      */
     Integer update(GroupClass groupClass);
+
+    /**
+     * 检查时间段是否有存在的课程
+     * @param startDate
+     * @return
+     */
+    Integer countByStartDate(Date startDate);
 
 
 }

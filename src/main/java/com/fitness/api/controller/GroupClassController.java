@@ -81,12 +81,12 @@ public class GroupClassController {
 
     /**
      * 根据教练id 时间查询 团课列表
-     * @param stadiumId
+     * @param coachId
      * @param date
      * @return
      */
-    @RequestMapping(value = "/listByCoachId",method = RequestMethod.GET)
-    public PageResult listByStadium(Long stadiumId,String date){
-        return null;
+    @RequestMapping(value = "/listByCoachAndDate",method = RequestMethod.GET)
+    public PageResult listByCoachAndDate(Long coachId,String date){
+        return groupClassService.listByCoachIdAndDate(coachId,date);
     }
 }

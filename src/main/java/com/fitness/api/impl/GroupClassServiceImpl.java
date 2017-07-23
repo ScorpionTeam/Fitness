@@ -21,16 +21,25 @@ public class GroupClassServiceImpl implements GroupClassService {
 
     /**
      * 创建团课
+     *
      * @param groupClass
      * @return
      */
     @Override
     public BaseResult add(GroupClass groupClass) {
-        return null;
+        Integer count = groupClassDao.countByStartDate(groupClass.getStartDate());
+
+        if (count > 0)
+            return BaseResult.error("EXIST", "该时间段已存在");
+        Integer result = groupClassDao.add(groupClass);
+        if (result > 0)
+            return BaseResult.success("创建团课成功");
+        return BaseResult.error("ADD_FAIL", "创建团课失败");
     }
 
     /**
      * 修改团课
+     *
      * @param groupClass
      * @return
      */
@@ -41,6 +50,7 @@ public class GroupClassServiceImpl implements GroupClassService {
 
     /**
      * 根据团课id删除
+     *
      * @param id
      * @return
      */
@@ -51,6 +61,7 @@ public class GroupClassServiceImpl implements GroupClassService {
 
     /**
      * 团课详情
+     *
      * @param id
      * @return
      */
@@ -61,6 +72,7 @@ public class GroupClassServiceImpl implements GroupClassService {
 
     /**
      * 报名团课
+     *
      * @param memberId
      * @param id
      * @return
@@ -72,6 +84,7 @@ public class GroupClassServiceImpl implements GroupClassService {
 
     /**
      * 根据教练id 日期查询 团课列表
+     *
      * @param coachId
      * @param date
      * @return
