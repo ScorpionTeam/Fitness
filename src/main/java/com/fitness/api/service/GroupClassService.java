@@ -2,6 +2,7 @@ package com.fitness.api.service;
 
 import com.fitness.api.domain.GroupClass;
 import com.fitness.result.BaseResult;
+import com.fitness.result.page.PageResult;
 
 import java.security.acl.Group;
 
@@ -46,4 +47,12 @@ public interface GroupClassService {
      * @return
      */
     BaseResult apply(Long memberId,Long id);
+
+    /**
+     * 根据教练id  时间 查询团课列表
+     * @param coachId
+     * @param date
+     * @return
+     */
+    PageResult listByCoachIdAndDate(Long coachId,String date);
 }

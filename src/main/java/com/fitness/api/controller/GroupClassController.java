@@ -3,6 +3,7 @@ package com.fitness.api.controller;
 import com.fitness.api.domain.GroupClass;
 import com.fitness.api.service.GroupClassService;
 import com.fitness.result.BaseResult;
+import com.fitness.result.page.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,5 +77,16 @@ public class GroupClassController {
     @RequestMapping(value = "/apply", method = RequestMethod.POST)
     public BaseResult apply(Long memberId, Long classId) {
         return groupClassService.apply(memberId, classId);
+    }
+
+    /**
+     * 根据教练id 时间查询 团课列表
+     * @param stadiumId
+     * @param date
+     * @return
+     */
+    @RequestMapping(value = "/listByCoachId",method = RequestMethod.GET)
+    public PageResult listByStadium(Long stadiumId,String date){
+        return null;
     }
 }

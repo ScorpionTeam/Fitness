@@ -4,6 +4,7 @@ import com.fitness.api.dao.GroupClassDao;
 import com.fitness.api.domain.GroupClass;
 import com.fitness.api.service.GroupClassService;
 import com.fitness.result.BaseResult;
+import com.fitness.result.page.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,6 +67,17 @@ public class GroupClassServiceImpl implements GroupClassService {
      */
     @Override
     public BaseResult apply(Long memberId, Long id) {
+        return null;
+    }
+
+    /**
+     * 根据教练id 日期查询 团课列表
+     * @param coachId
+     * @param date
+     * @return
+     */
+    @Override
+    public PageResult listByCoachIdAndDate(Long coachId, String date) {
         return null;
     }
 }
