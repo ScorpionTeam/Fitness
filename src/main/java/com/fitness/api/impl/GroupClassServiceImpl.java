@@ -7,6 +7,7 @@ import com.fitness.api.domain.Img;
 import com.fitness.api.service.GroupClassService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
+import com.fitness.result.page.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ import java.util.List;
  * Created on 2017/7/23.
  */
 @Service
-public class GroupClassServiceImpl implements GroupClassService {
+public class GroupClassServiceImpl implements GroupClassService, PageService {
 
     @Autowired
     private GroupClassDao groupClassDao;
@@ -37,7 +38,7 @@ public class GroupClassServiceImpl implements GroupClassService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public BaseResult add(GroupClass groupClass) {
-        Integer count = groupClassDao.countByStartDate(groupClass.getStartDate(),groupClass.getCoachId());
+        Integer count = groupClassDao.countByStartDate(groupClass.getStartDate(), groupClass.getCoachId());
 
         if (count > 0)
             return BaseResult.error("EXIST", "该时间段已存在");
@@ -115,14 +116,21 @@ public class GroupClassServiceImpl implements GroupClassService {
     }
 
     /**
-     * 根据教练id 日期查询 团课列表
+     * 根据场馆 查询团课列表  分页
      *
-     * @param coachId
-     * @param date
+     * @param pageNo
+     * @param pageSize
+     * @param stadiumId
      * @return
      */
     @Override
-    public PageResult listByCoachIdAndDate(Long coachId, String date) {
-        return null;
+    public PageResult classListByStadium(Integer pageNo, Integer pageSize, Long stadiumId,String date) {
+        Integer count = groupClassDao.groupClassCount(stadiumId,date);
+        if (count <= 0)
+            return new PageResult(null, 0);
+        List<GroupClass> groupClassList = groupClassDao.groupClassList(rowBounds(pageNo, pageSize), stadiumId,date);
+        return new PageResult(groupClassList, count, pageNo, pageSize);
     }
+
+
 }

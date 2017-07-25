@@ -53,4 +53,6 @@ public interface CoachService {
      * @return
      */
     BaseResult coachListByStadiumId(Long stadiumId);
+
+
 }

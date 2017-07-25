@@ -79,15 +79,15 @@ public class GroupClassController {
         return groupClassService.apply(memberId, classId);
     }
 
+
     /**
-     * 根据教练id 时间查询 团课列表
-     * @param coachId
-     * @param date
+     * 根据场馆查询团课列表
+     * @param stadiumId
      * @return
      */
-    @RequestMapping(value = "/listByCoachAndDate",method = RequestMethod.GET)
-    public PageResult listByCoachAndDate(Long coachId,String date){
-        return groupClassService.listByCoachIdAndDate(coachId,date);
+    @RequestMapping(value = "/classListByStadium",method = RequestMethod.GET)
+    public PageResult classListByStadium(Integer pageNo,Integer pageSize,Long stadiumId,String date){
+        return null;
     }
 
 }

@@ -96,6 +96,4 @@ public class CoachController {
         return coachService.coachListByStadiumId(stadiumId);
     }
 
-
-
 }

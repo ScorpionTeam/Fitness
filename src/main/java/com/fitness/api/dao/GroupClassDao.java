@@ -2,9 +2,11 @@ package com.fitness.api.dao;
 
 import com.fitness.api.domain.GroupClass;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -59,5 +61,22 @@ public interface GroupClassDao {
      */
     Integer apply(@Param(value = "memberId")Long memberId,@Param(value = "id")Long id);
 
+    /**
+     * 根据场馆查询 团课列表数量
+     * @param stadiumId
+     * @param date
+     * @return
+     */
+    Integer groupClassCount(@Param(value = "stadiumId") Long stadiumId,@Param(value = "date")String date);
+
+
+    /**
+     * 根据场馆查询团课列表
+     * @param rowBounds
+     * @param stadiumId
+     * @param date
+     * @return
+     */
+    List<GroupClass> groupClassList(RowBounds rowBounds,@Param(value = "stadiumId")Long stadiumId,@Param(value = "date")String date);
 
 }

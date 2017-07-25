@@ -49,10 +49,10 @@ public interface GroupClassService {
     BaseResult apply(Long memberId,Long id);
 
     /**
-     * 根据教练id  时间 查询团课列表
-     * @param coachId
-     * @param date
+     * 根据场馆id 查询团课列表
+     * @param stadiumId
      * @return
      */
-    PageResult listByCoachIdAndDate(Long coachId,String date);
+    PageResult classListByStadium(Integer pageNo,Integer pageSize,Long stadiumId,String date);
+
 }

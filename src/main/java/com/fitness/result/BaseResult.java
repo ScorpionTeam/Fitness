@@ -15,6 +15,7 @@ public class BaseResult {
     //结果状态码
     private int result;
 
+
     public BaseResult(int result) {
         this.result = result;
     }

@@ -78,4 +78,32 @@
     <select id="countByStartDate" resultType="java.lang.Integer">
         SELECT COUNT(1) FROM group_class gc WHERE gc.startDate=#{startDate} AND coachId=#{coachId}
     </select>
+
+    <!--查询团课数量-->
+    <select id="groupClassCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM group_class WHERE date_format(startDate,'%Y-%m-%d')=#{date} AND stadiumId=#{stadiumId}
+    </select>
+
+    <!--查询团课集合-->
+    <select id="groupClassList" resultType="com.fitness.api.domain.GroupClass">
+        SELECT
+         gc.id,
+         gc.name,
+         gc.total,
+         gc.address,
+         gc.surplusNum,
+         gc.startDate,
+         gc.endDate,
+         gc.time,
+         gc.status,
+         gc.createDate,
+         gc.updateDate,
+         gc.mainImgUrl,
+         gc.coachId,
+         c.name as coachName,
+         s.name as stadiumName,
+         s.id as stadiumId
+         FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id LEFT JOIN stadium s ON s.id=c.stadiumId
+        WHERE gc.stadiumId=#{stadiumId} AND date_format(gc.startDate,'%Y-%m-%d')=#{date}
+    </select>
 </mapper>
