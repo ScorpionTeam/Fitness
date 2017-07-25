@@ -1,5 +1,6 @@
 package com.fitness.api.domain;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.data.annotation.Transient;
 
 import java.util.Date;
@@ -27,9 +28,11 @@ public class GroupClass {
     private Integer surplusNum;
 
     //团课开课时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date startDate;
 
     //团课结束时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date endDate;
 
     //团课时长
@@ -39,9 +42,11 @@ public class GroupClass {
     private String status;
 
     //创建时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
 
     //修改时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date updateDate;
 
     //教练id
@@ -68,7 +73,7 @@ public class GroupClass {
 
 
     public String getMainImgUrl() {
-        return mainImgUrl;
+        return mainImgUrl == null ? "" : mainImgUrl;
     }
 
     public void setMainImgUrl(String mainImgUrl) {

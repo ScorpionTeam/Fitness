@@ -87,7 +87,7 @@ public class GroupClassController {
      */
     @RequestMapping(value = "/classListByStadium",method = RequestMethod.GET)
     public PageResult classListByStadium(Integer pageNo,Integer pageSize,Long stadiumId,String date){
-        return null;
+        return groupClassService.classListByStadium(pageNo,pageSize,stadiumId,date);
     }
 
 }

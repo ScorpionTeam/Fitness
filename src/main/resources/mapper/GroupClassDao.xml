@@ -61,7 +61,7 @@
          gc.surplusNum,
          gc.startDate,
          gc.endDate,
-         gc.time,
+         gc.timeTotal,
          gc.status,
          gc.createDate,
          gc.updateDate,
@@ -81,7 +81,7 @@
 
     <!--查询团课数量-->
     <select id="groupClassCount" resultType="java.lang.Integer">
-        SELECT COUNT(1) FROM group_class WHERE date_format(startDate,'%Y-%m-%d')=#{date} AND stadiumId=#{stadiumId}
+        SELECT COUNT(gc.id) FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id WHERE  date_format(gc.startDate,'%Y-%m-%d')=#{date} AND c.stadiumId=#{stadiumId}
     </select>
 
     <!--查询团课集合-->
@@ -94,7 +94,7 @@
          gc.surplusNum,
          gc.startDate,
          gc.endDate,
-         gc.time,
+         gc.timeTotal,
          gc.status,
          gc.createDate,
          gc.updateDate,
@@ -104,6 +104,9 @@
          s.name as stadiumName,
          s.id as stadiumId
          FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id LEFT JOIN stadium s ON s.id=c.stadiumId
-        WHERE gc.stadiumId=#{stadiumId} AND date_format(gc.startDate,'%Y-%m-%d')=#{date}
+        WHERE c.stadiumId=#{stadiumId} AND date_format(gc.startDate,'%Y-%m-%d')=#{date}
     </select>
+
+
+
 </mapper>
