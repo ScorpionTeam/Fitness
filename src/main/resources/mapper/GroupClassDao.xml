@@ -124,5 +124,37 @@
         UPDATE group_class SET status='0' WHERE id=#{id}
     </update>
 
+    <!--团课列表-->
+    <select id="list" resultType="com.fitness.api.domain.GroupClass">
+        SELECT
+         gc.id,
+         gc.name,
+         gc.total,
+         gc.address,
+         gc.surplusNum,
+         gc.startDate,
+         gc.endDate,
+         gc.timeTotal,
+         gc.status,
+         gc.createDate,
+         gc.updateDate,
+         gc.mainImgUrl,
+         gc.coachId,
+         c.name as coachName,
+         s.name as stadiumName,
+         s.id as stadiumId
+         FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id
+         <if test="key!=null and key!=''">
+             WHERE gc.name LIKE #{key}
+         </if>
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM group_class
+        <if test="key!=null and key!=''">
+            WHERE name LIKE #{key}
+        </if>
+    </select>
+
 
 </mapper>
