@@ -1,5 +1,7 @@
 package com.fitness.api.domain;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 /**
@@ -18,7 +20,11 @@ public class MemberClass {
     private Long memberId;
 
     //创建时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
+
+    //课程类型  1团课  0私教
+    private String type;
 
     public Long getId() {
         return id;
