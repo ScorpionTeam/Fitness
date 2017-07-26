@@ -143,7 +143,7 @@
          c.name as coachName,
          s.name as stadiumName,
          s.id as stadiumId
-         FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id
+         FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id LEFT JOIN stadium s ON s.id=c.stadiumId
          <if test="key!=null and key!=''">
              WHERE gc.name LIKE #{key}
          </if>
