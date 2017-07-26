@@ -102,7 +102,7 @@
         c.validDate,
         c.status,
         c.privateClassStatus,
-        c.teamClassStatus
+        c.teamClassStatus,
         s.name as stadiumName,
         i.url as coachImgPath
         FROM coach c LEFT JOIN stadium s ON  c.stadiumId=s.id

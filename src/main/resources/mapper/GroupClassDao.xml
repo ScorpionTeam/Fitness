@@ -6,7 +6,8 @@
 
     <!--创建团课-->
     <insert id="add" parameterType="com.fitness.api.domain.GroupClass">
-        INSERT INTO group_class(name,
+        INSERT INTO group_class(
+        name,
         total,
         address,
         surplusNum,
@@ -20,7 +21,8 @@
         coachId,
         status
         )
-        VALUES (#{name},
+        VALUES (
+        #{name},
         #{total},
         #{address},
         #{surplusNum},
@@ -37,7 +39,8 @@
 
     <!--修改团课-->
     <update id="update" parameterType="com.fitness.api.domain.GroupClass">
-        UPDATE group_class SET name=#{name},
+        UPDATE group_class SET
+        name=#{name},
         total=#{total},
         address=#{address},
         surplusNum=#{surplusNum},
