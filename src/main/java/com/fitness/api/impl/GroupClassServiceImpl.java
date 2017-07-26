@@ -8,6 +8,7 @@ import com.fitness.api.service.GroupClassService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
 import com.fitness.result.page.PageService;
+import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -133,6 +134,26 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
             return new PageResult(null, 0);
         List<GroupClass> groupClassList = groupClassDao.groupClassList(rowBounds(pageNo, pageSize), stadiumId, date);
         return new PageResult(groupClassList, count, pageNo, pageSize);
+    }
+
+    /**
+     * 团课列表  模糊搜索
+     *
+     * @param pageNo
+     * @param pageSize
+     * @param key
+     * @return
+     */
+    @Override
+    public PageResult list(Integer pageNo, Integer pageSize, String key) {
+
+        if (!StringUtils.isNullOrEmpty(key))
+            key = "%" + key + "%";
+        Integer count = groupClassDao.count(key);
+        if (count <= 0)
+            return new PageResult(null, 0);
+        List<GroupClass> list = groupClassDao.list(rowBounds(pageNo, pageSize), key);
+        return new PageResult(list, count, pageNo, pageSize);
     }
 
 

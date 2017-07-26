@@ -55,4 +55,13 @@ public interface GroupClassService {
      */
     PageResult classListByStadium(Integer pageNo,Integer pageSize,Long stadiumId,String date);
 
+    /**
+     * 团课列表  分页
+     * @param pageNo
+     * @param pageSize
+     * @param key
+     * @return
+     */
+    PageResult list(Integer pageNo,Integer pageSize,String key);
+
 }

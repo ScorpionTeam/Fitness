@@ -119,6 +119,10 @@
         SELECT COUNT(1) FROM member_class WHERE classId=#{id} AND memberId=#{memberId} AND type='1'
     </select>
 
+    <!--删除团课-->
+    <update id="del">
+        UPDATE group_class SET status='0' WHERE id=#{id}
+    </update>
 
 
 </mapper>

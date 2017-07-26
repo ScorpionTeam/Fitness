@@ -95,5 +95,18 @@ public interface GroupClassDao {
      */
     List<GroupClass> groupClassList(RowBounds rowBounds, @Param(value = "stadiumId") Long stadiumId, @Param(value = "date") String date);
 
+    /**
+     * 团课数量
+     * @param key
+     * @return
+     */
+    Integer count(@Param(value = "key")String key);
 
+    /**
+     * 团课模糊查询 分页
+     * @param rowBounds
+     * @param key
+     * @return
+     */
+    List<GroupClass> list(RowBounds rowBounds,@Param(value = "key")String key);
 }

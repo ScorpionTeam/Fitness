@@ -90,4 +90,15 @@ public class GroupClassController {
         return groupClassService.classListByStadium(pageNo,pageSize,stadiumId,date);
     }
 
+    /**
+     * 团课列表
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    public PageResult list(Integer pageNo,Integer pageSize,String key){
+        return null;
+    }
+
 }
