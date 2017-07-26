@@ -18,7 +18,7 @@
         createDate,
         updateDate,
         mainImgUrl,
-        coachId,
+        coachId
         )
         VALUES (
         #{name},
