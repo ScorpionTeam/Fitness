@@ -81,7 +81,7 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
     @Override
     public BaseResult del(Long id) {
         Integer result = groupClassDao.del(id);
-        if (result > 0)
+        if (result <= 0)
             return BaseResult.error("DEL_FAIL", "删除失败");
         return BaseResult.success("删除成功");
     }
