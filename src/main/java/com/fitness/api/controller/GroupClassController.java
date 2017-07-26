@@ -98,7 +98,7 @@ public class GroupClassController {
      */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public PageResult list(Integer pageNo,Integer pageSize,String key){
-        return null;
+        return groupClassService.list(pageNo,pageSize,key);
     }
 
 }
