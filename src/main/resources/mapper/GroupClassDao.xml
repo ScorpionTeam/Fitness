@@ -108,6 +108,17 @@
         WHERE c.stadiumId=#{stadiumId} AND date_format(gc.startDate,'%Y-%m-%d')=#{date}
     </select>
 
+    <!--团课报名-->
+    <insert id="apply">
+        INSERT INTO member_class(classId,memberId,createDate,status)
+        VALUES (#{id},#{memberId},now(),'1')
+    </insert>
+
+    <!--团课报名检查-->
+    <select id="applyCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM member_class WHERE classId=#{id} AND memberId=#{memberId}
+    </select>
+
 
 
 </mapper>

@@ -109,6 +109,9 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
     @Override
     public BaseResult apply(Long memberId, Long id) {
         //TODO 团课报名
+        Integer count = groupClassDao.applyCount(memberId, id);
+        if (count > 0)
+            return BaseResult.error("APPLY_FAIL", "已参加，不可重复参加");
         Integer result = groupClassDao.apply(memberId, id);
         if (result > 0)
             return BaseResult.success("团课报名成功");
@@ -124,11 +127,11 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
      * @return
      */
     @Override
-    public PageResult classListByStadium(Integer pageNo, Integer pageSize, Long stadiumId,String date) {
-        Integer count = groupClassDao.groupClassCount(stadiumId,date);
+    public PageResult classListByStadium(Integer pageNo, Integer pageSize, Long stadiumId, String date) {
+        Integer count = groupClassDao.groupClassCount(stadiumId, date);
         if (count <= 0)
             return new PageResult(null, 0);
-        List<GroupClass> groupClassList = groupClassDao.groupClassList(rowBounds(pageNo, pageSize), stadiumId,date);
+        List<GroupClass> groupClassList = groupClassDao.groupClassList(rowBounds(pageNo, pageSize), stadiumId, date);
         return new PageResult(groupClassList, count, pageNo, pageSize);
     }
 
