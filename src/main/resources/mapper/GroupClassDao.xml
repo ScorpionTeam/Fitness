@@ -19,7 +19,6 @@
         updateDate,
         mainImgUrl,
         coachId,
-        status
         )
         VALUES (
         #{name},
@@ -33,8 +32,7 @@
         now(),
         now(),
         #{mainImgUrl},
-        #{coachId},
-        '1')
+        #{coachId})
     </insert>
 
     <!--修改团课-->
