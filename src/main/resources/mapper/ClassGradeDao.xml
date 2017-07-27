@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fitness.api.dao.ClassGradeDao">
+
+    <!--根据教练id查询评分-->
     <select id="getScore" resultType="com.fitness.api.domain.ClassGrade">
         SELECT id,
         memberId,
@@ -12,4 +14,22 @@
         avg(coachScore) as coachScore
         FROM class_grade WHERE coachId=#{coachId}
     </select>
+
+    <!--创建团课-创建评分-->
+    <insert id="add" parameterType="com.fitness.api.domain.ClassGrade">
+        INSERT INTO class_grade(memberId,
+        coachId,
+        classId,
+        serviceScore,
+        classScore,
+        coachScore,
+        createDate)
+        VALUES (0,
+        #{coachId},
+        #{classId},
+        #{serviceScore},
+        #{classScore},
+        #{coachScore},
+        now())
+    </insert>
 </mapper>

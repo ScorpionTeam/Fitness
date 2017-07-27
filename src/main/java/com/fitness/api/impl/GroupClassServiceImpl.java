@@ -57,6 +57,13 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
                 });
                 //新增轮播图
                 imgDao.addBanner(imgList);
+                //创建课程评分数据
+                ClassGrade classGrade = new ClassGrade();
+                classGrade.setClassId(groupClass.getId());
+                classGrade.setClassScore(0);
+                classGrade.setCoachScore(0);
+                classGrade.setCoachScore(0);
+                classGradeDao.add(classGrade);
             }
             return BaseResult.success("创建团课成功");
         }

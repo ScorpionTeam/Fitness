@@ -14,4 +14,11 @@ public interface ClassGradeDao {
      * @return
      */
     ClassGrade getScore(Long coachId);
+
+    /**
+     * 创建评分数据
+     * @param classGrade
+     * @return
+     */
+    Integer add(ClassGrade classGrade);
 }
