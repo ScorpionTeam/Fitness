@@ -1,7 +1,9 @@
 package com.fitness.api.impl;
 
+import com.fitness.api.dao.ClassGradeDao;
 import com.fitness.api.dao.CoachDao;
 import com.fitness.api.dao.CoachJobDao;
+import com.fitness.api.domain.ClassGrade;
 import com.fitness.api.domain.Coach;
 import com.fitness.api.domain.CoachJob;
 import com.fitness.api.service.CoachService;
@@ -27,6 +29,9 @@ public class CoachServiceImpl implements CoachService, PageService {
 
     @Autowired
     private CoachJobDao coachJobDao;
+
+    @Autowired
+    private ClassGradeDao classGradeDao;
 
     /**
      * 新增教练
@@ -81,6 +86,11 @@ public class CoachServiceImpl implements CoachService, PageService {
 //            coach.setJobList(new ArrayList<>());
 //
 //        coach.setJobList(coachJobList);
+
+        //查询评分
+        ClassGrade classGrade = new ClassGrade();
+        classGrade = classGradeDao.getScoreByCoachId(id);
+        coach.setClassGrade(classGrade);
         return BaseResult.success(coach);
     }
 

@@ -1,7 +1,6 @@
 package com.fitness.api.dao;
 
 import com.fitness.api.domain.ClassGrade;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * 评分数据访问层

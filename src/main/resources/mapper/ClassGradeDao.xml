@@ -5,7 +5,7 @@
 <mapper namespace="com.fitness.api.dao.ClassGradeDao">
 
     <!--根据教练id查询评分-->
-    <select id="getScore" resultType="com.fitness.api.domain.ClassGrade">
+    <select id="getScoreByCoachId" resultType="com.fitness.api.domain.ClassGrade">
         SELECT id,
         memberId,
         coachId,

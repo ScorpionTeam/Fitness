@@ -64,6 +64,12 @@ public class Coach {
     @Transient
     private List<CoachJob> jobList;
 
+    /**
+     * 评分
+     */
+    @Transient
+    private ClassGrade classGrade;
+
     public Long getId() {
         return id;
     }
@@ -192,6 +198,14 @@ public class Coach {
         this.teamClassStatus = teamClassStatus;
     }
 
+    public ClassGrade getClassGrade() {
+        return classGrade;
+    }
+
+    public void setClassGrade(ClassGrade classGrade) {
+        this.classGrade = classGrade;
+    }
+
     @Override
     public String toString() {
         return "Coach{" +
@@ -211,7 +225,7 @@ public class Coach {
                 ", privateClassStatus='" + privateClassStatus + '\'' +
                 ", teamClassStatus='" + teamClassStatus + '\'' +
                 ", jobList=" + jobList +
+                ", classGrade=" + classGrade +
                 '}';
     }
-
 }
