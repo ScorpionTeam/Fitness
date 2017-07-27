@@ -160,8 +160,8 @@
     </select>
 
 
-    <!--根据教练id查询团课详情-->
-    <select id="classInfoByCoachId" resultType="com.fitness.api.domain.GroupClass">
+    <!--根据课程id查询团课详情-->
+    <select id="classInfoByClassId" resultType="com.fitness.api.domain.GroupClass">
         SELECT
          gc.id,
          gc.name,
@@ -180,7 +180,7 @@
          s.name as stadiumName,
          s.id as stadiumId
          FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id LEFT JOIN stadium s ON s.id=c.stadiumId
-        WHERE gc.coachId=#{coachId}
+        WHERE gc.id=#{classId}
     </select>
 
 </mapper>

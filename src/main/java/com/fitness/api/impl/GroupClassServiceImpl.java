@@ -169,20 +169,20 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
     }
 
     /**
-     * 根据教练id查询团课详情
+     * 根据课程id查询团课详情
      *
-     * @param coachId
+     * @param classId
      * @return
      */
     @Override
-    public BaseResult classInfoByCoachId(Long coachId) {
-        GroupClass groupClass = groupClassDao.classInfoByCoachId(coachId);
+    public BaseResult classInfoByClassId(Long classId) {
+        GroupClass groupClass = groupClassDao.classInfoByClassId(classId);
         if (null == groupClass)
             return BaseResult.nonSuchResult();
 
         //课程评分
         ClassGrade classGrade = new ClassGrade();
-        classGrade = classGradeDao.getScore(coachId);
+        classGrade = classGradeDao.getScoreByClassId(classId);
         groupClass.setClassGrade(classGrade);
         return BaseResult.success(groupClass);
     }

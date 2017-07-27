@@ -102,13 +102,13 @@ public class GroupClassController {
     }
 
     /**
-     * 根据教练id查询课程详情
-     * @param coachId
+     * 根据课程id查询课程详情
+     * @param classId
      * @return
      */
-    @RequestMapping(value = "/classInfoByCoachId",method = RequestMethod.GET)
-    public BaseResult classInfoByCoachId(Long coachId){
-        return groupClassService.classInfoByCoachId(coachId);
+    @RequestMapping(value = "/classInfoByClassId",method = RequestMethod.GET)
+    public BaseResult classInfoByClassId(Long classId){
+        return groupClassService.classInfoByClassId(classId);
     }
 
 }

@@ -65,10 +65,10 @@ public interface GroupClassService {
     PageResult list(Integer pageNo,Integer pageSize,String key);
 
     /**
-     * 根据教练id查询团课详情
-     * @param coachId
+     * 根据课程id查询团课详情
+     * @param id
      * @return
      */
-    BaseResult classInfoByCoachId(Long coachId);
+    BaseResult classInfoByClassId(Long id);
 
 }

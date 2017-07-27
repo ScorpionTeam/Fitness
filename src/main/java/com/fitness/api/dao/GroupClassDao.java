@@ -111,9 +111,9 @@ public interface GroupClassDao {
     List<GroupClass> list(RowBounds rowBounds,@Param(value = "key")String key);
 
     /**
-     * 根据教练id查询 团课详情
-     * @param coachId
+     * 根据课程id查询 团课详情
+     * @param classId
      * @return
      */
-    GroupClass classInfoByCoachId(@Param(value = "coachId") Long coachId);
+    GroupClass classInfoByClassId(@Param(value = "classId") Long classId);
 }

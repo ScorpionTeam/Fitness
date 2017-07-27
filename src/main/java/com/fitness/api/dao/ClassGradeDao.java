@@ -1,6 +1,7 @@
 package com.fitness.api.dao;
 
 import com.fitness.api.domain.ClassGrade;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 评分数据访问层
@@ -13,7 +14,14 @@ public interface ClassGradeDao {
      * @param coachId
      * @return
      */
-    ClassGrade getScore(Long coachId);
+    ClassGrade getScoreByCoachId(Long coachId);
+
+    /**
+     * 根据课程id查询评分
+     * @param classId
+     * @return
+     */
+    ClassGrade getScoreByClassId(Long classId);
 
     /**
      * 创建评分数据
