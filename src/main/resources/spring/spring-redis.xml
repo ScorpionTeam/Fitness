@@ -8,25 +8,25 @@
     <!--JedisPoolConfig 连接池参数配置-->
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <!--最大连接数-->
-        <property name="maxTotal" value="${redis.pool.maxTotal}"/>
+        <property name="maxTotal" value="1000"/>
         <!--最大空闲时间-->
-        <property name="maxIdle" value="${redis.pool.maxIdle}"/>
+        <property name="maxIdle" value="10"/>
         <!--每次最大连接数-->
-        <property name="numTestsPerEvictionRun" value="${redis.pool.numTestsPerEvictionRun}"/>
+        <property name="numTestsPerEvictionRun" value="1024"/>
         <!--释放扫描时间间隔-->
-        <property name="timeBetweenEvictionRunsMillis" value="${redis.pool.timeBetweenEvictionRunsMills}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="30000"/>
         <!--连接的最小空闲时间-->
-        <property name="minEvictableIdleTimeMillis" value="${redis.pool.minEvictableIdleTimeMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="1800000"/>
         <!--连接释放时间-->
-        <property name="softMinEvictableIdleTimeMillis" value="${redis.pool.softMinEvictableIdleTimeMillis}"/>
+        <property name="softMinEvictableIdleTimeMillis" value="10000"/>
         <!--连接等待毫秒数-->
-        <property name="maxWaitMillis" value="${redis.pool.maxWaitMills}"/>
+        <property name="maxWaitMillis" value="1500"/>
         <!--获取连接时检查有效性-->
-        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
+        <property name="testOnBorrow" value="true"/>
         <!--空闲时检查有效性-->
-        <property name="testWhileIdle" value="${redis.pool.testWhileIdle}"/>
+        <property name="testWhileIdle" value="true"/>
         <!--连接耗尽时是否阻塞-->
-        <property name="blockWhenExhausted" value="${redis.pool.blockWhenExhausted}"/>
+        <property name="blockWhenExhausted" value="false"/>
     </bean>
 
     <bean id="connectionFactory"
