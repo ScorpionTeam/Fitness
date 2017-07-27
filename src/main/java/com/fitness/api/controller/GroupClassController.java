@@ -108,7 +108,7 @@ public class GroupClassController {
      */
     @RequestMapping(value = "/classInfoByCoachId",method = RequestMethod.GET)
     public BaseResult classInfoByCoachId(Long coachId){
-        return null;
+        return groupClassService.classInfoByCoachId(coachId);
     }
 
 }

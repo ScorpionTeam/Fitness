@@ -56,7 +56,7 @@
         c.validDate,
         c.status,
         c.privateClassStatus,
-        c.teamClassStatus
+        c.teamClassStatus,
         s.name as stadiumName
         FROM coach c LEFT JOIN stadium s on c.stadiumId=s.id WHERE 1=1
         <if test="key!=null and key!=''">
