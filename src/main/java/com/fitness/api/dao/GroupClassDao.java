@@ -109,4 +109,11 @@ public interface GroupClassDao {
      * @return
      */
     List<GroupClass> list(RowBounds rowBounds,@Param(value = "key")String key);
+
+    /**
+     * 根据教练id查询 团课详情
+     * @param coachId
+     * @return
+     */
+    GroupClass classInfoByCoachId(@Param(value = "coachId") Long coachId);
 }

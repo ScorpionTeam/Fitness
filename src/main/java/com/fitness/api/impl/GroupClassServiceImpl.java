@@ -156,5 +156,20 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
         return new PageResult(list, count, pageNo, pageSize);
     }
 
+    /**
+     * 根据教练id查询团课详情
+     *
+     * @param coachId
+     * @return
+     */
+    @Override
+    public BaseResult classInfoByCoachId(Long coachId) {
+        GroupClass groupClass = groupClassDao.classInfoByCoachId(coachId);
+        if (null == groupClass)
+            return BaseResult.nonSuchResult();
+
+        return BaseResult.success(groupClass);
+    }
+
 
 }

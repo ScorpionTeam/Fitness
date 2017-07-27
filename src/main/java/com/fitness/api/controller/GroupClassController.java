@@ -101,4 +101,14 @@ public class GroupClassController {
         return groupClassService.list(pageNo,pageSize,key);
     }
 
+    /**
+     * 根据教练id查询课程详情
+     * @param coachId
+     * @return
+     */
+    @RequestMapping(value = "/classInfoByCoachId",method = RequestMethod.GET)
+    public BaseResult classInfoByCoachId(Long coachId){
+        return null;
+    }
+
 }
