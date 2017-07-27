@@ -75,7 +75,7 @@ public class GroupClass {
      * 课程评分
      */
     @Transient
-    private Grade classGrade;
+    private Grade grade;
 
 
     public String getMainImgUrl() {
@@ -214,12 +214,12 @@ public class GroupClass {
         this.imgList = imgList;
     }
 
-    public Grade getClassGrade() {
-        return classGrade;
+    public Grade getGrade() {
+        return grade;
     }
 
-    public void setClassGrade(Grade classGrade) {
-        this.classGrade = classGrade;
+    public void setGrade(Grade grade) {
+        this.grade = grade;
     }
 
     @Override
@@ -242,7 +242,7 @@ public class GroupClass {
                 ", coachName='" + coachName + '\'' +
                 ", mainImgUrl='" + mainImgUrl + '\'' +
                 ", imgList=" + imgList +
-                ", classGrade=" + classGrade +
+                ", grade=" + grade +
                 '}';
     }
 }

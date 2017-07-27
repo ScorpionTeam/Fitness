@@ -182,7 +182,7 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
         //课程评分
         Grade grade = new Grade();
         grade = gradeDao.getScoreByClassId(classId);
-        groupClass.setClassGrade(grade);
+        groupClass.setGrade(grade);
         return BaseResult.success(groupClass);
     }
 

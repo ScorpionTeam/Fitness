@@ -88,7 +88,7 @@ public class CoachServiceImpl implements CoachService, PageService {
         //查询评分
         Grade grade = new Grade();
         grade = gradeDao.getScoreByCoachId(id);
-        coach.setClassGrade(grade);
+        coach.setGrade(grade);
         return BaseResult.success(coach);
     }
 
