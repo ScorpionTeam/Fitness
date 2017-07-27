@@ -1,9 +1,9 @@
 package com.fitness.api.impl;
 
-import com.fitness.api.dao.ClassGradeDao;
+import com.fitness.api.dao.GradeDao;
 import com.fitness.api.dao.GroupClassDao;
 import com.fitness.api.dao.ImgDao;
-import com.fitness.api.domain.ClassGrade;
+import com.fitness.api.domain.Grade;
 import com.fitness.api.domain.GroupClass;
 import com.fitness.api.domain.Img;
 import com.fitness.api.service.GroupClassService;
@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Transient;
 import java.util.List;
 
 /**
@@ -32,7 +31,7 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
     private ImgDao imgDao;
 
     @Autowired
-    private ClassGradeDao classGradeDao;
+    private GradeDao gradeDao;
 
 
     /**
@@ -58,12 +57,12 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
                 //新增轮播图
                 imgDao.addBanner(imgList);
                 //创建课程评分数据
-                ClassGrade classGrade = new ClassGrade();
+                Grade classGrade = new Grade();
                 classGrade.setClassId(groupClass.getId());
                 classGrade.setClassScore(0);
                 classGrade.setCoachScore(0);
                 classGrade.setCoachScore(0);
-                classGradeDao.add(classGrade);
+                gradeDao.add(classGrade);
             }
             return BaseResult.success("创建团课成功");
         }
@@ -181,9 +180,9 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
             return BaseResult.nonSuchResult();
 
         //课程评分
-        ClassGrade classGrade = new ClassGrade();
-        classGrade = classGradeDao.getScoreByClassId(classId);
-        groupClass.setClassGrade(classGrade);
+        Grade grade = new Grade();
+        grade = gradeDao.getScoreByClassId(classId);
+        groupClass.setClassGrade(grade);
         return BaseResult.success(groupClass);
     }
 

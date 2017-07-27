@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fitness.api.dao.ClassGradeDao">
+<mapper namespace="com.fitness.api.dao.GradeDao">
 
     <!--根据教练id查询评分-->
-    <select id="getScoreByCoachId" resultType="com.fitness.api.domain.ClassGrade">
+    <select id="getScoreByCoachId" resultType="com.fitness.api.domain.Grade">
         SELECT id,
         memberId,
         coachId,
@@ -17,7 +17,7 @@
     </select>
 
     <!--根据课程id查询评分-->
-    <select id="getScoreByClassId" resultType="com.fitness.api.domain.ClassGrade">
+    <select id="getScoreByClassId" resultType="com.fitness.api.domain.Grade">
         SELECT id,
         memberId,
         coachId,
@@ -29,7 +29,7 @@
     </select>
 
     <!--创建团课-创建评分-->
-    <insert id="add" parameterType="com.fitness.api.domain.ClassGrade">
+    <insert id="add" parameterType="com.fitness.api.domain.Grade">
         INSERT INTO class_grade(memberId,
         coachId,
         classId,

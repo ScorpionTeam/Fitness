@@ -75,7 +75,7 @@ public class GroupClass {
      * 课程评分
      */
     @Transient
-    private ClassGrade classGrade;
+    private Grade classGrade;
 
 
     public String getMainImgUrl() {
@@ -214,11 +214,11 @@ public class GroupClass {
         this.imgList = imgList;
     }
 
-    public ClassGrade getClassGrade() {
+    public Grade getClassGrade() {
         return classGrade;
     }
 
-    public void setClassGrade(ClassGrade classGrade) {
+    public void setClassGrade(Grade classGrade) {
         this.classGrade = classGrade;
     }
 

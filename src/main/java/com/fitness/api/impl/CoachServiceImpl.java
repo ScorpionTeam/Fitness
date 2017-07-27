@@ -1,11 +1,10 @@
 package com.fitness.api.impl;
 
-import com.fitness.api.dao.ClassGradeDao;
+import com.fitness.api.dao.GradeDao;
 import com.fitness.api.dao.CoachDao;
 import com.fitness.api.dao.CoachJobDao;
-import com.fitness.api.domain.ClassGrade;
+import com.fitness.api.domain.Grade;
 import com.fitness.api.domain.Coach;
-import com.fitness.api.domain.CoachJob;
 import com.fitness.api.service.CoachService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
@@ -14,7 +13,6 @@ import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +29,7 @@ public class CoachServiceImpl implements CoachService, PageService {
     private CoachJobDao coachJobDao;
 
     @Autowired
-    private ClassGradeDao classGradeDao;
+    private GradeDao gradeDao;
 
     /**
      * 新增教练
@@ -88,9 +86,9 @@ public class CoachServiceImpl implements CoachService, PageService {
 //        coach.setJobList(coachJobList);
 
         //查询评分
-        ClassGrade classGrade = new ClassGrade();
-        classGrade = classGradeDao.getScoreByCoachId(id);
-        coach.setClassGrade(classGrade);
+        Grade grade = new Grade();
+        grade = gradeDao.getScoreByCoachId(id);
+        coach.setClassGrade(grade);
         return BaseResult.success(coach);
     }
 

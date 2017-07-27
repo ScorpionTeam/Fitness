@@ -6,7 +6,7 @@ import java.util.Date;
  * 评分
  * Created on 2017/7/27.
  */
-public class ClassGrade {
+public class Grade {
 
     /**
      * 主键
@@ -114,7 +114,7 @@ public class ClassGrade {
 
     @Override
     public String toString() {
-        return "ClassGrade{" +
+        return "Grade{" +
                 "id=" + id +
                 ", memberId=" + memberId +
                 ", classId=" + classId +

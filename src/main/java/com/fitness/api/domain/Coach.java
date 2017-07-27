@@ -68,7 +68,7 @@ public class Coach {
      * 评分
      */
     @Transient
-    private ClassGrade classGrade;
+    private Grade classGrade;
 
     public Long getId() {
         return id;
@@ -198,11 +198,11 @@ public class Coach {
         this.teamClassStatus = teamClassStatus;
     }
 
-    public ClassGrade getClassGrade() {
+    public Grade getClassGrade() {
         return classGrade;
     }
 
-    public void setClassGrade(ClassGrade classGrade) {
+    public void setClassGrade(Grade classGrade) {
         this.classGrade = classGrade;
     }
 
