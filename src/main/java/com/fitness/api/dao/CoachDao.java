@@ -61,7 +61,7 @@ public interface CoachDao {
      * @param id
      * @return
      */
-    Coach coachInfo(@Param(value = "id") Long id);
+    Coach coachInfo(Long id);
 
     /**
      * 根据场馆id查询教练集合

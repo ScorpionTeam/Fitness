@@ -76,11 +76,11 @@ public class CoachServiceImpl implements CoachService, PageService {
             return BaseResult.nonSuchResult();
 
         //根据教练id查询工作经历集合
-        List<CoachJob> coachJobList = coachJobDao.coachJobList(coach.getId());
-        if (null == coachJobList || coachJobList.size() <= 0)
-            coach.setJobList(new ArrayList<>());
-
-        coach.setJobList(coachJobList);
+//        List<CoachJob> coachJobList = coachJobDao.coachJobList(coach.getId());
+//        if (null == coachJobList || coachJobList.size() <= 0)
+//            coach.setJobList(new ArrayList<>());
+//
+//        coach.setJobList(coachJobList);
         return BaseResult.success(coach);
     }
 
