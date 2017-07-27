@@ -61,19 +61,19 @@ public interface GroupClassDao {
      * 团课报名
      *
      * @param memberId
-     * @param id
+     * @param classId
      * @return
      */
-    Integer apply(@Param(value = "memberId") Long memberId, @Param(value = "id") Long id);
+    Integer apply(@Param(value = "memberId") Long memberId, @Param(value = "classId") Long classId);
 
     /**
      * 团课报名检查
      *
      * @param memberId
-     * @param id
+     * @param classId
      * @return
      */
-    Integer applyCount(@Param(value = "memberId") Long memberId, @Param(value = "id") Long id);
+    Integer applyCount(@Param(value = "memberId") Long memberId, @Param(value = "classId") Long classId);
 
     /**
      * 根据场馆查询 团课列表数量

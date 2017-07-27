@@ -1,7 +1,9 @@
 package com.fitness.api.impl;
 
+import com.fitness.api.dao.ClassGradeDao;
 import com.fitness.api.dao.GroupClassDao;
 import com.fitness.api.dao.ImgDao;
+import com.fitness.api.domain.ClassGrade;
 import com.fitness.api.domain.GroupClass;
 import com.fitness.api.domain.Img;
 import com.fitness.api.service.GroupClassService;
@@ -28,6 +30,9 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
 
     @Autowired
     private ImgDao imgDao;
+
+    @Autowired
+    private ClassGradeDao classGradeDao;
 
 
     /**
@@ -104,16 +109,16 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
      * 报名团课
      *
      * @param memberId
-     * @param id
+     * @param classId
      * @return
      */
     @Override
-    public BaseResult apply(Long memberId, Long id) {
+    public BaseResult apply(Long memberId, Long classId) {
         //TODO 团课报名
-        Integer count = groupClassDao.applyCount(memberId, id);
+        Integer count = groupClassDao.applyCount(memberId, classId);
         if (count > 0)
             return BaseResult.error("APPLY_FAIL", "已参加，不可重复参加");
-        Integer result = groupClassDao.apply(memberId, id);
+        Integer result = groupClassDao.apply(memberId, classId);
         if (result > 0)
             return BaseResult.success("团课报名成功");
         return BaseResult.error("APPLY_FAIL", "团课报名失败");
@@ -168,6 +173,10 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
         if (null == groupClass)
             return BaseResult.nonSuchResult();
 
+        //课程评分
+        ClassGrade classGrade = new ClassGrade();
+        classGrade = classGradeDao.getScore(coachId);
+        groupClass.setClassGrade(classGrade);
         return BaseResult.success(groupClass);
     }
 

@@ -43,10 +43,10 @@ public interface GroupClassService {
     /**
      * 报名 团课
      * @param memberId
-     * @param id
+     * @param classId
      * @return
      */
-    BaseResult apply(Long memberId,Long id);
+    BaseResult apply(Long memberId,Long classId);
 
     /**
      * 根据场馆id 查询团课列表

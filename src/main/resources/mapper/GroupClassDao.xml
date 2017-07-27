@@ -111,12 +111,12 @@
     <!--团课报名-->
     <insert id="apply">
         INSERT INTO member_class(classId,memberId,createDate,status,type)
-        VALUES (#{id},#{memberId},now(),'1','1')
+        VALUES (#{classId},#{memberId},now(),'1','1')
     </insert>
 
     <!--团课报名检查-->
     <select id="applyCount" resultType="java.lang.Integer">
-        SELECT COUNT(1) FROM member_class WHERE classId=#{id} AND memberId=#{memberId} AND type='1'
+        SELECT COUNT(1) FROM member_class WHERE classId=#{classId} AND memberId=#{memberId} AND type='1'
     </select>
 
     <!--删除团课-->
