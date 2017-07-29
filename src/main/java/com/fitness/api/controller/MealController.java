@@ -23,23 +23,25 @@ public class MealController {
 
     /**
      * 新增餐饮
+     *
      * @param meal
      * @return
      */
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public BaseResult add(@RequestBody Meal meal){
-        return null;
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public BaseResult add(@RequestBody Meal meal) {
+        return mealService.add(meal);
     }
 
     /**
      * 查询餐饮列表
+     *
      * @param pageNo
      * @param pageSize
      * @param key
      * @return
      */
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public PageResult list(Integer pageNo,Integer pageSize,String key){
-        return null;
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public PageResult list(Integer pageNo, Integer pageSize, String key) {
+        return mealService.list(pageNo, pageSize, key);
     }
 }
