@@ -16,6 +16,6 @@ public interface ImpressionService {
      * @param impression
      * @return
      */
-    BaseResult add(Impression impression);
+    BaseResult add(List<Impression> impression);
 
 }

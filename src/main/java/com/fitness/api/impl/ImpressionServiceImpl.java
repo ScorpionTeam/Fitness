@@ -6,8 +6,6 @@ import com.fitness.api.service.ImpressionService;
 import com.fitness.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +25,7 @@ public class ImpressionServiceImpl implements ImpressionService {
      * @return
      */
     @Override
-    public BaseResult add(Impression impression) {
+    public BaseResult add(List<Impression> impression) {
 
         Integer result = impressionDao.add(impression);
         if (result > 0)

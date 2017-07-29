@@ -17,7 +17,7 @@ public interface ImpressionDao {
      * @param impression
      * @return
      */
-    Integer add(Impression impression);
+    Integer add(List<Impression> impression);
 
     /**
      * 根据教练id查询印象列表
