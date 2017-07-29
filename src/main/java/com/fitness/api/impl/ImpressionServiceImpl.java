@@ -35,18 +35,4 @@ public class ImpressionServiceImpl implements ImpressionService {
         return BaseResult.error("ADD_FAIL", "评价失败");
     }
 
-    /**
-     * 根据教练id查询印象列表
-     *
-     * @param coachId
-     * @return
-     */
-    @Override
-    public BaseResult list(Long coachId) {
-        List<Impression> list = impressionDao.list(coachId);
-        if (null == list && list.size() <= 0)
-            list = new ArrayList<Impression>();
-        return BaseResult.success(list);
-
-    }
 }

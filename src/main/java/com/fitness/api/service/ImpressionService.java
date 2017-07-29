@@ -18,10 +18,4 @@ public interface ImpressionService {
      */
     BaseResult add(Impression impression);
 
-    /**
-     * 根据教练id查询印象列表
-     * @param coachId
-     * @return
-     */
-    BaseResult list(Long coachId);
 }
