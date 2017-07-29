@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.MealDao">
+
+    <!--新增餐饮-->
+    <insert id="add" parameterType="com.fitness.api.domain.Meal">
+        INSERT INTO meal(name,price,content,total,stadiumId)
+        VALUES (#{name},#{price},#{content},#{total},#{stadiumId})
+    </insert>
+
+    <!--查询餐饮数量-->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM meal WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND name like #{key}
+        </if>
+    </select>
+
+    <!--餐饮列表-->
+    <select id="list" resultType="com.fitness.api.domain.Meal">
+        SELECT id,
+        name,
+        price,
+        content,
+        total,
+        stadiumId
+        FROM meal
+        WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND name like #{key}
+        </if>
+    </select>
+
+    <!--餐饮名称检查-->
+    <select id="validByName" resultType="com.fitness.api.domain.Meal">
+        select
+        id,
+        name,
+        price,
+        content,
+        total,
+        stadiumId
+        FROM meal
+        WHERE name=#{name} AND stadiumId=#{stadiumId}
+    </select>
+</mapper>

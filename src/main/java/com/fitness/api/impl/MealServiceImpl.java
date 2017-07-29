@@ -6,6 +6,7 @@ import com.fitness.api.service.MealService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
 import com.fitness.result.page.PageService;
+import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,10 @@ public class MealServiceImpl implements MealService, PageService {
      */
     @Override
     public PageResult list(Integer pageNo, Integer pageSize, String key) {
+
+        if (!StringUtils.isNullOrEmpty(key))
+            key = "%" + key + "%";
+
         Integer count = mealDao.count(key);
         if (count <= 0)
             return new PageResult(null, 0);
