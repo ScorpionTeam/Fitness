@@ -1,6 +1,5 @@
 package com.fitness.api.impl;
 
-import com.fitness.api.dao.CoachDao;
 import com.fitness.api.dao.ImgDao;
 import com.fitness.api.dao.PrivateClassDao;
 import com.fitness.api.dao.PrivateClassTimeDao;
@@ -20,7 +19,7 @@ import java.util.List;
  * Created on 2017/7/1.
  */
 @Service
-public class PrivateClassServiceImpl implements PrivateClassService,PageService {
+public class PrivateClassServiceImpl implements PrivateClassService, PageService {
 
     @Autowired
     private PrivateClassDao privateClassDao;
@@ -31,27 +30,30 @@ public class PrivateClassServiceImpl implements PrivateClassService,PageService 
 
     /**
      * 创建私教课程
+     *
      * @param privateClass
      * @return
      */
     @Override
     public BaseResult add(PrivateClass privateClass) {
-        int i =privateClassDao.insertPrivateClass(privateClass);
-        if(i<=0)
-            return BaseResult.error("ADD_FAIL","新增评分失败");
+        int i = privateClassDao.insertPrivateClass(privateClass);
+        if (i <= 0)
+            return BaseResult.error("ADD_FAIL", "新增私教失败");
         Long id = privateClass.getId();
-        /* 批量新增图片 */
-        if(null != privateClass.getImgList() && privateClass.getImgList().size() != 0){
+
+        //批量新增图片
+        if (null != privateClass.getImgList() && privateClass.getImgList().size() != 0) {
             List<Img> list = privateClass.getImgList();
-            for(Img img : list){
+            for (Img img : list) {
                 img.setThirdId(id);
             }
             imgDao.addBanner(list);
         }
-        /* 批量新增时间课程表 */
-        if(null != privateClass.getPrivateClassTimeList() && privateClass.getPrivateClassTimeList().size() != 0){
+
+        //批量新增时间课程表
+        if (null != privateClass.getPrivateClassTimeList() && privateClass.getPrivateClassTimeList().size() != 0) {
             List<PrivateClassTime> list = privateClass.getPrivateClassTimeList();
-            for(PrivateClassTime privateClassTime : list){
+            for (PrivateClassTime privateClassTime : list) {
                 privateClassTime.setPrivateClassId(id);
             }
             privateClassTimeDao.batchInsertPrivateClassTime(list);
@@ -65,6 +67,7 @@ public class PrivateClassServiceImpl implements PrivateClassService,PageService 
 
     /**
      * 根据id删除私教课
+     *
      * @param id
      * @return
      */
@@ -78,6 +81,7 @@ public class PrivateClassServiceImpl implements PrivateClassService,PageService 
 
     /**
      * 根据教练id 查询课程列表  分页
+     *
      * @param pageNo
      * @param pageSize
      * @param coachId
@@ -94,6 +98,7 @@ public class PrivateClassServiceImpl implements PrivateClassService,PageService 
 
     /**
      * 修改课程
+     *
      * @param privateClass
      * @return
      */
@@ -105,6 +110,7 @@ public class PrivateClassServiceImpl implements PrivateClassService,PageService 
 
     /**
      * 根据会员id  查询我的课程  分页
+     *
      * @param pageNo
      * @param pageSize
      * @param memberId
@@ -118,6 +124,7 @@ public class PrivateClassServiceImpl implements PrivateClassService,PageService 
 
     /**
      * 根据课程id查看详情
+     *
      * @param id
      * @return
      */
