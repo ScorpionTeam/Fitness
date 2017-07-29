@@ -70,7 +70,7 @@
         mc.classTotal,
         mc.money,
         s.name as stadiumName
-        FROM member_card mc LEFT  JOIN stadium s ON mc.stadiumId = s.id WHERE 1=1
+        FROM member_card mc LEFT JOIN stadium s ON mc.stadiumId = s.id WHERE 1=1
         <if test="key!=null and key!=''">
             AND cardNo=#{key}
         </if>
@@ -107,8 +107,23 @@
         mc.money FROM member_card mc WHERE id=#{id} and status != '0'
     </select>
 
-    <update id="del" parameterType="java.lang.Long" >
+    <!--删除会员卡-->
+    <update id="del" parameterType="java.lang.Long">
         update member_card set status = '0' WHERE  id = #{id}
+    </update>
+
+    <!--修改会员卡信息-->
+    <update id="update" parameterType="com.fitness.api.domain.MemberCard">
+        UPDATE member_card SET
+        type=#{type},
+        stadiumId=#{stadiumId},
+        startDate=#{startDate},
+        endDate=#{endDate},
+        updateDate=now(),
+        status=#{status},
+        classTotal=#{classTotal},
+        money=#{money}
+        WHERE id=#{id}
     </update>
 
 </mapper>

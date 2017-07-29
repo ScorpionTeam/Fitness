@@ -46,8 +46,10 @@ public class MemberCardServiceImpl implements MemberCardService, PageService {
      */
     @Override
     public BaseResult update(MemberCard memberCard) {
-        memberCardDao.update(memberCard);
-        return BaseResult.success("UPDATE_SUCCESS");
+        Integer result = memberCardDao.update(memberCard);
+        if (result > 0)
+            return BaseResult.success("会员卡修改成功");
+        return BaseResult.error("UPDATE_FAIL", "会员卡修改失败");
     }
 
     /**

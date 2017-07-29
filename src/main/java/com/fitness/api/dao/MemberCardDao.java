@@ -26,7 +26,7 @@ public interface MemberCardDao {
      *
      * @param memberCard
      */
-    void update(MemberCard memberCard);
+    Integer update(MemberCard memberCard);
 
     /**
      * 根据会员卡id 删除会员卡
