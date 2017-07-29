@@ -1,7 +1,5 @@
 package com.fitness.api.impl;
 
-import com.fitness.api.domain.MealClass;
-import com.fitness.api.domain.MemberClass;
 import com.fitness.api.service.MealClassService;
 import com.fitness.result.BaseResult;
 import org.springframework.stereotype.Service;
@@ -12,19 +10,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class MealClassServiceImpl implements MealClassService {
 
+
     /**
-     * 预约并购餐
-     * @param mealClass
+     * 预约并订餐
+     *
+     * @param memberId 会员id
+     * @param classId  课程id
+     * @param mealId   餐饮id
      * @return
      */
     @Override
-    public BaseResult apply(MealClass mealClass) {
+    public BaseResult apply(Long memberId, Long classId, Long mealId) {
 
-        //封装购餐对象
+        //预定课程
 
-
-
-        //封装课程对象
+        //订餐
 
         return null;
     }

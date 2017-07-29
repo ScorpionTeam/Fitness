@@ -1,6 +1,5 @@
 package com.fitness.api.service;
 
-import com.fitness.api.domain.MealClass;
 import com.fitness.result.BaseResult;
 
 /**
@@ -9,9 +8,12 @@ import com.fitness.result.BaseResult;
 public interface MealClassService {
 
     /**
-     * 预约并购餐
-     * @param mealClass
+     * 预约并订餐
+     * @param memberId  会员id
+     * @param classId   课程id
+     * @param mealId    餐饮id
      * @return
      */
-    BaseResult apply(MealClass mealClass);
+    BaseResult apply(Long memberId,Long classId,Long mealId);
+
 }

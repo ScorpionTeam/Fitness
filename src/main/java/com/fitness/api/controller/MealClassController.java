@@ -1,6 +1,5 @@
 package com.fitness.api.controller;
 
-import com.fitness.api.domain.MealClass;
 import com.fitness.result.BaseResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class MealClassController {
 
     /**
-     * 预约并购餐
-     * @param mealClass
+     * 预约并订餐
+     *
+     * @param memberId 会员id
+     * @param classId  课程id
+     * @param mealId   餐饮id
      * @return
      */
-    @RequestMapping(value = "/apply",method = RequestMethod.POST)
-    public BaseResult apply(@RequestBody MealClass mealClass){
+    @RequestMapping(value = "/apply", method = RequestMethod.POST)
+    public BaseResult apply(Long memberId, Long classId, Long mealId) {
         return null;
     }
 
