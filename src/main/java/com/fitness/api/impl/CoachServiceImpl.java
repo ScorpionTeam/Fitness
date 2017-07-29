@@ -3,6 +3,7 @@ package com.fitness.api.impl;
 import com.fitness.api.dao.GradeDao;
 import com.fitness.api.dao.CoachDao;
 import com.fitness.api.dao.CoachJobDao;
+import com.fitness.api.dao.ImpressionDao;
 import com.fitness.api.domain.Grade;
 import com.fitness.api.domain.Coach;
 import com.fitness.api.service.CoachService;
@@ -22,14 +23,21 @@ import java.util.List;
 @Service
 public class CoachServiceImpl implements CoachService, PageService {
 
+    //教练数据访问层
     @Autowired
     private CoachDao coachDao;
 
+    //教练工作经历数据访问层
     @Autowired
     private CoachJobDao coachJobDao;
 
+    //教练评分数据访问层
     @Autowired
     private GradeDao gradeDao;
+
+    //教练印象数据访问层
+    @Autowired
+    private ImpressionDao impressionDao;
 
     /**
      * 新增教练

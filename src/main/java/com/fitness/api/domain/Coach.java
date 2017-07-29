@@ -70,6 +70,12 @@ public class Coach {
     @Transient
     private Grade grade;
 
+    /**
+     * 印象
+     */
+    @Transient
+    private Impression impression;
+
     public Long getId() {
         return id;
     }
@@ -206,6 +212,14 @@ public class Coach {
         this.grade = grade;
     }
 
+    public Impression getImpression() {
+        return impression;
+    }
+
+    public void setImpression(Impression impression) {
+        this.impression = impression;
+    }
+
     @Override
     public String toString() {
         return "Coach{" +
@@ -226,6 +240,7 @@ public class Coach {
                 ", teamClassStatus='" + teamClassStatus + '\'' +
                 ", jobList=" + jobList +
                 ", grade=" + grade +
+                ", impression=" + impression +
                 '}';
     }
 }
