@@ -5,6 +5,7 @@ import com.fitness.result.BaseResult;
 import org.springframework.stereotype.Service;
 
 /**
+ * 预约购餐 业务逻辑
  * Created on 2017/7/29.
  */
 @Service
