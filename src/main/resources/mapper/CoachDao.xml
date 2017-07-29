@@ -110,4 +110,21 @@
         WHERE c.status='1' AND c.stadiumId=#{stadiumId}
     </select>
 
+    <!--教练修改-->
+    <update id="update" parameterType="com.fitness.api.domain.Coach">
+        UPDATE coach SET
+        name=#{name},
+        phone=#{phone},
+        description=#{description},
+        stadiumId=#{stadiumId},
+        updateDate=now(),
+        coachImgId=#{coachImgId},
+        organization=#{organization},
+        orgDate=#{orgDate},
+        validDate=#{validDate},
+        status=#{status}
+        WHERE id=#{id}
+
+    </update>
+
 </mapper>
