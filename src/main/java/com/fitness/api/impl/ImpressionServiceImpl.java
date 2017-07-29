@@ -6,6 +6,7 @@ import com.fitness.api.service.ImpressionService;
 import com.fitness.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 /**
@@ -32,5 +33,6 @@ public class ImpressionServiceImpl implements ImpressionService {
             return BaseResult.success("评价成功");
         return BaseResult.error("ADD_FAIL", "评价失败");
     }
+
 
 }

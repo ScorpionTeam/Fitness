@@ -6,8 +6,11 @@
 
     <!--创建印象-->
     <insert id="add" parameterType="com.fitness.api.domain.Impression">
-        INSERT  INTO impression(name,coachId,memberId,createDate)
-        VALUES (#{name},#{coachId},#{memberId},now())
+        INSERT INTO impression(name,coachId,memberId,createDate)
+        VALUES
+        <foreach collection="imgList" item="item" index="index" separator=",">
+            (#{name},#{coachId},#{memberId},now())
+        </foreach>
     </insert>
 
     <!--根据教练id查询印象集合-->
