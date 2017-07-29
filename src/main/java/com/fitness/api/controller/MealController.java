@@ -1,0 +1,45 @@
+package com.fitness.api.controller;
+
+import com.fitness.api.domain.Meal;
+import com.fitness.api.service.MealService;
+import com.fitness.result.BaseResult;
+import com.fitness.result.page.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * 餐饮-api
+ * Created on 2017/7/29.
+ */
+@RestController
+@RequestMapping("meal")
+public class MealController {
+
+    @Autowired
+    private MealService mealService;
+
+    /**
+     * 新增餐饮
+     * @param meal
+     * @return
+     */
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public BaseResult add(@RequestBody Meal meal){
+        return null;
+    }
+
+    /**
+     * 查询餐饮列表
+     * @param pageNo
+     * @param pageSize
+     * @param key
+     * @return
+     */
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    public PageResult list(Integer pageNo,Integer pageSize,String key){
+        return null;
+    }
+}
