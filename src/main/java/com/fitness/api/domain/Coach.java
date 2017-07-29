@@ -74,7 +74,7 @@ public class Coach {
      * 印象
      */
     @Transient
-    private Impression impression;
+    private List<Impression> impressionList;
 
     public Long getId() {
         return id;
@@ -212,12 +212,12 @@ public class Coach {
         this.grade = grade;
     }
 
-    public Impression getImpression() {
-        return impression;
+    public List<Impression> getImpressionList() {
+        return impressionList;
     }
 
-    public void setImpression(Impression impression) {
-        this.impression = impression;
+    public void setImpressionList(List<Impression> impressionList) {
+        this.impressionList = impressionList;
     }
 
     @Override
@@ -240,7 +240,7 @@ public class Coach {
                 ", teamClassStatus='" + teamClassStatus + '\'' +
                 ", jobList=" + jobList +
                 ", grade=" + grade +
-                ", impression=" + impression +
+                ", impressionList=" + impressionList +
                 '}';
     }
 }

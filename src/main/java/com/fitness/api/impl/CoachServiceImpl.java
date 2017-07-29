@@ -6,6 +6,7 @@ import com.fitness.api.dao.CoachJobDao;
 import com.fitness.api.dao.ImpressionDao;
 import com.fitness.api.domain.Grade;
 import com.fitness.api.domain.Coach;
+import com.fitness.api.domain.Impression;
 import com.fitness.api.service.CoachService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
@@ -14,6 +15,7 @@ import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -97,6 +99,11 @@ public class CoachServiceImpl implements CoachService, PageService {
         Grade grade = new Grade();
         grade = gradeDao.getScoreByCoachId(id);
         coach.setGrade(grade);
+
+        //查询印象
+        List<Impression> impressionList = new ArrayList<>();
+        impressionList = impressionDao.list(id);
+        coach.setImpressionList(impressionList);
         return BaseResult.success(coach);
     }
 
