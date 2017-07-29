@@ -104,6 +104,11 @@ public class CoachServiceImpl implements CoachService, PageService {
         List<Impression> impressionList = new ArrayList<>();
         impressionList = impressionDao.list(id);
         coach.setImpressionList(impressionList);
+
+        //统计印象作为擅长数据
+        List<String> goodAtList = new ArrayList<>();
+        goodAtList = impressionDao.goodAtLst(id);
+        coach.setGoodAt(goodAtList);
         return BaseResult.success(coach);
     }
 

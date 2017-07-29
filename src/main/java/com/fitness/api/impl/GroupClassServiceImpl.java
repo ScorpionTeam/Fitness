@@ -77,6 +77,9 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
      */
     @Override
     public BaseResult update(GroupClass groupClass) {
+        Integer count = groupClassDao.countByStartDate(groupClass.getStartDate(), groupClass.getCoachId());
+        if (count > 0)
+            return BaseResult.error("UPDATE_FAIL", "该时间段已存在课程");
         Integer result = groupClassDao.update(groupClass);
         if (result > 0)
             return BaseResult.success("修改团课成功");

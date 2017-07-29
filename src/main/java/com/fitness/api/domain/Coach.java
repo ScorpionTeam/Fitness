@@ -57,6 +57,7 @@ public class Coach {
 
     /* 是否开私教课  0-未开课 1-开课 */
     private String privateClassStatus;
+
     /* 是否开团课  0-未开课 1-开课 */
     private String teamClassStatus;
 
@@ -75,6 +76,12 @@ public class Coach {
      */
     @Transient
     private List<Impression> impressionList;
+
+    /**
+     * 擅长
+     */
+    @Transient
+    private List<String> goodAt;
 
     public Long getId() {
         return id;
@@ -220,6 +227,14 @@ public class Coach {
         this.impressionList = impressionList;
     }
 
+    public List<String> getGoodAt() {
+        return goodAt;
+    }
+
+    public void setGoodAt(List<String> goodAt) {
+        this.goodAt = goodAt;
+    }
+
     @Override
     public String toString() {
         return "Coach{" +
@@ -241,6 +256,7 @@ public class Coach {
                 ", jobList=" + jobList +
                 ", grade=" + grade +
                 ", impressionList=" + impressionList +
+                ", goodAt=" + goodAt +
                 '}';
     }
 }

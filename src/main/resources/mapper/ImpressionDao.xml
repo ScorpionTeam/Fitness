@@ -22,4 +22,9 @@
          FROM impression WHERE coachId=#{coachId}
     </select>
 
+    <!--擅长类型-->
+    <select id="goodAtLst" resultType="java.lang.String">
+        SELECT name FROM impression WHERE coachId=#{coachId}
+    </select>
+
 </mapper>

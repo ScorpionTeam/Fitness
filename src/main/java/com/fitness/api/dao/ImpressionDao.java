@@ -26,5 +26,12 @@ public interface ImpressionDao {
      */
     List<Impression> list(@Param(value = "coachId") Long coachId);
 
+    /**
+     * 根据教练id统计印象最多的   查询4条  作为擅长类型
+     * @param coachId
+     * @return
+     */
+    List<String> goodAtLst(@Param(value = "coachId") Long coachId);
+
 
 }
