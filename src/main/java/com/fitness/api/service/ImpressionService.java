@@ -23,5 +23,5 @@ public interface ImpressionService {
      * @param coachId
      * @return
      */
-    List<Impression> list(Long coachId);
+    BaseResult list(Long coachId);
 }
