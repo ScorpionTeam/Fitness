@@ -1,6 +1,5 @@
 package com.fitness.api.controller;
 
-import com.fitness.annotations.OathAnnotation;
 import com.fitness.api.domain.Coach;
 import com.fitness.api.service.CoachService;
 import com.fitness.result.BaseResult;
