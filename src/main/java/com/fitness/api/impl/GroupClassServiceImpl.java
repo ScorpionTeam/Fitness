@@ -77,6 +77,7 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
      */
     @Override
     public BaseResult update(GroupClass groupClass) {
+        //校验时间段是否已存在课程
         Integer count = groupClassDao.countByStartDate(groupClass.getStartDate(), groupClass.getCoachId());
         if (count > 0)
             return BaseResult.error("UPDATE_FAIL", "该时间段已存在课程");
@@ -128,8 +129,11 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
         if (count > 0)
             return BaseResult.error("APPLY_FAIL", "已参加，不可重复参加");
         Integer result = groupClassDao.apply(memberId, classId);
-        if (result > 0)
+        if (result > 0) {
+            //修改 剩余席位
+            groupClassDao.minusGroupClassTotal(classId);
             return BaseResult.success("团课报名成功");
+        }
         return BaseResult.error("APPLY_FAIL", "团课报名失败");
     }
 

@@ -97,23 +97,33 @@ public interface GroupClassDao {
 
     /**
      * 团课数量
+     *
      * @param key
      * @return
      */
-    Integer count(@Param(value = "key")String key);
+    Integer count(@Param(value = "key") String key);
 
     /**
      * 团课模糊查询 分页
+     *
      * @param rowBounds
      * @param key
      * @return
      */
-    List<GroupClass> list(RowBounds rowBounds,@Param(value = "key")String key);
+    List<GroupClass> list(RowBounds rowBounds, @Param(value = "key") String key);
 
     /**
      * 根据课程id查询 团课详情
+     *
      * @param classId
      * @return
      */
     GroupClass classInfoByClassId(@Param(value = "classId") Long classId);
+
+    /**
+     * 报名成功后 - 减少该课程的可预约席位
+     * @param classId
+     * @return
+     */
+    Integer minusGroupClassTotal(@Param(value = "classId") Long classId);
 }

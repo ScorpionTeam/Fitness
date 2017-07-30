@@ -117,6 +117,10 @@
         VALUES (#{classId},#{memberId},now(),'1','1')
     </insert>
 
+    <!--减少可预约席位-->
+    <update id="minusGroupClassTotal">
+        UPDATE group_class SET surplusNum=(surplusNum -1) WHERE id=#{classId}
+    </update>
     <!--团课报名检查-->
     <select id="applyCount" resultType="java.lang.Integer">
         SELECT COUNT(1) FROM member_class WHERE classId=#{classId} AND memberId=#{memberId} AND type='1'
@@ -130,26 +134,26 @@
     <!--团课列表-->
     <select id="list" resultType="com.fitness.api.domain.GroupClass">
         SELECT
-         gc.id,
-         gc.name,
-         gc.total,
-         gc.address,
-         gc.surplusNum,
-         gc.startDate,
-         gc.endDate,
-         gc.timeTotal,
-         gc.status,
-         gc.createDate,
-         gc.updateDate,
-         gc.mainImgUrl,
-         gc.coachId,
-         c.name as coachName,
-         s.name as stadiumName,
-         s.id as stadiumId
-         FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id LEFT JOIN stadium s ON s.id=c.stadiumId
-         <if test="key!=null and key!=''">
-             WHERE gc.name LIKE #{key}
-         </if>
+        gc.id,
+        gc.name,
+        gc.total,
+        gc.address,
+        gc.surplusNum,
+        gc.startDate,
+        gc.endDate,
+        gc.timeTotal,
+        gc.status,
+        gc.createDate,
+        gc.updateDate,
+        gc.mainImgUrl,
+        gc.coachId,
+        c.name as coachName,
+        s.name as stadiumName,
+        s.id as stadiumId
+        FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id LEFT JOIN stadium s ON s.id=c.stadiumId
+        <if test="key!=null and key!=''">
+            WHERE gc.name LIKE #{key}
+        </if>
     </select>
 
     <select id="count" resultType="java.lang.Integer">
