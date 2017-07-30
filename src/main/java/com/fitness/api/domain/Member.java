@@ -58,7 +58,7 @@ public class Member {
     private String email;
 
     //会员头像
-    private Long memberImgId;
+    private String imgUrl;
 
     //创建时间
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
@@ -80,10 +80,6 @@ public class Member {
 
     //备注
     private String remark;
-
-    //会员头像地址
-    @Transient
-    private String imgPath;
 
     //身份证
     private String identityCard;
@@ -209,14 +205,6 @@ public class Member {
         this.email = email;
     }
 
-    public Long getMemberImgId() {
-        return memberImgId == null ? 0l : memberImgId;
-    }
-
-    public void setMemberImgId(Long memberImgId) {
-        this.memberImgId = memberImgId;
-    }
-
     public Date getCreateDate() {
         return createDate;
     }
@@ -257,14 +245,13 @@ public class Member {
         this.remark = remark;
     }
 
-    public String getImgPath() {
-        return imgPath == null ? "" : imgPath;
+    public String getImgUrl() {
+        return imgUrl==null?"":imgUrl;
     }
 
-    public void setImgPath(String imgPath) {
-        this.imgPath = imgPath;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
-
 
     @Override
     public String toString() {
@@ -277,19 +264,18 @@ public class Member {
                 ", sex='" + sex + '\'' +
                 ", age=" + age +
                 ", bornDate=" + bornDate +
-                ", memberCardId=" + memberCardId +
                 ", memberCardNo='" + memberCardNo + '\'' +
+                ", memberCardId=" + memberCardId +
                 ", password='" + password + '\'' +
                 ", stadiumId=" + stadiumId +
                 ", nick='" + nick + '\'' +
                 ", email='" + email + '\'' +
-                ", memberImgId=" + memberImgId +
+                ", imgUrl='" + imgUrl + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 ", status='" + status + '\'' +
                 ", type='" + type + '\'' +
                 ", remark='" + remark + '\'' +
-                ", imgPath='" + imgPath + '\'' +
                 ", identityCard='" + identityCard + '\'' +
                 '}';
     }

@@ -194,7 +194,6 @@ public class MemberServiceImpl implements MemberService, PageService {
         Member member = memberDao.memberInfo(id);
         if (null == member)
             return BaseResult.nonSuchResult();
-        member.setImgPath(Constant.URL_KEEPER + member.getImgPath());
         return BaseResult.success(member);
     }
 

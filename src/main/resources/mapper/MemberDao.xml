@@ -18,11 +18,10 @@
         m.stadiumId,
         m.nick,
         m.email,
-        m.memberImgId,
+        m.imgUrl,
         m.status,
-        i.url as imgPath,
         mc.cardNo as memberCardNo
-        FROM member m LEFT JOIN img i ON m.memberImgId=i.id
+        FROM member m
         LEFT JOIN member_card mc on m.memberCardId=mc.id
         WHERE  m.phone=#{phone} AND m.password=#{password}
     </select>
@@ -41,7 +40,7 @@
         stadiumId,
         nick,
         email,
-        memberImgId,
+        imgUrl,
         createDate,
         updateDate,
         status
@@ -58,7 +57,7 @@
         #{stadiumId},
         #{nick},
         #{email},
-        #{memberImgId},
+        #{imgUrl},
         NOW(),
         NOW(),
         '2')
@@ -109,15 +108,14 @@
           m.stadiumId,
           m.nick,
           m.email,
-          m.memberImgId,
+          m.imgUrl,
           m.createDate,
           m.updateDate,
           m.status,
           m.remark,
-          i.url as imgPath,
           mc.cardNo as memberCardNo,
           mc.id as memberCardId
-          FROM member m LEFT JOIN img i ON m.memberImgId=i.id
+          FROM member m
           LEFT JOIN member_card mc ON m.memberCardId=mc.id
           WHERE m.id=#{id}
     </select>
@@ -150,14 +148,13 @@
         m.stadiumId,
         m.nick,
         m.email,
-        m.memberImgId,
+        m.imgUrl,
         m.createDate,
         m.updateDate,
         m.status,
         m.remark,
-        i.url as imgPath,
         mc.cardNo as memberCardNo
-        FROM member m LEFT JOIN img i on m.memberImgId=i.id
+        FROM member m
         LEFT JOIN member_card mc ON m.memberCardId=mc.id
         WHERE 1=1
         <if test="key!=null and key!=''">
