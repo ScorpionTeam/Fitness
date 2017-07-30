@@ -12,8 +12,9 @@ public interface MealClassService {
      * @param memberId  会员id
      * @param classId   课程id
      * @param mealId    餐饮id
+     * @param type      1团课 0 私教
      * @return
      */
-    BaseResult apply(Long memberId,Long classId,Long mealId);
+    BaseResult apply(Long memberId,Long classId,Long mealId,String type);
 
 }
