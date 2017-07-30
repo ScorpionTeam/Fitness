@@ -133,6 +133,8 @@ public class MemberServiceImpl implements MemberService, PageService {
     @Override
     public BaseResult update(Member member) {
         memberDao.update(member);
+        //将会员卡状态修改为已绑定
+        memberCardDao.updateMemberCardStatus(member.getMemberCardId(), "2");
         return BaseResult.success("基本信息修改成功");
     }
 

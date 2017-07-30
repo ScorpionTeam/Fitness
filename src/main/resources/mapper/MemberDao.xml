@@ -120,6 +120,8 @@
           m.remark,
           mc.cardNo as memberCardNo,
           mc.id as memberCardId,
+          mc.classSurplus as classSurplus,
+          mc.classTotal as classTotal,
           m.identityCard
           FROM member m
           LEFT JOIN member_card mc ON m.memberCardId=mc.id

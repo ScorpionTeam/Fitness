@@ -84,6 +84,18 @@ public class Member {
     //身份证
     private String identityCard;
 
+    //课程总数
+    @Transient
+    private Integer classTotal;
+
+    //剩余课程数
+    @Transient
+    private Integer classSurplus;
+
+    //已学课程数
+    @Transient
+    private Integer alreadyStudy;
+
 
     public String getIdentityCard() {
         return identityCard == null ? "" : identityCard;
@@ -253,6 +265,30 @@ public class Member {
         this.imgUrl = imgUrl;
     }
 
+    public Integer getClassTotal() {
+        return classTotal;
+    }
+
+    public void setClassTotal(Integer classTotal) {
+        this.classTotal = classTotal;
+    }
+
+    public Integer getClassSurplus() {
+        return classSurplus;
+    }
+
+    public void setClassSurplus(Integer classSurplus) {
+        this.classSurplus = classSurplus;
+    }
+
+    public Integer getAlreadyStudy() {
+        return alreadyStudy;
+    }
+
+    public void setAlreadyStudy(Integer alreadyStudy) {
+        this.alreadyStudy = alreadyStudy;
+    }
+
     @Override
     public String toString() {
         return "Member{" +
@@ -277,6 +313,9 @@ public class Member {
                 ", type='" + type + '\'' +
                 ", remark='" + remark + '\'' +
                 ", identityCard='" + identityCard + '\'' +
+                ", classTotal=" + classTotal +
+                ", classSurplus=" + classSurplus +
+                ", alreadyStudy=" + alreadyStudy +
                 '}';
     }
 }
