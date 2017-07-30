@@ -53,7 +53,7 @@ public class MealController {
      */
     @RequestMapping(value = "/listByStadiumId", method = RequestMethod.GET)
     public BaseResult listByStadiumId(Long stadiumId) {
-        return null;
+        return mealService.listByStadiumId(stadiumId);
     }
 
 
