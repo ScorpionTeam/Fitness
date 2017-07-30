@@ -60,4 +60,18 @@ public class MealServiceImpl implements MealService, PageService {
         List<Meal> list = mealDao.list(rowBounds(pageNo, pageSize), key);
         return new PageResult(list, count, pageNo, pageSize);
     }
+
+    /**
+     * 根据场馆id获取营养餐列表
+     *
+     * @param stadiumId
+     * @return
+     */
+    @Override
+    public BaseResult listByStadiumId(Long stadiumId) {
+        List<Meal> list = mealDao.listByStadiumId(stadiumId);
+        if (null == list && list.size() <= 0)
+            return BaseResult.nonSuchResult();
+        return BaseResult.success(list);
+    }
 }

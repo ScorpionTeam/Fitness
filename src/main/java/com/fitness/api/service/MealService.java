@@ -25,4 +25,11 @@ public interface MealService {
      * @return
      */
     PageResult list(Integer pageNo,Integer pageSize,String key);
+
+    /**
+     * 根据场馆id获取营养餐列表
+     * @param stadiumId
+     * @return
+     */
+    BaseResult listByStadiumId(Long stadiumId);
 }

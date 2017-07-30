@@ -35,13 +35,23 @@ public interface MealDao {
      * @param mealName
      * @return
      */
-    Meal validByName(@Param(value = "mealName") String mealName, @Param(value = "stadiumId") Long stadiumId);
+    Meal validByName(@Param(value = "mealName") String mealName,
+                     @Param(value = "stadiumId") Long stadiumId);
 
 
     /**
      * 餐饮列表数量
+     *
      * @param key
      * @return
      */
-    Integer count(@Param(value = "key")String key);
+    Integer count(@Param(value = "key") String key);
+
+    /**
+     * 根据场馆id获取营养餐列表
+     *
+     * @param stadiumId
+     * @return
+     */
+    List<Meal> listByStadiumId(@Param(value = "stadiumId") Long stadiumId);
 }

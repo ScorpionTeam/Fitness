@@ -44,4 +44,14 @@ public class MealController {
     public PageResult list(Integer pageNo, Integer pageSize, String key) {
         return mealService.list(pageNo, pageSize, key);
     }
+
+    /**
+     * 根据场馆查询营养餐
+     * @param stadiumId
+     * @return
+     */
+    @RequestMapping(value = "/listByStadiumId",method = RequestMethod.GET)
+    public BaseResult listByStadiumId(Long stadiumId){
+        return null;
+    }
 }

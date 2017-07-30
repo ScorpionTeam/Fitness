@@ -45,4 +45,16 @@
         FROM meal
         WHERE name=#{name} AND stadiumId=#{stadiumId}
     </select>
+
+    <!--根据场馆查询营养餐-->
+    <select id="listByStadiumId" resultType="com.fitness.api.domain.Meal">
+        SELECT
+        id,
+        name,
+        price,
+        content,
+        total,
+        stadiumId
+        FROM meal WHERE total &gt; 0 AND stadiumId=#{stadiumId}
+    </select>
 </mapper>
