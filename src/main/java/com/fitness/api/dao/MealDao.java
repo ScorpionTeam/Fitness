@@ -35,7 +35,7 @@ public interface MealDao {
      * @param mealName
      * @return
      */
-    Meal validByName(@Param(value = "mealName") String mealName,
+    Meal validByName(@Param(value = "name") String name,
                      @Param(value = "stadiumId") Long stadiumId);
 
 
