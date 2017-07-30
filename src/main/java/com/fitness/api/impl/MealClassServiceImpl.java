@@ -1,6 +1,8 @@
 package com.fitness.api.impl;
 
+import com.fitness.api.dao.GroupClassDao;
 import com.fitness.api.dao.MealClassDao;
+import com.fitness.api.dao.MemberCardDao;
 import com.fitness.api.service.MealClassService;
 import com.fitness.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,12 @@ public class MealClassServiceImpl implements MealClassService {
 
     @Autowired
     private MealClassDao mealClassDao;
+
+    @Autowired
+    private MemberCardDao memberCardDao;
+
+    @Autowired
+    private GroupClassDao groupClassDao;
 
     /**
      * 预约并订餐
@@ -38,11 +46,17 @@ public class MealClassServiceImpl implements MealClassService {
         //预定课程
         Integer result = mealClassDao.apply(memberId, classId, type);
 
+        if (type.equals("1")) {
+            groupClassDao.minusGroupClassTotal(classId);
+        }
         //订餐
         Integer result1 = mealClassDao.applyMeal(memberId, mealId);
 
         //减少营养餐数量
         Integer result2 = mealClassDao.minusMealCount(mealId);
+
+        //修改会员卡剩余课程数量
+        memberCardDao.updateCLassSurplus(memberId);
 
         if (result > 0 && result1 > 0 && result2 > 0)
             return BaseResult.success("约课并预定营养餐成功");
