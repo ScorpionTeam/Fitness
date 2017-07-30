@@ -282,7 +282,7 @@ public class Member {
     }
 
     public Integer getAlreadyStudy() {
-        return alreadyStudy;
+        return alreadyStudy = this.classTotal - this.classSurplus;
     }
 
     public void setAlreadyStudy(Integer alreadyStudy) {

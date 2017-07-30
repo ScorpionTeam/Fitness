@@ -3,6 +3,7 @@ package com.fitness.api.impl;
 import com.fitness.api.dao.GradeDao;
 import com.fitness.api.dao.GroupClassDao;
 import com.fitness.api.dao.ImgDao;
+import com.fitness.api.dao.MemberCardDao;
 import com.fitness.api.domain.Grade;
 import com.fitness.api.domain.GroupClass;
 import com.fitness.api.domain.Img;
@@ -32,6 +33,9 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
 
     @Autowired
     private GradeDao gradeDao;
+
+    @Autowired
+    private MemberCardDao memberCardDao;
 
 
     /**
@@ -130,6 +134,8 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
             return BaseResult.error("APPLY_FAIL", "已参加，不可重复参加");
         Integer result = groupClassDao.apply(memberId, classId);
         if (result > 0) {
+            //修改会员卡剩余课程数
+            memberCardDao.updateCLassSurplus(memberId);
             //修改 剩余席位
             groupClassDao.minusGroupClassTotal(classId);
             return BaseResult.success("团课报名成功");

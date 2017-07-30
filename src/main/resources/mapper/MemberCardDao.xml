@@ -134,4 +134,9 @@
         WHERE id=#{id}
     </update>
 
+    <!--修改会员卡剩余课程-->
+    <update id="updateCLassSurplus">
+        UPDATE member_card SET classSurplus=classTotal-1 WHERE id=(SELECT memberCardId FROM member WHERE id=#{memberId})
+    </update>
+
 </mapper>

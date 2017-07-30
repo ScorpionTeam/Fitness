@@ -81,4 +81,11 @@ public interface MemberCardDao {
      * @return
      */
     List<MemberCard> cardList(@Param(value = "stadiumId")Long stadiumId);
+
+    /**
+     * 根据会员id修改剩余课程
+     * @param memberId
+     * @return
+     */
+    Integer updateCLassSurplus(@Param(value = "memberId")Long memberId);
 }
