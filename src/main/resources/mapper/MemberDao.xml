@@ -21,7 +21,9 @@
         m.imgUrl,
         m.status,
         m.identityCard,
-        mc.cardNo as memberCardNo
+        mc.cardNo as memberCardNo,
+        mc.classSurplus as classSurplus,
+        mc.classTotal as classTotal
         FROM member m
         LEFT JOIN member_card mc on m.memberCardId=mc.id
         WHERE  m.phone=#{phone} AND m.password=#{password}
@@ -162,7 +164,9 @@
         m.status,
         m.remark,
         mc.cardNo as memberCardNo,
-        m.identityCard
+        m.identityCard,
+        mc.classSurplus as classSurplus,
+        mc.classTotal as classTotal
         FROM member m
         LEFT JOIN member_card mc ON m.memberCardId=mc.id
         WHERE 1=1
