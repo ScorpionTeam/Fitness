@@ -13,7 +13,8 @@
          mc.start_date as startDate,
          mc.end_date as endDate,
          mc.create_date as createDate,
-         mc.update_date as updateDate
+         mc.update_date as updateDate,
+         mc.classSurplus
          from member_card mc left join member m on mc.id = m.stadium_id
         where mc.status='1'
         and m.id=#{memberId,jdbcType=BIGINT}
@@ -35,7 +36,8 @@
         updateDate,
         status,
         classTotal,
-        money)
+        money,
+        classSurplus)
         VALUES (#{cardNo},
         #{type},
         #{stadiumId},
@@ -45,7 +47,8 @@
         NOW(),
         #{status},
         #{classTotal},
-        #{money})
+        #{money},
+        #{classSurplus})
     </insert>
 
     <!--查询会员卡数量-->
@@ -69,6 +72,7 @@
         mc.status,
         mc.classTotal,
         mc.money,
+        mc.classSurplus,
         s.name as stadiumName
         FROM member_card mc LEFT JOIN stadium s ON mc.stadiumId = s.id WHERE 1=1
         <if test="key!=null and key!=''">
@@ -88,7 +92,8 @@
         mc.updateDate,
         mc.status,
         mc.classTotal,
-        mc.money
+        mc.money,
+        mc.classSurplus
         FROM member_card mc WHERE mc.status='1' AND mc.stadiumId=#{stadiumId}
     </select>
 
@@ -104,7 +109,9 @@
         mc.updateDate,
         mc.status,
         mc.classTotal,
-        mc.money FROM member_card mc WHERE id=#{id} and status != '0'
+        mc.classSurplus,
+        mc.money
+        FROM member_card mc WHERE id=#{id} and status != '0'
     </select>
 
     <!--删除会员卡-->
@@ -122,7 +129,8 @@
         updateDate=now(),
         status=#{status},
         classTotal=#{classTotal},
-        money=#{money}
+        money=#{money},
+        classSurplus=#{classSurplus}
         WHERE id=#{id}
     </update>
 

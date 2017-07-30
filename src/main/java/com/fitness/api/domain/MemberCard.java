@@ -65,6 +65,9 @@ public class MemberCard {
     @Transient
     private String stadiumName;
 
+    //剩余课程数量
+    private Integer classSurplus;
+
     public String getStadiumName() {
         return stadiumName;
     }
@@ -184,6 +187,14 @@ public class MemberCard {
         this.typeName = typeName;
     }
 
+    public Integer getClassSurplus() {
+        return classSurplus;
+    }
+
+    public void setClassSurplus(Integer classSurplus) {
+        this.classSurplus = classSurplus;
+    }
+
     @Override
     public String toString() {
         return "MemberCard{" +
@@ -201,6 +212,7 @@ public class MemberCard {
                 ", money=" + money +
                 ", validDate='" + validDate + '\'' +
                 ", stadiumName='" + stadiumName + '\'' +
+                ", classSurplus=" + classSurplus +
                 '}';
     }
 }
