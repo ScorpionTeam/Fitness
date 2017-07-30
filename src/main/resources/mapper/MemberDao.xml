@@ -79,7 +79,8 @@
         age=#{age},
         email=#{email},
         tel=#{tel},
-        memberCardId=#{memberCardId}
+        memberCardId=#{memberCardId},
+        imgUrl=#{imgUrl}
         where id=#{id}
     </update>
 
