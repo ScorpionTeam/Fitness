@@ -74,4 +74,33 @@ public class MealServiceImpl implements MealService, PageService {
             return BaseResult.nonSuchResult();
         return BaseResult.success(list);
     }
+
+    /**
+     * @param meal 餐饮
+     * @return
+     */
+    @Override
+    public BaseResult update(Meal meal) {
+        Meal valid = mealDao.validByName(meal.getName(), meal.getStadiumId());
+        if (null != valid)
+            return BaseResult.error("UPDATE_FAIL", "名称已存在");
+        Integer result = mealDao.update(meal);
+        if (result > 0)
+            return BaseResult.success("修改成功");
+        return BaseResult.error("UPDATE_FAIL", "修改失败");
+    }
+
+    /**
+     * @param id 餐饮id
+     * @return
+     */
+    @Override
+    public BaseResult del(Long id) {
+        Integer result = mealDao.del(id);
+        if (result > 0)
+            return BaseResult.success("删除成功");
+        return BaseResult.error("DELETE_FAIL", "删除失败");
+    }
+
+
 }

@@ -47,11 +47,34 @@ public class MealController {
 
     /**
      * 根据场馆查询营养餐
+     *
      * @param stadiumId
      * @return
      */
-    @RequestMapping(value = "/listByStadiumId",method = RequestMethod.GET)
-    public BaseResult listByStadiumId(Long stadiumId){
+    @RequestMapping(value = "/listByStadiumId", method = RequestMethod.GET)
+    public BaseResult listByStadiumId(Long stadiumId) {
+        return null;
+    }
+
+
+    /**
+     * 修改
+     *
+     * @param meal
+     * @return
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public BaseResult update(@RequestBody Meal meal) {
+        return mealService.update(meal);
+    }
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/del", method = RequestMethod.POST)
+    public BaseResult del(Long id) {
         return null;
     }
 }

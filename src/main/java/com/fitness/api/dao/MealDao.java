@@ -54,4 +54,18 @@ public interface MealDao {
      * @return
      */
     List<Meal> listByStadiumId(@Param(value = "stadiumId") Long stadiumId);
+
+    /**
+     * 修改
+     * @param meal
+     * @return
+     */
+    Integer update(Meal meal);
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    Integer del(Long id);
 }

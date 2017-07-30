@@ -57,4 +57,20 @@
         stadiumId
         FROM meal WHERE total &gt; 0 AND stadiumId=#{stadiumId}
     </select>
+
+    <!--修改-->
+    <update id="update" parameterType="com.fitness.api.domain.Meal">
+        UPDATE meal SET
+        name=#{name},
+        price=#{price},
+        content=#{cotent},
+        total=#{total},
+        stadiumId=#{stadiumId}
+    </update>
+
+    <!--删除-->
+    <delete id="del">
+        DELETE FROM meal WHERE id=#{id}
+    </delete>
+
 </mapper>

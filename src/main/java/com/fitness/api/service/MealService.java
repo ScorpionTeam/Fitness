@@ -12,6 +12,7 @@ public interface MealService {
 
     /**
      * 新增餐饮
+     *
      * @param meal
      * @return
      */
@@ -19,17 +20,31 @@ public interface MealService {
 
     /**
      * 餐饮列表分页
+     *
      * @param pageNo
      * @param pageSize
      * @param key
      * @return
      */
-    PageResult list(Integer pageNo,Integer pageSize,String key);
+    PageResult list(Integer pageNo, Integer pageSize, String key);
 
     /**
      * 根据场馆id获取营养餐列表
+     *
      * @param stadiumId
      * @return
      */
     BaseResult listByStadiumId(Long stadiumId);
+
+    /**
+     * @param meal 餐饮
+     * @return
+     */
+    BaseResult update(Meal meal);
+
+    /**
+     * @param id 餐饮id
+     * @return
+     */
+    BaseResult del(Long id);
 }
