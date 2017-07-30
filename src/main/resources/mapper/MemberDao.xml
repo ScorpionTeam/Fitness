@@ -20,6 +20,7 @@
         m.email,
         m.imgUrl,
         m.status,
+        m.identityCard,
         mc.cardNo as memberCardNo
         FROM member m
         LEFT JOIN member_card mc on m.memberCardId=mc.id
@@ -43,7 +44,8 @@
         imgUrl,
         createDate,
         updateDate,
-        status
+        status,
+        identityCard
         )
         values(#{name},
         #{phone},
@@ -60,7 +62,8 @@
         #{imgUrl},
         NOW(),
         NOW(),
-        '2')
+        '2',
+        #{identityCard})
         <selectKey resultType="java.lang.Long" keyProperty="id">
             SELECT LAST_INSERT_ID() AS id
         </selectKey>
@@ -80,7 +83,8 @@
         email=#{email},
         tel=#{tel},
         memberCardId=#{memberCardId},
-        imgUrl=#{imgUrl}
+        imgUrl=#{imgUrl},
+        identityCard=#{identityCard}
         where id=#{id}
     </update>
 
@@ -115,7 +119,8 @@
           m.status,
           m.remark,
           mc.cardNo as memberCardNo,
-          mc.id as memberCardId
+          mc.id as memberCardId,
+          m.identityCard
           FROM member m
           LEFT JOIN member_card mc ON m.memberCardId=mc.id
           WHERE m.id=#{id}
@@ -154,7 +159,8 @@
         m.updateDate,
         m.status,
         m.remark,
-        mc.cardNo as memberCardNo
+        mc.cardNo as memberCardNo,
+        m.identityCard
         FROM member m
         LEFT JOIN member_card mc ON m.memberCardId=mc.id
         WHERE 1=1

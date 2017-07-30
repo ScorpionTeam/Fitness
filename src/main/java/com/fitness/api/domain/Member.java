@@ -86,7 +86,7 @@ public class Member {
 
 
     public String getIdentityCard() {
-        return identityCard;
+        return identityCard == null ? "" : identityCard;
     }
 
     public void setIdentityCard(String identityCard) {
@@ -246,7 +246,7 @@ public class Member {
     }
 
     public String getImgUrl() {
-        return imgUrl==null?"":imgUrl;
+        return imgUrl == null ? "" : imgUrl;
     }
 
     public void setImgUrl(String imgUrl) {
