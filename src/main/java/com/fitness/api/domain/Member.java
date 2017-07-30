@@ -92,11 +92,6 @@ public class Member {
     @Transient
     private Integer classSurplus;
 
-    //已学课程数
-    @Transient
-    private Integer alreadyStudy;
-
-
     public String getIdentityCard() {
         return identityCard == null ? "" : identityCard;
     }
@@ -281,14 +276,6 @@ public class Member {
         this.classSurplus = classSurplus;
     }
 
-    public Integer getAlreadyStudy() {
-        return alreadyStudy = this.classTotal - this.classSurplus;
-    }
-
-    public void setAlreadyStudy(Integer alreadyStudy) {
-        this.alreadyStudy = alreadyStudy;
-    }
-
     @Override
     public String toString() {
         return "Member{" +
@@ -315,7 +302,6 @@ public class Member {
                 ", identityCard='" + identityCard + '\'' +
                 ", classTotal=" + classTotal +
                 ", classSurplus=" + classSurplus +
-                ", alreadyStudy=" + alreadyStudy +
                 '}';
     }
 }
