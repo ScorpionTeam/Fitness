@@ -5,7 +5,7 @@ package com.fitness.constant;
  */
 public class Constant {
 
-    public static final String URL_KEEPER="http://localhost:8088";
+    public static final String URL_KEEPER="http://101.200.48.138/";
 
     /**
      * PBK加密算法

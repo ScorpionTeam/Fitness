@@ -3,6 +3,7 @@ package com.fitness.api.impl;
 import com.fitness.api.dao.ImgDao;
 import com.fitness.api.domain.Img;
 import com.fitness.api.service.ImgService;
+import com.fitness.constant.Constant;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
 import com.fitness.result.page.PageService;
@@ -62,9 +63,13 @@ public class ImgServiceImpl implements ImgService, PageService {
         Integer count = imgDao.count();
         if (count <= 0)
             return new PageResult(null, 0);
-        
+
         //查询图片集合
         List<Img> list = imgDao.pageList(rowBounds(pageNo, pageSize));
+        if (null != list && list.size() > 0)
+            list.forEach(item -> {
+                item.setUrl(Constant.URL_KEEPER + item.getUrl());
+            });
         return new PageResult(list, count, pageNo, pageSize);
     }
 }
