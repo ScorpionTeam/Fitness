@@ -2,6 +2,7 @@ package com.fitness.api.dao;
 
 import com.fitness.api.domain.Img;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -33,5 +34,18 @@ public interface ImgDao {
      * @return
      */
     Integer addBanner(List<Img> imgList);
+
+    /**
+     * 图片列表分页
+     * @param rowBounds
+     * @return
+     */
+    List<Img> pageList(RowBounds rowBounds);
+
+    /**
+     * 查询图片数量
+     * @return
+     */
+    Integer count();
 
 }

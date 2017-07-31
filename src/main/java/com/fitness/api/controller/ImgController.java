@@ -3,6 +3,7 @@ package com.fitness.api.controller;
 import com.fitness.api.service.ImgService;
 import com.fitness.constant.Constant;
 import com.fitness.result.BaseResult;
+import com.fitness.result.page.PageResult;
 import com.fitness.util.ImgUtil;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,9 @@ public class ImgController {
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public BaseResult upload(@RequestParam CommonsMultipartFile file) throws IOException {
         String url = ImgUtil.upload(file, Constant.PATH);
-        if(!StringUtils.isNullOrEmpty(url))
+        if (!StringUtils.isNullOrEmpty(url))
             return imgService.addImg(url);
-        return BaseResult.error("FAIL","图片上传失败");
+        return BaseResult.error("FAIL", "图片上传失败");
     }
 
     /**
@@ -48,6 +49,18 @@ public class ImgController {
     public BaseResult list(Long id) {
 
         return null;
+    }
+
+    /**
+     * 图片列表分页
+     *
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/pageList", method = RequestMethod.GET)
+    public PageResult pageList(Integer pageNo, Integer pageSize) {
+        return imgService.pageList(pageNo, pageSize);
     }
 
 }

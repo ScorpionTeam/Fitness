@@ -2,6 +2,7 @@ package com.fitness.api.service;
 
 import com.fitness.api.domain.Img;
 import com.fitness.result.BaseResult;
+import com.fitness.result.page.PageResult;
 
 import java.util.List;
 
@@ -23,4 +24,13 @@ public interface ImgService {
      * @return
      */
     BaseResult addBanner(List<Img> imgList);
+
+
+    /**
+     * 图片列表分页
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    PageResult pageList(Integer pageNo,Integer pageSize);
 }

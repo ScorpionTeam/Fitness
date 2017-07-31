@@ -20,4 +20,14 @@
         </foreach>
     </insert>
 
+    <!--查询图片数量-->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM img
+    </select>
+
+    <!--查询图片集合-->
+    <select id="pageList" resultType="com.fitness.api.domain.Img">
+        SELECT id,url,createDate,thirdId FROM img
+    </select>
+
 </mapper>
