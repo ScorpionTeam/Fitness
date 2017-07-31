@@ -65,16 +65,6 @@ public class ImgController {
         return imgService.pageList(pageNo, pageSize);
     }
 
-    /**
-     * 新增图片
-     *
-     * @param img
-     * @return
-     */
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public BaseResult add(@RequestBody Img img) {
-        return imgService.add(img);
-    }
 
 
 }
