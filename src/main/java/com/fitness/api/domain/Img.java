@@ -1,5 +1,7 @@
 package com.fitness.api.domain;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 /**
@@ -15,6 +17,7 @@ public class Img {
     private String url;
 
     //创建时间
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
 
     //第三方对应id
