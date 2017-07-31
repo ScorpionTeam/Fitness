@@ -113,6 +113,7 @@ public class ActivityServiceImpl implements ActivityService, PageService {
         Activity activity = activityDao.activityInfo(id);
         if (null == activity)
             return BaseResult.nonSuchResult();
+        activityDao.visitAdd(id);
         return BaseResult.success(activity);
     }
 

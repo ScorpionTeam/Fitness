@@ -72,4 +72,18 @@ public class ImgServiceImpl implements ImgService, PageService {
             });
         return new PageResult(list, count, pageNo, pageSize);
     }
+
+    /**
+     * 新增图片
+     *
+     * @param img
+     * @return
+     */
+    @Override
+    public BaseResult add(Img img) {
+        Integer result = imgDao.add(img);
+        if (result > 0)
+            return BaseResult.success("新增图片成功");
+        return BaseResult.error("ADD_FAIL", "新增图片失败");
+    }
 }

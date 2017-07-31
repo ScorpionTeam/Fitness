@@ -1,5 +1,6 @@
 package com.fitness.api.controller;
 
+import com.fitness.api.domain.Img;
 import com.fitness.api.service.ImgService;
 import com.fitness.constant.Constant;
 import com.fitness.result.BaseResult;
@@ -7,6 +8,7 @@ import com.fitness.result.page.PageResult;
 import com.fitness.util.ImgUtil;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,6 +63,17 @@ public class ImgController {
     @RequestMapping(value = "/pageList", method = RequestMethod.GET)
     public PageResult pageList(Integer pageNo, Integer pageSize) {
         return imgService.pageList(pageNo, pageSize);
+    }
+
+    /**
+     * 新增图片
+     *
+     * @param img
+     * @return
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public BaseResult add(@RequestBody Img img) {
+        return imgService.add(img);
     }
 
 

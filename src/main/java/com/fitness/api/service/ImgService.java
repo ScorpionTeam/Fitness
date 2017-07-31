@@ -33,4 +33,11 @@ public interface ImgService {
      * @return
      */
     PageResult pageList(Integer pageNo,Integer pageSize);
+
+    /**
+     * 新增图片
+     * @param img
+     * @return
+     */
+    BaseResult add(Img img);
 }
