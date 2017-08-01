@@ -92,7 +92,7 @@ public class GroupClassController {
     @RequestMapping(value = "/classListByStadium", method = RequestMethod.GET)
     public Map<String, Object> classListByStadium(Integer pageNo, Integer pageSize, Long stadiumId, String date) {
         Map<String, Object> resultMap = new HashMap<>();
-        resultMap.put("list", groupClassService.classListByStadium(pageNo, pageSize, stadiumId, date));
+        resultMap.put("data", groupClassService.classListByStadium(pageNo, pageSize, stadiumId, date));
         resultMap.put("pastImgList", groupClassService.pastClass(stadiumId));
         return resultMap;
     }
