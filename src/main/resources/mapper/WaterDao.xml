@@ -4,4 +4,48 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fitness.api.dao.WaterDao">
 
+    <!--查询数量-->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(1) from water WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND name like #{key}
+        </if>
+    </select>
+
+    <!--查询列表-->
+    <select id="list" resultType="com.fitness.api.domain.Water">
+        SELECT id,
+        name,
+        capacity,
+        price,
+        total,
+        createDate,
+        status
+        FROM water WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND name like #{key}
+        </if>
+    </select>
+
+    <!--新增-->
+    <insert id="add" parameterType="com.fitness.api.domain.Water">
+        INSERT INTO water(name,capacity,price,total,createDate,status)
+        VALUES (#{name},#{capacity},#{price},#{total},now(),#{status})
+    </insert>
+
+    <!--修改-->
+    <update id="update" parameterType="com.fitness.api.domain.Water">
+        UPDATE water set
+        name=#{name},
+        capacity=#{capacity},
+        price=#{price},
+        total=#{total},
+        status=#{status}
+        WHERE id=#{id}
+    </update>
+
+    <!--删除-->
+    <update id="del">
+        UPDATE water SET status='0' WHERE id=#{id}
+    </update>
 </mapper>
