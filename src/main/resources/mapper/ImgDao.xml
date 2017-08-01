@@ -16,7 +16,7 @@
     <insert id="addBanner" parameterType="com.fitness.api.domain.Img">
         insert into img(url,createDate,thirdId) values
         <foreach collection="imgList" item="item" index="index" separator=",">
-            (#{url},now(),#{thirdId})
+            (#{item.url},now(),#{item.thirdId})
         </foreach>
     </insert>
 
