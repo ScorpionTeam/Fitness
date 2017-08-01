@@ -30,8 +30,8 @@ public class WaterController {
      * @return
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public PageResult list(Integer pageNo, Integer pageSize,String key) {
-        return null;
+    public PageResult list(Integer pageNo, Integer pageSize, String key) {
+        return waterService.list(pageNo, pageSize, key);
     }
 
     /**
@@ -42,7 +42,7 @@ public class WaterController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public BaseResult add(@RequestBody Water water) {
-        return null;
+        return waterService.add(water);
     }
 
     /**
@@ -53,7 +53,7 @@ public class WaterController {
      */
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     public BaseResult del(Long id) {
-        return null;
+        return waterService.del(id);
     }
 
     /**
@@ -64,6 +64,6 @@ public class WaterController {
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public BaseResult update(@RequestBody Water water) {
-        return null;
+        return waterService.update(water);
     }
 }
