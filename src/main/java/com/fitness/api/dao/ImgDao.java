@@ -33,7 +33,7 @@ public interface ImgDao {
      * @param imgList
      * @return
      */
-    Integer addBanner(List<Img> imgList);
+    Integer addBanner(@Param(value = "imgList") List<Img> imgList);
 
     /**
      * 图片列表分页
