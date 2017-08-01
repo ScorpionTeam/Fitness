@@ -30,4 +30,9 @@
         SELECT id,url,createDate,thirdId FROM img
     </select>
 
+    <!--根据课程id查询 图片集合-->
+    <select id="list" resultType="com.fitness.api.domain.Img">
+        SELECT id,url,createDate,thirdId FROM img WHERE thirdId=#{thirdId}
+    </select>
+
 </mapper>

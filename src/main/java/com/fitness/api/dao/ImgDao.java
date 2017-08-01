@@ -16,20 +16,23 @@ public interface ImgDao {
 
     /**
      * 新增图片数据
+     *
      * @param img
      * @return
      */
     Integer add(Img img);
 
     /**
+     * 根据课程id查询图片集合
      *
-     * @param id
+     * @param thirdId
      * @return
      */
-    List<Img> list(Long id);
+    List<Img> list(@Param(value = "thirdId") Long thirdId);
 
     /**
      * 创建banner图
+     *
      * @param imgList
      * @return
      */
@@ -37,6 +40,7 @@ public interface ImgDao {
 
     /**
      * 图片列表分页
+     *
      * @param rowBounds
      * @return
      */
@@ -44,6 +48,7 @@ public interface ImgDao {
 
     /**
      * 查询图片数量
+     *
      * @return
      */
     Integer count();

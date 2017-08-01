@@ -114,6 +114,10 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
     @Override
     public BaseResult classInfo(Long id) {
         GroupClass groupClass = groupClassDao.classInfo(id);
+
+        //banner图
+        List<Img> imgList= imgDao.list(id);
+        groupClass.setImgList(imgList);
         if (null == groupClass)
             return BaseResult.nonSuchResult();
         return BaseResult.success(groupClass);
