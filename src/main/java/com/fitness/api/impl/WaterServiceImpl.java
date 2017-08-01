@@ -1,10 +1,12 @@
 package com.fitness.api.impl;
 
+import com.fitness.api.dao.WaterDao;
 import com.fitness.api.domain.Water;
 import com.fitness.api.service.WaterService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
 import com.fitness.result.page.PageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,6 +14,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class WaterServiceImpl implements WaterService,PageService {
+
+    @Autowired
+    private WaterDao waterDao;
 
     /**
      * 创建

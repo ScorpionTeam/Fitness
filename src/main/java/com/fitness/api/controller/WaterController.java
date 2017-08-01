@@ -1,8 +1,10 @@
 package com.fitness.api.controller;
 
 import com.fitness.api.domain.Water;
+import com.fitness.api.service.WaterService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("water")
 public class WaterController {
+
+    @Autowired
+    private WaterService waterService;
 
     /**
      * 列表
