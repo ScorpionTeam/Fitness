@@ -11,35 +11,23 @@ import java.util.Date;
  */
 public class MemberClass {
 
-    /**
-     * 主键
-     */
+    //主键
     private Long id;
 
-    /**
-     * 课程id
-     */
+    //课程id
     private Long classId;
 
-    /**
-     * 会员id
-     */
+    //会员id
     private Long memberId;
 
-    /**
-     * 创建时间
-     */
+    //创建时间
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
 
-    /**
-     * 状态 1 已报名  2 已签到  3 未签到
-     */
+    //状态 1 已报名  2 已签到  3 未签到
     private String status;
 
-    /**
-     * 类型 1 团课 0 私教
-     */
+    //类型 1 团课 0 私教
     private String type;
 
     public Long getId() {

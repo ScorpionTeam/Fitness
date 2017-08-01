@@ -7,24 +7,16 @@ import java.util.Date;
  */
 public class MemberMeal {
 
-    /**
-     * 主键
-     */
+    //主键
     private Long id;
 
-    /**
-     * 会员id
-     */
+    //会员id
     private Long memberId;
 
-    /**
-     * 餐饮id
-     */
+    //餐饮id
     private Long mealId;
 
-    /**
-     * 创建时间
-     */
+    //创建时间
     private Date createDate;
 
     public Long getId() {

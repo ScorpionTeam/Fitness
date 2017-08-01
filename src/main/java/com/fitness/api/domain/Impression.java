@@ -6,24 +6,16 @@ package com.fitness.api.domain;
  */
 public class Impression {
 
-    /**
-     * 主键
-     */
+    //主键
     private Long id;
 
-    /**
-     * 印象名称
-     */
+    //印象名称
     private String name;
 
-    /**
-     * 教练id
-     */
+    //教练id
     private Long coachId;
 
-    /**
-     * 会员id
-     */
+    //会员id
     private Long memberId;
 
     public Long getId() {

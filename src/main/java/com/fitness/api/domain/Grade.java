@@ -8,44 +8,28 @@ import java.util.Date;
  */
 public class Grade {
 
-    /**
-     * 主键
-     */
+    //主键
     private Long id;
 
-    /**
-     * 会员id
-     */
+    //会员id
     private Long memberId;
 
-    /**
-     * 课程id
-     */
+    //课程id
     private Long classId;
 
-    /**
-     * 教练id
-     */
+    //教练id
     private Long coachId;
 
-    /**
-     * 服务评分
-     */
+    //服务评分
     private Integer serviceScore;
 
-    /**
-     * 教练评分
-     */
+    //教练评分
     private Integer coachScore;
 
-    /**
-     * 课程评分
-     */
+    //课程评分
     private Integer classScore;
 
-    /**
-     * 创建时间
-     */
+    //创建时间
     private Date createDate;
 
     public Long getId() {

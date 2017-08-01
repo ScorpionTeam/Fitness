@@ -6,34 +6,22 @@ package com.fitness.api.domain;
  */
 public class Meal {
 
-    /**
-     * 主键
-     */
+    //主键
     private Long id;
 
-    /**
-     * 名称
-     */
+    //名称
     private String name;
 
-    /**
-     * 价格
-     */
+    //价格
     private Integer price;
 
-    /**
-     * 简介
-     */
+    //简介
     private String content;
 
-    /**
-     * 数量
-     */
+    //数量
     private Integer total;
 
-    /**
-     * 场馆id
-     */
+    //场馆id
     private Long stadiumId;
 
     public Long getId() {
