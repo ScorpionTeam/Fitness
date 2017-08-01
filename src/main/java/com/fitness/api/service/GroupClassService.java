@@ -5,6 +5,7 @@ import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
 
 import java.security.acl.Group;
+import java.util.List;
 
 /**
  * 团课 -业务逻辑接口
@@ -70,5 +71,12 @@ public interface GroupClassService {
      * @return
      */
     BaseResult classInfoByClassId(Long id);
+
+    /**
+     * 根据场馆id查询往期图片
+     * @param stadiumId
+     * @return
+     */
+    List<String> pastClass(Long stadiumId);
 
 }

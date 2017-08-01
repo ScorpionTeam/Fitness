@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -116,7 +117,7 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
         GroupClass groupClass = groupClassDao.classInfo(id);
 
         //banner图
-        List<Img> imgList= imgDao.list(id);
+        List<Img> imgList = imgDao.list(id);
         groupClass.setImgList(imgList);
         if (null == groupClass)
             return BaseResult.nonSuchResult();
@@ -201,6 +202,19 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
         grade = gradeDao.getScoreByClassId(classId);
         groupClass.setGrade(grade);
         return BaseResult.success(groupClass);
+    }
+
+    /**
+     * 根据场馆id 查询往期图片
+     *
+     * @param stadiumId
+     * @return
+     */
+    @Override
+    public List<String> pastClass(Long stadiumId) {
+        List<String> list = new ArrayList<>();
+        list = groupClassDao.pastClassImgList(stadiumId);
+        return list;
     }
 
 

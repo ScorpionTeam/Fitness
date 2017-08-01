@@ -187,4 +187,12 @@
         WHERE gc.id=#{classId}
     </select>
 
+    <!--根据教练id查询往期课程图片列表-->
+    <select id="pastClassImgList" resultType="java.lang.String">
+        SELECT gc.mainImgUrl FROM group_class gc
+        LEFT JOIN coach c ON gc.coachId = c.id
+        LEFT JOIN stadium s ON s.id=c.stadiumId
+        WHERE s.id=#{stadiumId} AND gc.endDate > now() ORDER  BY gc.endDate desc limit 3
+    </select>
+
 </mapper>

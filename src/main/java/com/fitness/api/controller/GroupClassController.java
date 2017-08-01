@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * 团课
@@ -82,32 +85,38 @@ public class GroupClassController {
 
     /**
      * 根据场馆查询团课列表
+     *
      * @param stadiumId
      * @return
      */
-    @RequestMapping(value = "/classListByStadium",method = RequestMethod.GET)
-    public PageResult classListByStadium(Integer pageNo,Integer pageSize,Long stadiumId,String date){
-        return groupClassService.classListByStadium(pageNo,pageSize,stadiumId,date);
+    @RequestMapping(value = "/classListByStadium", method = RequestMethod.GET)
+    public Map<String, Object> classListByStadium(Integer pageNo, Integer pageSize, Long stadiumId, String date) {
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("list", groupClassService.classListByStadium(pageNo, pageSize, stadiumId, date));
+        resultMap.put("pastImgList", groupClassService.pastClass(stadiumId));
+        return resultMap;
     }
 
     /**
      * 团课列表
+     *
      * @param pageNo
      * @param pageSize
      * @return
      */
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public PageResult list(Integer pageNo,Integer pageSize,String key){
-        return groupClassService.list(pageNo,pageSize,key);
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public PageResult list(Integer pageNo, Integer pageSize, String key) {
+        return groupClassService.list(pageNo, pageSize, key);
     }
 
     /**
      * 根据课程id查询课程详情
+     *
      * @param classId
      * @return
      */
-    @RequestMapping(value = "/classInfoByClassId",method = RequestMethod.GET)
-    public BaseResult classInfoByClassId(Long classId){
+    @RequestMapping(value = "/classInfoByClassId", method = RequestMethod.GET)
+    public BaseResult classInfoByClassId(Long classId) {
         return groupClassService.classInfoByClassId(classId);
     }
 

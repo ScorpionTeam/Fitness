@@ -126,4 +126,11 @@ public interface GroupClassDao {
      * @return
      */
     Integer minusGroupClassTotal(@Param(value = "classId") Long classId);
+
+    /**
+     * 根据场馆id  查询往期课程图片列表
+     * @param stadiumId
+     * @return
+     */
+    List<String> pastClassImgList(@Param(value = "stadiumId") Long stadiumId);
 }

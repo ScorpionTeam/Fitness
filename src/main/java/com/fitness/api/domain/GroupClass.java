@@ -3,6 +3,7 @@ package com.fitness.api.domain;
 import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.data.annotation.Transient;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
