@@ -77,6 +77,6 @@ public interface GroupClassService {
      * @param stadiumId
      * @return
      */
-    List<String> pastClass(Long stadiumId);
+    BaseResult pastClass(Long stadiumId);
 
 }

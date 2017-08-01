@@ -211,10 +211,10 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
      * @return
      */
     @Override
-    public List<String> pastClass(Long stadiumId) {
+    public BaseResult pastClass(Long stadiumId) {
         List<String> list = new ArrayList<>();
         list = groupClassDao.pastClassImgList(stadiumId);
-        return list;
+        return BaseResult.success(list);
     }
 
 
