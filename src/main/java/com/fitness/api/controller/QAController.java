@@ -80,14 +80,15 @@ public class QAController {
 
     /**
      * 我的问答
+     *
      * @param pageNo
      * @param pageSize
      * @param memberId
      * @return
      */
     @RequestMapping(value = "/myQuestion", method = RequestMethod.GET)
-    public PageResult myQuestion(Integer pageNo,Integer pageSize,Long memberId) {
-        return null;
+    public PageResult myQuestion(Integer pageNo, Integer pageSize, Long memberId) {
+        return qaService.myQuestion(pageNo, pageSize, memberId);
     }
 
 
