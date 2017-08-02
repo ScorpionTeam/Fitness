@@ -37,4 +37,28 @@
     <select id="count" resultType="java.lang.Integer">
         SELECT COUNT(1) FROM qa WHERE status='1' and answer!=null
     </select>
+    
+    <!--后台问答数量-->
+    <select id="bcCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM qa WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND question like #{key}
+        </if>
+    </select>
+
+    <!--后台问答列表-->
+    <select id="bcList" resultType="com.fitness.api.domain.QA">
+        SELECT id,
+        question,
+        createDate,
+        memberId,
+        answer,
+        userId,
+        answerDate,
+        status
+        FROM qa WHERE 1=1
+        <if test="key!=null and key!=''">
+            AND question like #{key}
+        </if>
+    </select>
 </mapper>

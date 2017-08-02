@@ -6,6 +6,7 @@ import com.fitness.api.service.QAService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
 import com.fitness.result.page.PageService;
+import com.mysql.jdbc.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,7 +62,13 @@ public class QAServiceImpl implements QAService, PageService {
      */
     @Override
     public PageResult bacList(Integer pageNo, Integer pageSize, String key) {
-        return null;
+        if (!StringUtils.isNullOrEmpty(key))
+            key = "%" + key + "%";
+        Integer count = qaDao.bcCount(key);
+        if (count <= 0)
+            return new PageResult(null, 0);
+        List<QA> list = qaDao.bcList(rowBounds(pageNo, pageSize), key);
+        return new PageResult(list, count, pageNo, pageSize);
     }
 
     /**
