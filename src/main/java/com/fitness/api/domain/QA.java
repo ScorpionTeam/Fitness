@@ -1,6 +1,7 @@
 package com.fitness.api.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.data.annotation.Transient;
 
 import java.util.Date;
 
@@ -34,6 +35,10 @@ public class QA {
 
     //状态  1正常  0删除
     private String status;
+
+    //会员名称
+    @Transient
+    private String memberName;
 
     public Long getId() {
         return id;
@@ -99,6 +104,14 @@ public class QA {
         this.status = status;
     }
 
+    public String getMemberName() {
+        return memberName;
+    }
+
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
     @Override
     public String toString() {
         return "QA{" +
@@ -110,6 +123,7 @@ public class QA {
                 ", userId=" + userId +
                 ", answerDate=" + answerDate +
                 ", status='" + status + '\'' +
+                ", memberName='" + memberName + '\'' +
                 '}';
     }
 }

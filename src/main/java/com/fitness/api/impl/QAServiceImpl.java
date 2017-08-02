@@ -44,7 +44,6 @@ public class QAServiceImpl implements QAService, PageService {
      */
     @Override
     public PageResult list(Integer pageNo, Integer pageSize) {
-
         Integer count = qaDao.count();
         if (count <= 0)
             return new PageResult(null, 0);
@@ -73,7 +72,10 @@ public class QAServiceImpl implements QAService, PageService {
      */
     @Override
     public BaseResult del(Long id) {
-        return null;
+        Integer result = qaDao.del(id);
+        if (result > 0)
+            return BaseResult.success("删除问答成功");
+        return BaseResult.error("DELETE_FAIL", "删除问答失败");
     }
 
     /**

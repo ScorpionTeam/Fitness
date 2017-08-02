@@ -21,5 +21,20 @@
         UPDATE qa SET status='0' WHERE id=#{id}
     </update>
 
-
+    <!--问答列表-->
+    <select id="list" resultType="com.fitness.api.domain.QA">
+        SELECT id,
+        question,
+        createDate,
+        memberId,
+        answer,
+        userId,
+        answerDate,
+        status,
+        m.name as memberName
+        FROM qa q LEFT JOIN member m ON q.memberId=m.id WHERE q.status='1'
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM qa WHERE status='1'
+    </select>
 </mapper>
