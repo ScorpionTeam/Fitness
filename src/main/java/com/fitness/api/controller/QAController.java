@@ -78,5 +78,16 @@ public class QAController {
         return qaService.bacList(pageNo, pageSize, key);
     }
 
+    /**
+     * 我的问答
+     *
+     * @param memberId
+     * @return
+     */
+    @RequestMapping(value = "/myQuestion", method = RequestMethod.GET)
+    public PageResult myQuestion(Long memberId) {
+        return null;
+    }
+
 
 }

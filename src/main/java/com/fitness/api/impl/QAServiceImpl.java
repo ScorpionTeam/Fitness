@@ -99,5 +99,15 @@ public class QAServiceImpl implements QAService, PageService {
         return BaseResult.error("ANSWER_FAIL", "回答失败");
     }
 
+    /**
+     *
+     * @param memberId
+     * @return
+     */
+    @Override
+    public PageResult myQuestion(Long memberId) {
+        return null;
+    }
+
 
 }

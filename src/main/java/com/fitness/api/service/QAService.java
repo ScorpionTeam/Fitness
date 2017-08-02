@@ -47,5 +47,12 @@ public interface QAService {
      */
     BaseResult answer(QA qa);
 
+    /**
+     * 根据会员id查询我的问答
+     * @param memberId
+     * @return
+     */
+    PageResult myQuestion(Long memberId);
+
 
 }

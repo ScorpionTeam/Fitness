@@ -32,10 +32,10 @@
         answerDate,
         status,
         m.name as memberName
-        FROM qa q LEFT JOIN member m ON q.memberId=m.id WHERE q.status='1' AND q.answer!=null
+        FROM qa q LEFT JOIN member m ON q.memberId=m.id WHERE q.status='1' AND q.answer!=''
     </select>
     <select id="count" resultType="java.lang.Integer">
-        SELECT COUNT(1) FROM qa WHERE status='1' and answer!=null
+        SELECT COUNT(1) FROM qa WHERE status='1' and answer!=''
     </select>
     
     <!--后台问答数量-->
