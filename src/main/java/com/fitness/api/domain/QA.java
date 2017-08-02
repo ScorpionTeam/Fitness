@@ -32,6 +32,9 @@ public class QA {
     @JSONField(format = "yyyy-MM-dd HH:mm")
     private Date answerDate;
 
+    //状态  1正常  0删除
+    private String status;
+
     public Long getId() {
         return id;
     }
@@ -88,6 +91,14 @@ public class QA {
         this.answerDate = answerDate;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "QA{" +
@@ -98,6 +109,7 @@ public class QA {
                 ", answer='" + answer + '\'' +
                 ", userId=" + userId +
                 ", answerDate=" + answerDate +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

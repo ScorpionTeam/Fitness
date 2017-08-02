@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.QADao">
+
+    <!--发布问题-->
+    <insert id="publish" parameterType="com.fitness.api.domain.QA">
+        INSERT INTO qa(question,createDate,memberId,status)
+        VALUES (#{question},now(),#{memberId},'1')
+    </insert>
+
+    <!--回答问题-->
+    <update id="answer" parameterType="com.fitness.api.domain.QA">
+        UPDATE qa SET answer=#{answer},userId='0',answerDate=now()
+        WHERE id=#{id}
+    </update>
+
+    <!--根据id删除问答-->
+    <update id="del">
+        UPDATE qa SET status='0' WHERE id=#{id}
+    </update>
+
+
+</mapper>

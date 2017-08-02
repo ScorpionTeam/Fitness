@@ -9,6 +9,8 @@ import com.fitness.result.page.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created on 2017/8/2.
  */
@@ -27,7 +29,10 @@ public class QAServiceImpl implements QAService, PageService {
      */
     @Override
     public BaseResult publish(QA qa) {
-        return null;
+        Integer result = qaDao.publish(qa);
+        if (result > 0)
+            return BaseResult.success("问题发布成功");
+        return BaseResult.error("PUBLISH_FAIL", "问题发布失败");
     }
 
     /**
@@ -39,7 +44,12 @@ public class QAServiceImpl implements QAService, PageService {
      */
     @Override
     public PageResult list(Integer pageNo, Integer pageSize) {
-        return null;
+
+        Integer count = qaDao.count();
+        if (count <= 0)
+            return new PageResult(null, 0);
+        List<QA> list = qaDao.list(rowBounds(pageNo, pageSize));
+        return new PageResult(list, count, pageNo, pageSize);
     }
 
     /**
@@ -64,6 +74,20 @@ public class QAServiceImpl implements QAService, PageService {
     @Override
     public BaseResult del(Long id) {
         return null;
+    }
+
+    /**
+     * 回答问题
+     *
+     * @param qa
+     * @return
+     */
+    @Override
+    public BaseResult answer(QA qa) {
+        Integer result = qaDao.answer(qa);
+        if (result > 0)
+            return BaseResult.success("回答成功");
+        return BaseResult.error("ANSWER_FAIL", "回答失败");
     }
 
 

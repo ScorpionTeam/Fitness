@@ -40,5 +40,12 @@ public interface QAService {
      */
     BaseResult del(Long id);
 
+    /**
+     * 回答问题
+     * @param qa
+     * @return
+     */
+    BaseResult answer(QA qa);
+
 
 }
