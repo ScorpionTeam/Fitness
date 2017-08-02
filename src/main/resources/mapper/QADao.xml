@@ -32,9 +32,9 @@
         answerDate,
         status,
         m.name as memberName
-        FROM qa q LEFT JOIN member m ON q.memberId=m.id WHERE q.status='1'
+        FROM qa q LEFT JOIN member m ON q.memberId=m.id WHERE q.status='1' AND q.answer!=null
     </select>
     <select id="count" resultType="java.lang.Integer">
-        SELECT COUNT(1) FROM qa WHERE status='1'
+        SELECT COUNT(1) FROM qa WHERE status='1' and answer!=null
     </select>
 </mapper>
