@@ -100,13 +100,20 @@ public class QAServiceImpl implements QAService, PageService {
     }
 
     /**
+     * 我的问答列表
      *
      * @param memberId
+     * @param pageNo
+     * @param pageSize
      * @return
      */
     @Override
-    public PageResult myQuestion(Long memberId) {
-        return null;
+    public PageResult myQuestion(Integer pageNo, Integer pageSize, Long memberId) {
+        Integer count = qaDao.myCount(memberId);
+        if (count <= 0)
+            return new PageResult(null, 0);
+        List<QA> list = qaDao.myList(rowBounds(pageNo, pageSize), memberId);
+        return new PageResult(list, count, pageNo, pageSize);
     }
 
 

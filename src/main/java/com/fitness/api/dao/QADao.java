@@ -67,5 +67,20 @@ public interface QADao {
      */
     List<QA> bcList(RowBounds rowBounds,@Param(value = "key")String key);
 
+    /**
+     * 我的问答数量
+     * @param memberId
+     * @return
+     */
+    Integer myCount(Long memberId);
+
+    /**
+     * 我的问答列表
+     * @param memberId
+     * @param rowBounds
+     * @return
+     */
+    List<QA> myList(RowBounds rowBounds,Long memberId);
+
 
 }

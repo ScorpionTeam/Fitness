@@ -61,4 +61,23 @@
             AND question like #{key}
         </if>
     </select>
+
+    <!--我的问答数量-->
+    <select id="myCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM qa WHERE memberId=#{memberId} AND status='1' AND answer!=''
+    </select>
+
+    <!--我的问答列表-->
+    <select id="myList" resultType="com.fitness.api.domain.QA">
+        SELECT q.id,
+        q.question,
+        q.createDate,
+        q.memberId,
+        q.answer,
+        q.userId,
+        q.answerDate,
+        q.status,
+        m.name as memberName
+        FROM qa q LEFT JOIN member m ON q.memberId=m.id WHERE q.status='1' AND q.answer!='' AND memberId=#{memberId}
+    </select>
 </mapper>

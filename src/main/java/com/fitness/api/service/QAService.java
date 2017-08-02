@@ -48,11 +48,13 @@ public interface QAService {
     BaseResult answer(QA qa);
 
     /**
-     * 根据会员id查询我的问答
+     * 我的问答
+     * @param pageNo
+     * @param pageSize
      * @param memberId
      * @return
      */
-    PageResult myQuestion(Long memberId);
+    PageResult myQuestion(Integer pageNo,Integer pageSize,Long memberId);
 
 
 }
