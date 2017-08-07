@@ -91,5 +91,16 @@ public class QAController {
         return qaService.myQuestion(pageNo, pageSize, memberId);
     }
 
+    /**
+     * 问答修改
+     *
+     * @param qa
+     * @return
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public BaseResult update(@RequestBody QA qa) {
+        return qaService.update(qa);
+    }
+
 
 }

@@ -56,5 +56,12 @@ public interface QAService {
      */
     PageResult myQuestion(Integer pageNo,Integer pageSize,Long memberId);
 
+    /**
+     * 问答修改
+     * @param qa
+     * @return
+     */
+    BaseResult update(QA qa);
+
 
 }

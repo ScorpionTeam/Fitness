@@ -37,7 +37,7 @@
     <select id="count" resultType="java.lang.Integer">
         SELECT COUNT(1) FROM qa WHERE status='1' and answer!=''
     </select>
-    
+
     <!--后台问答数量-->
     <select id="bcCount" resultType="java.lang.Integer">
         SELECT COUNT(1) FROM qa WHERE 1=1
@@ -80,4 +80,12 @@
         m.name as memberName
         FROM qa q LEFT JOIN member m ON q.memberId=m.id WHERE q.status='1' AND q.answer!='' AND q.memberId=#{memberId}
     </select>
+
+    <!--问答修改-->
+    <update id="update" parameterType="com.fitness.api.domain.QA">
+        UPDATE qa
+        SET answer=#{answer},
+        answerDate=#{now},
+        WHERE id=#{id}
+    </update>
 </mapper>
