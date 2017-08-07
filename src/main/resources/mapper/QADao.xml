@@ -78,6 +78,6 @@
         q.answerDate,
         q.status,
         m.name as memberName
-        FROM qa q LEFT JOIN member m ON q.memberId=m.id WHERE q.status='1' AND q.answer!='' AND memberId=#{memberId}
+        FROM qa q LEFT JOIN member m ON q.memberId=m.id WHERE q.status='1' AND q.answer!='' AND q.memberId=#{memberId}
     </select>
 </mapper>

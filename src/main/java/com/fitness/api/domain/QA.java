@@ -40,6 +40,10 @@ public class QA {
     @Transient
     private String memberName;
 
+    //回答状态  1 已回答 0 未回答
+    @Transient
+    private String answerStatus;
+
     public Long getId() {
         return id;
     }
@@ -112,6 +116,14 @@ public class QA {
         this.memberName = memberName;
     }
 
+    public String getAnswerStatus() {
+        return this.answer == null ? "0" : "1";
+    }
+
+    public void setAnswerStatus(String answerStatus) {
+        this.answerStatus = answerStatus;
+    }
+
     @Override
     public String toString() {
         return "QA{" +
@@ -124,6 +136,7 @@ public class QA {
                 ", answerDate=" + answerDate +
                 ", status='" + status + '\'' +
                 ", memberName='" + memberName + '\'' +
+                ", answerStatus='" + answerStatus + '\'' +
                 '}';
     }
 }
