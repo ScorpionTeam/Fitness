@@ -116,19 +116,5 @@ public class QAServiceImpl implements QAService, PageService {
         return new PageResult(list, count, pageNo, pageSize);
     }
 
-    /**
-     * 问答修改
-     *
-     * @param qa
-     * @return
-     */
-    @Override
-    public BaseResult update(QA qa) {
-        Integer result = qaDao.update(qa);
-        if (result > 0)
-            return BaseResult.success("修改成功");
-        return BaseResult.error("UPDATE_FAIL", "修改失败");
-    }
-
 
 }

@@ -82,12 +82,5 @@ public interface QADao {
      */
     List<QA> myList(RowBounds rowBounds,Long memberId);
 
-    /**
-     * 问答修改
-     * @param qa
-     * @return
-     */
-    Integer update(QA qa);
-
 
 }

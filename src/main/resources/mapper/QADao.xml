@@ -12,7 +12,7 @@
 
     <!--回答问题-->
     <update id="answer" parameterType="com.fitness.api.domain.QA">
-        UPDATE qa SET answer=#{answer},userId='0',answerDate=now()
+        UPDATE qa SET answer=#{answer},userId='0',answerDate=now(),status='1'
         WHERE id=#{id}
     </update>
 
@@ -81,11 +81,4 @@
         FROM qa q LEFT JOIN member m ON q.memberId=m.id WHERE q.status='1' AND q.answer!='' AND q.memberId=#{memberId}
     </select>
 
-    <!--问答修改-->
-    <update id="update" parameterType="com.fitness.api.domain.QA">
-        UPDATE qa
-        SET answer=#{answer},
-        answerDate=#{now},
-        WHERE id=#{id}
-    </update>
 </mapper>
