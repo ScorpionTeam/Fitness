@@ -3,7 +3,9 @@ package com.fitness.api.domain;
 import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.data.annotation.Transient;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 活动
@@ -64,6 +66,9 @@ public class Activity {
     //报名人数
     private Integer applyTotal;
 
+    //报名人员列表
+    @Transient
+    private List<Member> memberList;
 
     public Integer getApplyTotal() {
         return applyTotal;
@@ -193,6 +198,14 @@ public class Activity {
         this.showHome = showHome;
     }
 
+    public List<Member> getMemberList() {
+        return memberList == null ? new ArrayList<>() : memberList;
+    }
+
+    public void setMemberList(List<Member> memberList) {
+        this.memberList = memberList;
+    }
+
     @Override
     public String toString() {
         return "Activity{" +
@@ -212,6 +225,7 @@ public class Activity {
                 ", contentHtml='" + contentHtml + '\'' +
                 ", stadiumName='" + stadiumName + '\'' +
                 ", applyTotal=" + applyTotal +
+                ", memberList=" + memberList +
                 '}';
     }
 }

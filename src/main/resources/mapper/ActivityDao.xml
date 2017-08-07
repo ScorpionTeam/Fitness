@@ -211,6 +211,11 @@
         SELECT COUNT(1) FROM activity a where a.endDate &lt; now() AND a.status='1' AND a.stadiumId=#{stadiumId}
     </select>
 
+    <!--根据活动id 查询参加活动的会员id列表-->
+    <select id="getByActivityId" resultType="com.fitness.api.domain.Member">
+        SELECT m.imgUrl,m.id,m.name FROM member m LEFT JOIN member_activity ma ON m.id = ma.memberId
+        WHERE ma.activityId=#{activityId}
+    </select>
 
 
 </mapper>

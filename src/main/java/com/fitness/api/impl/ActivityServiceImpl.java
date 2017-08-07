@@ -2,6 +2,7 @@ package com.fitness.api.impl;
 
 import com.fitness.api.dao.ActivityDao;
 import com.fitness.api.domain.Activity;
+import com.fitness.api.domain.Member;
 import com.fitness.api.service.ActivityService;
 import com.fitness.result.BaseResult;
 import com.fitness.result.page.PageResult;
@@ -113,7 +114,15 @@ public class ActivityServiceImpl implements ActivityService, PageService {
         Activity activity = activityDao.activityInfo(id);
         if (null == activity)
             return BaseResult.nonSuchResult();
+
+        //新增访问量
         activityDao.visitAdd(id);
+
+        //根据活动id查询 参加互动的会员列表
+        List<Member> memberList = activityDao.getByActivityId(id);
+        if (null != memberList && memberList.size() > 0) {
+            activity.setMemberList(memberList);
+        }
         return BaseResult.success(activity);
     }
 

@@ -1,6 +1,7 @@
 package com.fitness.api.dao;
 
 import com.fitness.api.domain.Activity;
+import com.fitness.api.domain.Member;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.data.redis.core.ValueOperations;
@@ -127,5 +128,12 @@ public interface ActivityDao {
      * @return
      */
     Integer checkIsApply(@Param(value = "memberId")Long memberId,@Param(value = "activityId")Long activityId);
+
+    /**
+     * 根据活动id 查询参加的会员列表
+     * @param activityId
+     * @return
+     */
+    List<Member> getByActivityId(Long activityId);
 
 }
