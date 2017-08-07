@@ -1,6 +1,7 @@
 package com.fitness.api.dao;
 
 import com.fitness.api.domain.PrivateClassTime;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface PrivateClassTimeDao {
      * @param list
      * @return
      */
-    int batchInsertPrivateClassTime(List<PrivateClassTime> list);
+    int batchInsertPrivateClassTime(@Param(value = "list") List<PrivateClassTime> list);
 
     /**
      * 更新私教课时刻表

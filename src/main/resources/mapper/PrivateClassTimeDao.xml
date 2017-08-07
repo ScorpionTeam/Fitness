@@ -2,7 +2,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fitness.api.dao.PrivateClassTimeDao">
 
-    <insert id="batchInsertPrivateClassTime" parameterType="java.util.List">
+    <insert id="batchInsertPrivateClassTime">
       INSERT  into private_class_time(privateClassId,times,status) VALUES
         <foreach collection="list" index="item" separator=",">
           (#{item.privateClassId},#{item.times},#{item.status})
