@@ -48,9 +48,8 @@ public class PrivateClass {
     //开始时间
     private Date startDate;
 
-
-    //主图  图片id
-    private Long mainImgId;
+    //主图  图片地址
+    private String mainImgUrl;
 
     @Transient
     //课程图片集合
@@ -132,14 +131,6 @@ public class PrivateClass {
         this.imgList = imgList;
     }
 
-    public Long getMainImgId() {
-        return mainImgId;
-    }
-
-    public void setMainImgId(Long mainImgId) {
-        this.mainImgId = mainImgId;
-    }
-
     public List<PrivateClassTime> getPrivateClassTimeList() {
         return privateClassTimeList;
     }
@@ -172,6 +163,14 @@ public class PrivateClass {
         this.coachName = coachName;
     }
 
+    public String getMainImgUrl() {
+        return mainImgUrl;
+    }
+
+    public void setMainImgUrl(String mainImgUrl) {
+        this.mainImgUrl = mainImgUrl;
+    }
+
     @Override
     public String toString() {
         return "PrivateClass{" +
@@ -186,7 +185,7 @@ public class PrivateClass {
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 ", startDate=" + startDate +
-                ", mainImgId=" + mainImgId +
+                ", mainImgUrl='" + mainImgUrl + '\'' +
                 ", imgList=" + imgList +
                 ", privateClassTimeList=" + privateClassTimeList +
                 '}';
