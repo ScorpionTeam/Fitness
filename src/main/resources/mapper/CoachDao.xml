@@ -127,4 +127,9 @@
 
     </update>
 
+    <!--新增教练 检查重复名称-->
+    <select id="validCoachName" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM coach WHERE stadiumId=#{stadiumId} AND name=#{coachName}
+    </select>
+
 </mapper>

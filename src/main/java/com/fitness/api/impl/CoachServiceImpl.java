@@ -49,6 +49,9 @@ public class CoachServiceImpl implements CoachService, PageService {
      */
     @Override
     public BaseResult add(Coach coach) {
+        Integer count = coachDao.validCoachName(coach.getStadiumId(), coach.getName());
+        if (count > 0)
+            return BaseResult.error("ADD_FAIL", "名称重复");
         Integer result = coachDao.add(coach);
         if (result <= 0)
             return BaseResult.error("ADD_FAIL", "新增教练失败");

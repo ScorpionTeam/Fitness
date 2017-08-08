@@ -69,4 +69,12 @@ public interface CoachDao {
      * @return
      */
     List<Coach> coachListByStadiumId(@Param(value = "stadiumId")Long stadiumId);
+
+    /**
+     * 根据场馆id 教练名称检查重复名称
+     * @param stadiumId
+     * @param coachName
+     * @return
+     */
+    Integer validCoachName(@Param(value = "stadiumId") Long stadiumId,@Param(value = "coachName") String coachName);
 }
