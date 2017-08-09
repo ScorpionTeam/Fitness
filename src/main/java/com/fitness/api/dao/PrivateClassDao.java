@@ -49,7 +49,7 @@ public interface PrivateClassDao {
      * @param coachId
      * @return
      */
-    int listByCoachIdCount(Long coachId);
+    Integer listByCoachIdCount(Long coachId);
 
     /**
      * 根据教练id 查询课程列表
@@ -57,7 +57,7 @@ public interface PrivateClassDao {
      * @param coachId
      * @return
      */
-    List<PrivateClassDTO> listByCoachId(RowBounds rowBounds,@Param(value = "coachId") Long coachId);
+    List<PrivateClassDTO> listByCoachId(RowBounds rowBounds,Long coachId);
 
 
 }

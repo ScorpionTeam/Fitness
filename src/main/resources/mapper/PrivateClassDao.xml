@@ -44,17 +44,22 @@
     </update>
 
     <!-- 根据教练id 查询课程列表 -->
-    <select id="listByCoachId" parameterType="java.lang.Long" resultType="com.fitness.api.dto.PrivateClassDTO">
-        SELECT  a.name,a.classTime,b.times,a.id as privateClassId FROM  private_class a inner JOIN  private_class_time b
-        on a.id = b.privateClassId
-        where a.coachId = #{id}
+    <select id="listByCoachId" resultType="com.fitness.api.domain.PrivateClass">
+        SELECT id,
+         classTime,
+         classDesc,
+         coachId,
+         createDate,
+         updateDate,
+         startDate,
+         mainImgUrl,
+         name
+         FROM private_class WHERE coachId=#{coachId}
     </select>
 
     <!-- 根据教练id 查询课程列表数量 -->
-    <select id="listByCoachIdCount" parameterType="java.lang.Long">
-        SELECT count(1) ROM  private_class a inner JOIN  private_class_time b
-        on a.id = b.privateClassId
-        where a.coachId = #{id}
+    <select id="listByCoachIdCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM private_class WHERE coachId=#{coachId}
     </select>
 
 </mapper>
