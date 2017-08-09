@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fitness.api.dao.PrivateClassTimeDao">
 
-    <insert id="batchInsertPrivateClassTime">
-      INSERT  into private_class_time(privateClassId,times,status) VALUES
-        <foreach collection="list" index="item" separator=",">
-          (#{item.privateClassId},#{item.times},#{item.status})
-      </foreach>
-        <selectKey resultType="java.lang.Long" keyProperty="id">
-            SELECT LAST_INSERT_ID() AS id
-        </selectKey>
+    <insert id="batchInsertPrivateClassTime" parameterType="com.fitness.api.domain.PrivateClassTime">
+        insert into private_class_time(privateClassId,times,status) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.privateClassId},#{item.times},#{item.status})
+        </foreach>
     </insert>
 
     <update id="updatePrivateClassTime" parameterType="com.fitness.api.domain.PrivateClassTime">
@@ -23,4 +22,4 @@
     </update>
 
 
- </mapper>
+</mapper>

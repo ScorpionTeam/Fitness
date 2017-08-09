@@ -17,7 +17,7 @@ public interface PrivateClassTimeDao {
      * @param list
      * @return
      */
-    int batchInsertPrivateClassTime(@Param(value = "list") List<PrivateClassTime> list);
+    Integer batchInsertPrivateClassTime(@Param(value = "list") List<PrivateClassTime> list);
 
     /**
      * 更新私教课时刻表
