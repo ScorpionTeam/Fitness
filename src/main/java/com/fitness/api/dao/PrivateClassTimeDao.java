@@ -25,4 +25,11 @@ public interface PrivateClassTimeDao {
      * @return
      */
     int updatePrivateClassTime(PrivateClassTime privateClassTime);
+
+    /**
+     * 根据私教课id查询 私教课时间段
+     * @param privateClassId
+     * @return
+     */
+    List<PrivateClassTime> classTimesById(Long privateClassId);
 }

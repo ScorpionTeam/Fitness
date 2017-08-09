@@ -7,9 +7,9 @@
 
     <!-- 新增私教课 -->
     <insert id="insertPrivateClass" parameterType="com.fitness.api.domain.PrivateClass">
-      insert INTO private_class(<include refid="Insert_Column"/>) VALUES
+        insert INTO private_class(<include refid="Insert_Column"/>) VALUES
         (
-          #{classTime},#{classDesc},#{coachId},now(),#{updateDate},#{startDate},#{mainImgUrl},#{name},'1'
+        #{classTime},#{classDesc},#{coachId},now(),#{updateDate},#{startDate},#{mainImgUrl},#{name},'1'
         )
         <selectKey resultType="java.lang.Long" keyProperty="id">
             SELECT LAST_INSERT_ID() AS id
@@ -40,7 +40,7 @@
             <if test="name != null">name = #{name},</if>
             <if test="status != null">status = #{status},</if>
         </set>
-        WHERE  id = #{id}
+        WHERE id = #{id}
     </update>
 
     <!-- 根据教练id 查询课程列表 -->

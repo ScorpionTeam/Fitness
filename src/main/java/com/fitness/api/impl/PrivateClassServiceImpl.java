@@ -92,7 +92,11 @@ public class PrivateClassServiceImpl implements PrivateClassService, PageService
         int count = privateClassDao.listByCoachIdCount(coachId);
         if (count <= 0)
             return new PageResult(null, 0);
-        List<PrivateClassDTO> list = privateClassDao.listByCoachId(rowBounds(pageNo, pageSize), coachId);
+        List<PrivateClass> list = privateClassDao.listByCoachId(rowBounds(pageNo, pageSize), coachId);
+        //查询时间段
+        list.forEach(item ->{
+            item.setPrivateClassTimeList(privateClassTimeDao.classTimesById(item.getId()));
+        });
         return new PageResult(list, count, pageNo, pageSize);
     }
 

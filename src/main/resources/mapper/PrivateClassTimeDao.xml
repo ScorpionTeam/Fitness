@@ -21,5 +21,13 @@
         where id =#{id}
     </update>
 
+    <!--根据私教课id查询时间段-->
+    <select id="classTimesById" resultType="com.fitness.api.domain.PrivateClassTime">
+        SELECT id,
+        privateClassId,
+        times,
+        status
+        FROM private_class_time WHERE privateClassId=#{privateClassId}
+    </select>
 
 </mapper>

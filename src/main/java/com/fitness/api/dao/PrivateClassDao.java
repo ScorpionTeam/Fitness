@@ -2,6 +2,7 @@ package com.fitness.api.dao;
 
 import com.fitness.api.domain.Coach;
 import com.fitness.api.domain.PrivateClass;
+import com.fitness.api.domain.PrivateClassTime;
 import com.fitness.api.dto.PrivateClassDTO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
@@ -57,7 +58,8 @@ public interface PrivateClassDao {
      * @param coachId
      * @return
      */
-    List<PrivateClassDTO> listByCoachId(RowBounds rowBounds,Long coachId);
+    List<PrivateClass> listByCoachId(RowBounds rowBounds,Long coachId);
+
 
 
 }
