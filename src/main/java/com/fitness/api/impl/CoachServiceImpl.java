@@ -156,6 +156,16 @@ public class CoachServiceImpl implements CoachService, PageService {
         List<Coach> list = coachDao.coachListByStadiumId(stadiumId);
         if (null == list || list.size() <= 0)
             return BaseResult.nonSuchResult();
+        list.forEach(item -> {
+            //评分
+            Grade grade =new Grade();
+            grade= gradeDao.getScoreByCoachId(item.getId());
+            item.setGrade(grade);
+            //印象
+            List<Impression> impressionList = impressionDao.list(item.getId());
+            item.setImpressionList(impressionList);
+
+        });
         return BaseResult.success(list);
     }
 }
