@@ -86,6 +86,7 @@
     </select>
 
 
+
     <!--根据场馆id查询教练列表-->
     <select id="coachListByStadiumId" resultType="com.fitness.api.domain.Coach">
         SELECT
@@ -106,7 +107,7 @@
         s.name as stadiumName,
         i.url as coachImgPath
         FROM coach c LEFT JOIN stadium s ON  c.stadiumId=s.id
-        LEFT JOIN img i ON c.coachImgId
+        LEFT JOIN img i ON c.coachImgId=i.thirdId
         WHERE c.status='1' AND c.stadiumId=#{stadiumId}
     </select>
 
