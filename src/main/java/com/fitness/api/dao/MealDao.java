@@ -32,11 +32,22 @@ public interface MealDao {
     /**
      * 根据名称 场馆 检查餐饮
      *
-     * @param mealName
+     * @param name
      * @return
      */
     Meal validByName(@Param(value = "name") String name,
                      @Param(value = "stadiumId") Long stadiumId);
+
+    /**
+     * 修改校验
+     * @param name
+     * @param stadiumId
+     * @param id
+     * @return
+     */
+    Integer validByNameForUpdate(@Param(value = "name") String name,
+                                 @Param(value = "stadiumId") Long stadiumId,
+                                 @Param(value = "id") Long id);
 
 
     /**
@@ -57,6 +68,7 @@ public interface MealDao {
 
     /**
      * 修改
+     *
      * @param meal
      * @return
      */
@@ -64,6 +76,7 @@ public interface MealDao {
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */

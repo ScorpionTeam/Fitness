@@ -76,13 +76,15 @@ public class MealServiceImpl implements MealService, PageService {
     }
 
     /**
+     * 修改
+     *
      * @param meal 餐饮
      * @return
      */
     @Override
     public BaseResult update(Meal meal) {
-        Meal valid = mealDao.validByName(meal.getName(), meal.getStadiumId());
-        if (null != valid)
+        Integer count = mealDao.validByNameForUpdate(meal.getName(), meal.getStadiumId(), meal.getId());
+        if (count > 0)
             return BaseResult.error("UPDATE_FAIL", "名称已存在");
         Integer result = mealDao.update(meal);
         if (result > 0)

@@ -73,4 +73,9 @@
         DELETE FROM meal WHERE id=#{id}
     </delete>
 
+    <!--修改检查餐饮名称-->
+    <select id="validByNameForUpdate" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM meal WHERE name=#{name} AND stadiumId=#{stadiumId} AND id!=#{id}
+    </select>
+
 </mapper>
