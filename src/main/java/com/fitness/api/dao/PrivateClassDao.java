@@ -76,5 +76,18 @@ public interface PrivateClassDao {
      */
     Integer insertPrivateClassParam(@Param(value = "classId") Long classId, @Param(value = "memberId") Long memberId);
 
+    /**
+     * 私教数量
+     * @return
+     */
+    Integer bcCount();
+
+    /**
+     * 私教列表
+     * @param rowBounds
+     * @return
+     */
+    List<PrivateClass> bcList(RowBounds rowBounds);
+
 
 }

@@ -89,11 +89,11 @@ public class PrivateClassServiceImpl implements PrivateClassService, PageService
      * @return
      */
     @Override
-    public PageResult listByCoachId(Integer pageNo, Integer pageSize, Long coachId,String date) {
-        int count = privateClassDao.listByCoachIdCount(coachId,date);
+    public PageResult listByCoachId(Integer pageNo, Integer pageSize, Long coachId, String date) {
+        int count = privateClassDao.listByCoachIdCount(coachId, date);
         if (count <= 0)
             return new PageResult(null, 0);
-        List<PrivateClass> list = privateClassDao.listByCoachId(rowBounds(pageNo, pageSize), coachId,date);
+        List<PrivateClass> list = privateClassDao.listByCoachId(rowBounds(pageNo, pageSize), coachId, date);
         //查询时间段
         list.forEach(item -> {
             item.setPrivateClassTimeList(privateClassTimeDao.classTimesById(item.getId()));
@@ -155,5 +155,22 @@ public class PrivateClassServiceImpl implements PrivateClassService, PageService
         //增加member_class数据
         privateClassDao.insertPrivateClassParam(classId, memberId);
         return BaseResult.success("预约成功");
+    }
+
+    /**
+     * 课程列表
+     *
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public PageResult bcList(Integer pageNo, Integer pageSize) {
+
+        Integer count = privateClassDao.bcCount();
+        if (count <= 0)
+            return new PageResult(null, 0);
+        List<PrivateClass> list = privateClassDao.bcList(rowBounds(pageNo, pageSize));
+        return new PageResult(list, count, pageNo, pageSize);
     }
 }

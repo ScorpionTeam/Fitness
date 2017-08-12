@@ -64,4 +64,12 @@ public interface PrivateClassService {
      * @return
      */
     BaseResult apply(Long classId,Long timeId,Long memberId);
+
+    /**
+     * 课程列表
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    PageResult bcList(Integer pageNo,Integer pageSize);
 }

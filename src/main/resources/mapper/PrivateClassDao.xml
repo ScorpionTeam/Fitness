@@ -68,4 +68,11 @@
         VALUES (#{classId},#{memberId},now(),'1','1')
     </insert>
 
+    <!--课程列表-->
+    <select id="bcCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM private_class
+    </select>
+    <select id="bcList" resultType="com.fitness.api.domain.PrivateClass">
+        SELECT * FROM private_class
+    </select>
 </mapper>

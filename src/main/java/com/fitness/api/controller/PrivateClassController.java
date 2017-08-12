@@ -42,8 +42,8 @@ public class PrivateClassController {
      */
 
     @RequestMapping(value = "/listByCoachId", method = RequestMethod.GET)
-    public PageResult listByCoachId(Integer pageNo, Integer pageSize, Long coachId,String date) {
-        return privateClassService.listByCoachId(pageNo, pageSize, coachId,date);
+    public PageResult listByCoachId(Integer pageNo, Integer pageSize, Long coachId, String date) {
+        return privateClassService.listByCoachId(pageNo, pageSize, coachId, date);
     }
 
     /**
@@ -93,5 +93,17 @@ public class PrivateClassController {
     @RequestMapping(value = "/apply", method = RequestMethod.POST)
     public BaseResult apply(Long classId, Long timeId, Long memberId) {
         return privateClassService.apply(classId, timeId, memberId);
+    }
+
+    /**
+     * 私教列表
+     *
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/bcList", method = RequestMethod.GET)
+    public PageResult bcList(Integer pageNo, Integer pageSize) {
+        return privateClassService.bcList(pageNo, pageSize);
     }
 }
