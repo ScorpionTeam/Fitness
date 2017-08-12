@@ -35,4 +35,9 @@
         SELECT id,url,createDate,thirdId FROM img WHERE thirdId=#{thirdId}
     </select>
 
+    <!--根据第三方id删除图片-->
+    <delete id="deleteByGroupClassId">
+        DELETE FROM img WHERE thirdId=#{thirdId}
+    </delete>
+
 </mapper>

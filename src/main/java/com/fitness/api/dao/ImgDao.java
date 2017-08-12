@@ -53,4 +53,10 @@ public interface ImgDao {
      */
     Integer count();
 
+    /**
+     * 根据团课id删除图片
+     * @param thirdId
+     */
+    void deleteByGroupClassId(Long thirdId);
+
 }
