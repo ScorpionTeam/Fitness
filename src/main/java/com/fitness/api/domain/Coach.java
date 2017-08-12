@@ -39,8 +39,8 @@ public class Coach {
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date updateDate;
 
-    //头像图片id
-    private Long coachImgId;
+    //头像图片
+    private String coachImgUrl;
 
     //发证机构
     private String organization;
@@ -139,14 +139,6 @@ public class Coach {
         this.updateDate = updateDate;
     }
 
-    public Long getCoachImgId() {
-        return coachImgId;
-    }
-
-    public void setCoachImgId(Long coachImgId) {
-        this.coachImgId = coachImgId;
-    }
-
     public String getOrganization() {
         return organization;
     }
@@ -235,6 +227,14 @@ public class Coach {
         this.goodAt = goodAt;
     }
 
+    public String getCoachImgUrl() {
+        return coachImgUrl;
+    }
+
+    public void setCoachImgUrl(String coachImgUrl) {
+        this.coachImgUrl = coachImgUrl;
+    }
+
     @Override
     public String toString() {
         return "Coach{" +
@@ -246,7 +246,7 @@ public class Coach {
                 ", stadiumName='" + stadiumName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
-                ", coachImgId=" + coachImgId +
+                ", coachImgUrl='" + coachImgUrl + '\'' +
                 ", organization='" + organization + '\'' +
                 ", validDate=" + validDate +
                 ", orgDate=" + orgDate +

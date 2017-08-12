@@ -50,7 +50,7 @@
         c.stadiumId,
         c.createDate,
         c.updateDate,
-        c.coachImgId,
+        c.coachImgUrl,
         c.organization,
         c.orgDate,
         c.validDate,
@@ -74,7 +74,7 @@
         c.stadiumId,
         c.createDate,
         c.updateDate,
-        c.coachImgId,
+        c.coachImgUrl,
         c.organization,
         c.orgDate,
         c.validDate,
@@ -97,7 +97,7 @@
         c.stadiumId,
         c.createDate,
         c.updateDate,
-        c.coachImgId,
+        c.coachImgUrl,
         c.organization,
         c.orgDate,
         c.validDate,
@@ -107,7 +107,7 @@
         s.name as stadiumName,
         i.url as coachImgPath
         FROM coach c LEFT JOIN stadium s ON  c.stadiumId=s.id
-        LEFT JOIN img i ON c.coachImgId=i.thirdId
+        LEFT JOIN img i ON c.coachImgUrl=i.thirdId
         WHERE c.status='1' AND c.stadiumId=#{stadiumId}
     </select>
 
@@ -119,7 +119,7 @@
         description=#{description},
         stadiumId=#{stadiumId},
         updateDate=now(),
-        coachImgId=#{coachImgId},
+        coachImgUrl=#{coachImgUrl},
         organization=#{organization},
         orgDate=#{orgDate},
         validDate=#{validDate},
