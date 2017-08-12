@@ -31,7 +31,7 @@ public interface PrivateClassService {
      * @param coachId
      * @return
      */
-    PageResult listByCoachId(Integer pageNo,Integer pageSize,Long coachId);
+    PageResult listByCoachId(Integer pageNo,Integer pageSize,Long coachId,String date);
 
     /**
      * 修改课程信息

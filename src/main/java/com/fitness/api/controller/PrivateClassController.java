@@ -42,8 +42,8 @@ public class PrivateClassController {
      */
 
     @RequestMapping(value = "/listByCoachId", method = RequestMethod.GET)
-    public PageResult listByCoachId(Integer pageNo, Integer pageSize, Long coachId) {
-        return privateClassService.listByCoachId(pageNo, pageSize, coachId);
+    public PageResult listByCoachId(Integer pageNo, Integer pageSize, Long coachId,String date) {
+        return privateClassService.listByCoachId(pageNo, pageSize, coachId,date);
     }
 
     /**

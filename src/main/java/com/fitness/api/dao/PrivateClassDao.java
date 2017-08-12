@@ -55,16 +55,17 @@ public interface PrivateClassDao {
      * @param coachId
      * @return
      */
-    Integer listByCoachIdCount(Long coachId);
+    Integer listByCoachIdCount(@Param(value = "coachId") Long coachId,@Param(value = "date")String date);
 
     /**
      * 根据教练id 查询课程列表
      *
      * @param rowBounds
      * @param coachId
+     * @param date
      * @return
      */
-    List<PrivateClass> listByCoachId(RowBounds rowBounds, Long coachId);
+    List<PrivateClass> listByCoachId(RowBounds rowBounds, @Param(value = "coachId") Long coachId,@Param(value = "date") String date);
 
     /**
      * 创建私教数据
