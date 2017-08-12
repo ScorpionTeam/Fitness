@@ -55,4 +55,13 @@ public interface PrivateClassService {
      * @return
      */
     BaseResult coachClassInfo(Long id);
+
+    /**
+     * 预约课程
+     * @param classId
+     * @param timeId
+     * @param memberId
+     * @return
+     */
+    BaseResult apply(Long classId,Long timeId,Long memberId);
 }

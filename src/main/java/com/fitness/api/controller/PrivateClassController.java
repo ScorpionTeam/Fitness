@@ -80,4 +80,18 @@ public class PrivateClassController {
     public BaseResult del(Long id) {
         return privateClassService.del(id);
     }
+
+
+    /**
+     * 预约
+     *
+     * @param classId
+     * @param timeId
+     * @param memberId
+     * @return
+     */
+    @RequestMapping(value = "/apply", method = RequestMethod.POST)
+    public BaseResult apply(Long classId, Long timeId,Long memberId) {
+        return null;
+    }
 }

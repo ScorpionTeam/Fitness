@@ -32,4 +32,11 @@ public interface PrivateClassTimeDao {
      * @return
      */
     List<PrivateClassTime> classTimesById(Long privateClassId);
+
+    /**
+     * 修改时间段状态为 已定
+     * @param timeId
+     * @return
+     */
+    Integer updateTimeStatus(@Param(value = "timeId") Long timeId);
 }

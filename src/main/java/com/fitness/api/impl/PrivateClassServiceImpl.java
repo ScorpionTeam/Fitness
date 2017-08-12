@@ -11,6 +11,7 @@ import com.fitness.result.page.PageResult;
 import com.fitness.result.page.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -134,6 +135,24 @@ public class PrivateClassServiceImpl implements PrivateClassService, PageService
      */
     @Override
     public BaseResult coachClassInfo(Long id) {
+        return null;
+    }
+
+
+    /**
+     * 预约课程
+     * @param classId
+     * @param timeId
+     * @param memberId
+     * @return
+     */
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public BaseResult apply(Long classId,Long timeId,Long memberId) {
+        //修改时间段为已预订
+        privateClassTimeDao.updateTimeStatus(timeId);
+        //增加member_class数据
+//        privateClassDao
         return null;
     }
 }

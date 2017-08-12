@@ -7,9 +7,10 @@
     <insert id="batchInsertPrivateClassTime" parameterType="com.fitness.api.domain.PrivateClassTime">
         insert into private_class_time(privateClassId,times,status) values
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.privateClassId},#{item.times},#{item.status})
+            (#{item.privateClassId},#{item.times},'0')
         </foreach>
     </insert>
+
 
     <update id="updatePrivateClassTime" parameterType="com.fitness.api.domain.PrivateClassTime">
         update private_class_time
@@ -20,6 +21,7 @@
         </set>
         where id =#{id}
     </update>
+
 
     <!--根据私教课id查询时间段-->
     <select id="classTimesById" resultType="com.fitness.api.domain.PrivateClassTime">

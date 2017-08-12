@@ -61,5 +61,4 @@ public interface PrivateClassDao {
     List<PrivateClass> listByCoachId(RowBounds rowBounds,Long coachId);
 
 
-
 }
