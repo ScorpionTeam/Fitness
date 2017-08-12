@@ -195,4 +195,9 @@
         WHERE s.id=#{stadiumId} AND gc.endDate > now() ORDER  BY gc.endDate desc limit 3
     </select>
 
+    <!--校验时间段是否存在课程-->
+    <select id="countByStartDateAndId" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM group_class WHERE startDate=#{startDate} and coachId=#{coachId} AND id!=#{id}
+    </select>
+
 </mapper>

@@ -86,7 +86,7 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
     public BaseResult update(GroupClass groupClass) {
 
         //校验时间段是否已存在课程
-        Integer count = groupClassDao.countByStartDate(groupClass.getStartDate(), groupClass.getCoachId());
+        Integer count = groupClassDao.countByStartDateAndId(groupClass.getStartDate(),groupClass.getCoachId(),groupClass.getId());
 
         if (count > 0)
             return BaseResult.error("UPDATE_FAIL", "该时间段已存在课程");

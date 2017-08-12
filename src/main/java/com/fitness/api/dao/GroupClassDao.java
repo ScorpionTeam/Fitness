@@ -57,6 +57,16 @@ public interface GroupClassDao {
      */
     Integer countByStartDate(@Param(value = "startDate") Date startDate, @Param(value = "coachId") Long coachId);
 
+
+    /**
+     * 修改校验
+     * @param startDate
+     * @param coachId
+     * @param id
+     * @return
+     */
+    Integer countByStartDateAndId(@Param(value = "startDate")Date startDate,@Param(value = "coachId")Long coachId,@Param(value = "id")Long id);
+
     /**
      * 团课报名
      *
