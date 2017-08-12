@@ -95,7 +95,7 @@ public class PrivateClassServiceImpl implements PrivateClassService, PageService
             return new PageResult(null, 0);
         List<PrivateClass> list = privateClassDao.listByCoachId(rowBounds(pageNo, pageSize), coachId);
         //查询时间段
-        list.forEach(item ->{
+        list.forEach(item -> {
             item.setPrivateClassTimeList(privateClassTimeDao.classTimesById(item.getId()));
         });
         return new PageResult(list, count, pageNo, pageSize);
@@ -141,6 +141,7 @@ public class PrivateClassServiceImpl implements PrivateClassService, PageService
 
     /**
      * 预约课程
+     *
      * @param classId
      * @param timeId
      * @param memberId
@@ -148,11 +149,11 @@ public class PrivateClassServiceImpl implements PrivateClassService, PageService
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public BaseResult apply(Long classId,Long timeId,Long memberId) {
+    public BaseResult apply(Long classId, Long timeId, Long memberId) {
         //修改时间段为已预订
         privateClassTimeDao.updateTimeStatus(timeId);
         //增加member_class数据
-//        privateClassDao
-        return null;
+        privateClassDao.insertPrivateClassParam(classId, memberId);
+        return BaseResult.success("预约成功");
     }
 }

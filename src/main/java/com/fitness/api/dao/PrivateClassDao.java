@@ -18,7 +18,8 @@ import java.util.List;
 public interface PrivateClassDao {
 
     /**
-     *  新增私教课程
+     * 新增私教课程
+     *
      * @param privateClass
      * @return
      */
@@ -26,27 +27,31 @@ public interface PrivateClassDao {
 
     /**
      * 根据id删除私教课
+     *
      * @param id
      * @return
      */
     int del(Long id);
 
     /**
+     * 修改教练开课状态
      *
-     * @param 修改教练开课状态
+     * @param coach
      * @return
      */
     int updateCoachStatus(Coach coach);
 
     /**
      * 修改私教课
+     *
      * @param privateClass
      * @return
      */
     int updatePrivateClass(PrivateClass privateClass);
 
     /**
-     *  根据教练id 查询课程列表数量
+     * 根据教练id 查询课程列表数量
+     *
      * @param coachId
      * @return
      */
@@ -54,11 +59,21 @@ public interface PrivateClassDao {
 
     /**
      * 根据教练id 查询课程列表
+     *
      * @param rowBounds
      * @param coachId
      * @return
      */
-    List<PrivateClass> listByCoachId(RowBounds rowBounds,Long coachId);
+    List<PrivateClass> listByCoachId(RowBounds rowBounds, Long coachId);
+
+    /**
+     * 创建私教数据
+     *
+     * @param classId
+     * @param memberId
+     * @return
+     */
+    Integer insertPrivateClassParam(@Param(value = "classId") Long classId, @Param(value = "memberId") Long memberId);
 
 
 }

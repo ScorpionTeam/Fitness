@@ -91,7 +91,7 @@ public class PrivateClassController {
      * @return
      */
     @RequestMapping(value = "/apply", method = RequestMethod.POST)
-    public BaseResult apply(Long classId, Long timeId,Long memberId) {
-        return null;
+    public BaseResult apply(Long classId, Long timeId, Long memberId) {
+        return privateClassService.apply(classId, timeId, memberId);
     }
 }

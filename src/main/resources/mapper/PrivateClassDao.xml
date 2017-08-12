@@ -62,4 +62,10 @@
         SELECT COUNT(1) FROM private_class WHERE coachId=#{coachId}
     </select>
 
+    <!--报名-->
+    <insert id="insertPrivateClassParam">
+        INSERT INTO member_class(classId,memberId,createDate,status,type)
+        VALUES (#{classId},#{memberId},now(),'1','1')
+    </insert>
+
 </mapper>

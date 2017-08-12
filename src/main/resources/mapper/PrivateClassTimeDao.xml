@@ -32,4 +32,9 @@
         FROM private_class_time WHERE privateClassId=#{privateClassId}
     </select>
 
+    <!--修改time状态-->
+    <update id="updateTimeStatus">
+        UPDATE private_class_time SET status='1' WHERE id=#{timeId}
+    </update>
+
 </mapper>
