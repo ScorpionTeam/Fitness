@@ -54,12 +54,12 @@
          startDate,
          mainImgUrl,
          name
-         FROM private_class WHERE coachId=#{coachId} AND date_format(startDate,'%y-%m-%d')=#{date}
+         FROM private_class WHERE coachId=#{coachId} AND date_format(startDate,'%Y-%m-%d')=#{date}
     </select>
 
     <!-- 根据教练id 查询课程列表数量 -->
     <select id="listByCoachIdCount" resultType="java.lang.Integer">
-        SELECT COUNT(1) FROM private_class WHERE coachId=#{coachId} AND date_format(startDate,'%y-%m-%d')=#{date}
+        SELECT COUNT(1) FROM private_class WHERE coachId=#{coachId} AND date_format(startDate,'%Y-%m-%d')=#{date}
     </select>
 
     <!--报名-->
