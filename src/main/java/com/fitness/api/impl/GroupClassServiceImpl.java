@@ -151,8 +151,8 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
             return BaseResult.error("APPLY_FAIL", "已参加，不可重复参加");
         Integer result = groupClassDao.apply(memberId, classId);
         if (result > 0) {
-            //修改会员卡剩余课程数
-            memberCardDao.updateCLassSurplus(memberId);
+//            //修改会员卡剩余课程数
+//            memberCardDao.updateCLassSurplus(memberId);
             //修改 剩余席位
             groupClassDao.minusGroupClassTotal(classId);
             return BaseResult.success("团课报名成功");
