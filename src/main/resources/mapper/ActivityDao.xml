@@ -75,6 +75,7 @@
         a.status,
         a.contentHtml,
         a.applyTotal,
+        a.showHome,
         s.name as stadiumName
         FROM activity a LEFT  JOIN stadium s ON a.stadiumId=s.id
     </select>
