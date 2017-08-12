@@ -65,7 +65,7 @@
     <!--报名-->
     <insert id="insertPrivateClassParam">
         INSERT INTO member_class(classId,memberId,createDate,status,type)
-        VALUES (#{classId},#{memberId},now(),'1','1')
+        VALUES (#{classId},#{memberId},now(),'1','0')
     </insert>
 
     <!--课程列表-->
