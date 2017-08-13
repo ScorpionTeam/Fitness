@@ -218,5 +218,9 @@
         WHERE ma.activityId=#{activityId}
     </select>
 
+    <!--首页活动-->
+    <select id="activityForHome" resultType="com.fitness.api.domain.Activity">
+        SELECT * FROM activity WHERE status='1' AND showHome='1' limit 3
+    </select>
 
 </mapper>

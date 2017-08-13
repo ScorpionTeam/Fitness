@@ -87,4 +87,10 @@ public interface ActivityService {
      * @return
      */
     BaseResult apply(Long memberId,Long activityId);
+
+    /**
+     * 首页活动展示
+     * @return
+     */
+    BaseResult home();
 }

@@ -129,13 +129,25 @@ public class ActivityController {
 
     /**
      * 添加活动
+     *
      * @param memberId
      * @param activityId
      * @return
      */
-    @RequestMapping(value = "/apply",method = RequestMethod.POST)
-    public BaseResult apply(Long memberId,Long activityId){
-        return activityService.apply(memberId,activityId);
+    @RequestMapping(value = "/apply", method = RequestMethod.POST)
+    public BaseResult apply(Long memberId, Long activityId) {
+        return activityService.apply(memberId, activityId);
+    }
+
+
+    /**
+     * 首页活动
+     *
+     * @return
+     */
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public BaseResult home() {
+        return activityService.home();
     }
 
 

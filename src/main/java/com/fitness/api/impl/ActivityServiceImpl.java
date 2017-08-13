@@ -197,4 +197,15 @@ public class ActivityServiceImpl implements ActivityService, PageService {
         activityDao.updateActivityApplyTotal(activityId);
         return BaseResult.success("活动报名成功");
     }
+
+    /**
+     * 首页活动展示
+     *
+     * @return
+     */
+    @Override
+    public BaseResult home() {
+        List<Activity> activityList = activityDao.activityForHome();
+        return BaseResult.success(activityList);
+    }
 }

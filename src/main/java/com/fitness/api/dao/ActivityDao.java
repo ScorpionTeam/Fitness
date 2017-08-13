@@ -136,4 +136,11 @@ public interface ActivityDao {
      */
     List<Member> getByActivityId(Long activityId);
 
+    /**
+     * 首页 活动展示
+     * @return
+     */
+    List<Activity> activityForHome();
+
+
 }
