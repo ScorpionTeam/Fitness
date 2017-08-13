@@ -106,4 +106,14 @@ public class PrivateClassController {
     public PageResult bcList(Integer pageNo, Integer pageSize) {
         return privateClassService.bcList(pageNo, pageSize);
     }
+
+    /**
+     * 根据课程id查询课程详情
+     * @param classId
+     * @return
+     */
+    @RequestMapping(value = "/classInfo",method = RequestMethod.GET)
+    public BaseResult classInfo(Long classId){
+        return null;
+    }
 }

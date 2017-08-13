@@ -72,4 +72,11 @@ public interface PrivateClassService {
      * @return
      */
     PageResult bcList(Integer pageNo,Integer pageSize);
+
+    /**
+     * 课程详情
+     * @param id
+     * @return
+     */
+    BaseResult classInfo(Long id);
 }

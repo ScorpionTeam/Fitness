@@ -173,4 +173,19 @@ public class PrivateClassServiceImpl implements PrivateClassService, PageService
         List<PrivateClass> list = privateClassDao.bcList(rowBounds(pageNo, pageSize));
         return new PageResult(list, count, pageNo, pageSize);
     }
+
+    /**
+     * 课程详情
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public BaseResult classInfo(Long id) {
+
+        PrivateClass privateClass = privateClassDao.classInfo(id);
+        if (null == privateClass)
+            return BaseResult.nonSuchResult();
+        return BaseResult.success(privateClass);
+    }
 }

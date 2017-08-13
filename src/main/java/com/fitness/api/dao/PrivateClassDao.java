@@ -89,5 +89,12 @@ public interface PrivateClassDao {
      */
     List<PrivateClass> bcList(RowBounds rowBounds);
 
+    /**
+     * 课程详情
+     * @param id
+     * @return
+     */
+    PrivateClass classInfo(Long id);
+
 
 }
