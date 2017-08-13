@@ -29,7 +29,7 @@
         privateClassId,
         times,
         status
-        FROM private_class_time WHERE privateClassId=#{privateClassId}
+        FROM private_class_time WHERE privateClassId=#{privateClassId} ORDER BY times asc
     </select>
 
     <!--修改time状态-->
