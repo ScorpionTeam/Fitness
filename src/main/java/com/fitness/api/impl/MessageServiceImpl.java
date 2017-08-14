@@ -9,6 +9,8 @@ import com.fitness.result.page.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created on 2017/8/14.
  */
@@ -28,7 +30,13 @@ public class MessageServiceImpl implements MessageService, PageService {
      */
     @Override
     public PageResult list(Integer pageNo, Integer pageSize) {
-        return null;
+
+        Integer count = messageDao.count();
+        if (count == 0)
+            return new PageResult(null, 0);
+        List<Message> list = messageDao.list(rowBounds(pageNo, pageSize));
+
+        return new PageResult(list, count, pageNo, pageSize);
     }
 
     /**
@@ -54,7 +62,9 @@ public class MessageServiceImpl implements MessageService, PageService {
      */
     @Override
     public BaseResult messageInfo(Long id) {
-        return null;
+        messageDao.updateStatus(id);
+        Message message = messageDao.messageInfo(id);
+        return BaseResult.success(message);
     }
 
     /**

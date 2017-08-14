@@ -20,6 +20,12 @@ public interface MessageDao {
     List<Message> list(RowBounds rowBounds);
 
     /**
+     * 用户端消息数量
+     * @return
+     */
+    Integer count();
+
+    /**
      * 创建消息
      * @param message
      * @return
@@ -46,4 +52,11 @@ public interface MessageDao {
      * @return
      */
     Integer del(Long id);
+
+    /**
+     * 修改为已读
+     * @param id
+     * @return
+     */
+    Integer updateStatus(Long id);
 }
