@@ -114,6 +114,6 @@ public class PrivateClassController {
      */
     @RequestMapping(value = "/classInfo",method = RequestMethod.GET)
     public BaseResult classInfo(Long classId){
-        return null;
+        return privateClassService.classInfo(classId);
     }
 }

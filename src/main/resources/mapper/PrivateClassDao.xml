@@ -75,4 +75,7 @@
     <select id="bcList" resultType="com.fitness.api.domain.PrivateClass">
         SELECT * FROM private_class
     </select>
+
+    <!--课程详情-->
+    <select id="classInfo" resultType="com.fitness.api.domain.PrivateClass"></select>
 </mapper>
