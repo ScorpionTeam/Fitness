@@ -100,4 +100,14 @@ public class MessageServiceImpl implements MessageService, PageService {
     public BaseResult del(Long id) {
         return null;
     }
+
+    /**
+     * 未读消息
+     * @return
+     */
+    @Override
+    public BaseResult unRead() {
+        Integer count = messageDao.unRead();
+        return BaseResult.success(count);
+    }
 }

@@ -58,4 +58,10 @@ public interface MessageService {
      */
     BaseResult del(Long id);
 
+    /**
+     * 未读消息
+     * @return
+     */
+    BaseResult unRead();
+
 }

@@ -89,5 +89,14 @@ public class MessageController {
         return messageService.update(message);
     }
 
+    /**
+     * 未读消息
+     *
+     * @return
+     */
+    @RequestMapping(value = "/unRead", method = RequestMethod.GET)
+    public BaseResult unRead() {
+        return messageService.unRead();
+    }
 
 }

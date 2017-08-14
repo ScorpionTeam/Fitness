@@ -37,4 +37,9 @@
     <update id="updateStatus">
         UPDATE message SET status='1' WHERE id=#{id}
     </update>
+
+    <!--未读消息-->
+    <select id="unRead" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM message WHERE status='0'
+    </select>
 </mapper>

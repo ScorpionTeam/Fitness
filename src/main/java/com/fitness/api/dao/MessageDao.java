@@ -59,4 +59,10 @@ public interface MessageDao {
      * @return
      */
     Integer updateStatus(Long id);
+
+    /**
+     * 未读消息
+     * @return
+     */
+    Integer unRead();
 }
