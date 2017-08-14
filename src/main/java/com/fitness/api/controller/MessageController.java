@@ -47,5 +47,16 @@ public class MessageController {
         return null;
     }
 
+    /**
+     * 后台消息列表
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/bcList",method = RequestMethod.GET)
+    public PageResult bcList(Integer pageNo,Integer pageSize){
+        return null;
+    }
+
 
 }
