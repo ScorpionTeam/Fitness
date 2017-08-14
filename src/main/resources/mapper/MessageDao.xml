@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.api.dao.MessageDao">
+
+    <insert id="add" parameterType="com.fitness.api.domain.Message">
+        INSERT INTO message(name,content,status,createDate)
+        VALUES (#{name,#{content},'0',NOW()
+    </insert>
+</mapper>

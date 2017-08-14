@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * Created on 2017/8/14.
  */
 @Service
-public class MessageServiceImpl implements MessageService,PageService {
+public class MessageServiceImpl implements MessageService, PageService {
 
 
     @Autowired
@@ -21,6 +21,7 @@ public class MessageServiceImpl implements MessageService,PageService {
 
     /**
      * 用户端 消息列表
+     *
      * @param pageNo
      * @param pageSize
      * @return
@@ -32,16 +33,22 @@ public class MessageServiceImpl implements MessageService,PageService {
 
     /**
      * 创建消息
+     *
      * @param message
      * @return
      */
     @Override
     public BaseResult add(Message message) {
-        return null;
+
+        Integer result = messageDao.add(message);
+        if (result == 0)
+            return BaseResult.error("ADD_FAIL", "创建消息失败");
+        return BaseResult.success("创建消息成功");
     }
 
     /**
      * 消息详情
+     *
      * @param id
      * @return
      */
@@ -52,6 +59,7 @@ public class MessageServiceImpl implements MessageService,PageService {
 
     /**
      * 后台消息列表
+     *
      * @param pageNo
      * @param pageSize
      * @return
@@ -63,6 +71,7 @@ public class MessageServiceImpl implements MessageService,PageService {
 
     /**
      * 修改
+     *
      * @param message
      * @return
      */
@@ -73,6 +82,7 @@ public class MessageServiceImpl implements MessageService,PageService {
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */
