@@ -152,9 +152,11 @@
         s.name as stadiumName,
         s.id as stadiumId
         FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id LEFT JOIN stadium s ON s.id=c.stadiumId
+        WHERE 1=1
         <if test="key!=null and key!=''">
-            WHERE gc.name LIKE #{key}
+            AND gc.name LIKE #{key}
         </if>
+        ORDER BY createDate desc
     </select>
 
     <select id="count" resultType="java.lang.Integer">
