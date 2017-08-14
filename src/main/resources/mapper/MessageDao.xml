@@ -6,6 +6,6 @@
 
     <insert id="add" parameterType="com.fitness.api.domain.Message">
         INSERT INTO message(name,content,status,createDate)
-        VALUES (#{name,#{content},'0',NOW()
+        VALUES (#{name},#{content},'0',NOW())
     </insert>
 </mapper>
