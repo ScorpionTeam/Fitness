@@ -109,6 +109,7 @@
          s.id as stadiumId
          FROM group_class gc LEFT JOIN coach c ON gc.coachId=c.id LEFT JOIN stadium s ON s.id=c.stadiumId
         WHERE c.stadiumId=#{stadiumId} AND date_format(gc.startDate,'%Y-%m-%d')=#{date}
+        AND gc.status='1'
         ORDER BY createDate desc
     </select>
 
