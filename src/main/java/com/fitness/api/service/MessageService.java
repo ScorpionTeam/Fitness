@@ -44,4 +44,18 @@ public interface MessageService {
      */
     PageResult bcList(Integer pageNo, Integer pageSize);
 
+    /**
+     * 修改
+     * @param message
+     * @return
+     */
+    BaseResult update(Message message);
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    BaseResult del(Long id);
+
 }
