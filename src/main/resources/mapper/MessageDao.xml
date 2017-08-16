@@ -32,6 +32,7 @@
         status,
         createDate
         FROM message
+        WHERE id=#{id}
     </select>
     <!--修改消息状态为 已读-->
     <update id="updateStatus">
