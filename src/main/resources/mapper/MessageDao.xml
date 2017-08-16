@@ -30,7 +30,8 @@
         SELECT id,
         name,
         status,
-        createDate
+        createDate,
+        content
         FROM message
         WHERE id=#{id}
     </select>
