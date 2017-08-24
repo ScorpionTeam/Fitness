@@ -204,4 +204,14 @@
         SELECT COUNT(1) FROM group_class WHERE startDate=#{startDate} and coachId=#{coachId} AND id!=#{id}
     </select>
 
+    <!--根据日期、会员查询团课日程列表-->
+    <select id="scheduleGroupClass" resultType="com.fitness.api.domain.MemberClassExt">
+        
+    </select>
+
+    <!--根据日期、会员查询团课日程数量-->
+    <select id="scheduleGroupClassCount" resultType="java.lang.Integer">
+
+    </select>
+
 </mapper>

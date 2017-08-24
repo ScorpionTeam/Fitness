@@ -1,6 +1,7 @@
 package com.fitness.api.dao;
 
 import com.fitness.api.domain.GroupClass;
+import com.fitness.api.domain.MemberClassExt;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
@@ -60,12 +61,13 @@ public interface GroupClassDao {
 
     /**
      * 修改校验
+     *
      * @param startDate
      * @param coachId
      * @param id
      * @return
      */
-    Integer countByStartDateAndId(@Param(value = "startDate")Date startDate,@Param(value = "coachId")Long coachId,@Param(value = "id")Long id);
+    Integer countByStartDateAndId(@Param(value = "startDate") Date startDate, @Param(value = "coachId") Long coachId, @Param(value = "id") Long id);
 
     /**
      * 团课报名
@@ -132,6 +134,7 @@ public interface GroupClassDao {
 
     /**
      * 报名成功后 - 减少该课程的可预约席位
+     *
      * @param classId
      * @return
      */
@@ -139,8 +142,29 @@ public interface GroupClassDao {
 
     /**
      * 根据场馆id  查询往期课程图片列表
+     *
      * @param stadiumId
      * @return
      */
     List<String> pastClassImgList(@Param(value = "stadiumId") Long stadiumId);
+
+    /**
+     * 根据日期、会员id查询 团课日程
+     *
+     * @param rowBounds
+     * @param date
+     * @param memberId
+     * @return
+     */
+    List<MemberClassExt> scheduleGroupClass(RowBounds rowBounds, @Param(value = "date") String date, @Param(value = "memberId") Long memberId);
+
+    /**
+     * 根据日期、会员id查询  团课日程数量
+     *
+     * @param date
+     * @param memberId
+     * @return
+     */
+    Integer scheduleGroupClassCount(@Param(value = "date") String date, @Param(value = "memberId") Long memberId);
+
 }

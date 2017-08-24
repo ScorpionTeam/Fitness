@@ -79,4 +79,14 @@ public interface GroupClassService {
      */
     BaseResult pastClass(Long stadiumId);
 
+    /**
+     * 根据日期、会员查询 团课日程信息
+     * @param pageNo
+     * @param pageSize
+     * @param date
+     * @param memberId
+     * @return
+     */
+    PageResult scheduleGroupClass(Integer pageNo,Integer pageSize,String date,Long memberId);
+
 }

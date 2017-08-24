@@ -229,5 +229,10 @@ public class GroupClassServiceImpl implements GroupClassService, PageService {
         return BaseResult.success(list);
     }
 
+    @Override
+    public PageResult scheduleGroupClass(Integer pageNo, Integer pageSize, String date, Long memberId) {
+        return null;
+    }
+
 
 }
