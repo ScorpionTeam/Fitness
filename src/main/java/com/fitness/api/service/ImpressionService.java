@@ -13,9 +13,34 @@ public interface ImpressionService {
 
     /**
      * 创建印象
+     *
      * @param impression
      * @return
      */
     BaseResult add(List<Impression> impression);
+
+    /**
+     * 创建印象
+     *
+     * @param impression
+     * @return
+     */
+    BaseResult addImpression(Impression impression);
+
+    /**
+     * 修改印象
+     *
+     * @param impression
+     * @return
+     */
+    BaseResult update(Impression impression);
+
+    /**
+     * 删除印象
+     *
+     * @param id
+     * @return
+     */
+    BaseResult del(Long id);
 
 }

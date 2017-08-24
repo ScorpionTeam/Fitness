@@ -35,5 +35,38 @@ public class ImpressionController {
         return impressionService.add(impressionList);
     }
 
+//    /**
+//     * 创建印象
+//     *
+//     * @param impression
+//     * @return
+//     */
+//    @RequestMapping(value = "/add", method = RequestMethod.POST)
+//    public BaseResult add(@RequestBody Impression impression) {
+//        return null;
+//    }
+//
+//    /**
+//     * 修改印象
+//     *
+//     * @param impression
+//     * @return
+//     */
+//    @RequestMapping(value = "/update", method = RequestMethod.POST)
+//    public BaseResult update(@RequestBody Impression impression) {
+//        return null;
+//    }
+//
+//    /**
+//     * 删除印象
+//     *
+//     * @param id
+//     * @return
+//     */
+//    @RequestMapping(value = "/del", method = RequestMethod.POST)
+//    public BaseResult del(Long id) {
+//        return null;
+//    }
+
 
 }

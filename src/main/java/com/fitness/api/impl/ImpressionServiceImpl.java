@@ -34,5 +34,37 @@ public class ImpressionServiceImpl implements ImpressionService {
         return BaseResult.error("ADD_FAIL", "评价失败");
     }
 
+    /**
+     * 创建印象
+     * @param impression
+     * @return
+     */
+    @Override
+    public BaseResult addImpression(Impression impression) {
+        return null;
+    }
+
+
+    /**
+     * 修改印象
+     * @param impression
+     * @return
+     */
+    @Override
+    public BaseResult update(Impression impression) {
+        return null;
+    }
+
+
+    /**
+     * 删除印象
+     * @param id
+     * @return
+     */
+    @Override
+    public BaseResult del(Long id) {
+        return null;
+    }
+
 
 }

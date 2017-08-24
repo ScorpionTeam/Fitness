@@ -79,4 +79,6 @@ public interface PrivateClassService {
      * @return
      */
     BaseResult classInfo(Long id);
+
+
 }

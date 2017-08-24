@@ -33,5 +33,26 @@ public interface ImpressionDao {
      */
     List<String> goodAtLst(@Param(value = "coachId") Long coachId);
 
+    /**
+     * 创建印象
+     * @param impression
+     * @return
+     */
+    Integer addImpression(Impression impression);
+
+    /**
+     * 修改印象
+     * @param impression
+     * @return
+     */
+    Integer update(Impression impression);
+
+    /**
+     * 删除印象
+     * @param id
+     * @return
+     */
+    Integer del(Long id);
+
 
 }
