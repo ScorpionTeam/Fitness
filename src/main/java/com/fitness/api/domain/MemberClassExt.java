@@ -19,6 +19,9 @@ public class MemberClassExt {
     //课程状态
     private String status;
 
+    //会员id
+    private Long memberId;
+
     public Long getId() {
         return id;
     }
@@ -51,6 +54,14 @@ public class MemberClassExt {
         this.status = status;
     }
 
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
     @Override
     public String toString() {
         return "MemberClassExt{" +
@@ -58,6 +69,7 @@ public class MemberClassExt {
                 ", date=" + date +
                 ", type='" + type + '\'' +
                 ", status='" + status + '\'' +
+                ", memberId=" + memberId +
                 '}';
     }
 }

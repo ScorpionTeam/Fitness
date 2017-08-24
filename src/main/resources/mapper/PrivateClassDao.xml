@@ -78,4 +78,24 @@
 
     <!--课程详情-->
     <select id="classInfo" resultType="com.fitness.api.domain.PrivateClass"></select>
+
+    <!--根据日期查询私教课日程信息-->
+    <select id="schedulePrivateClass" resultType="com.fitness.api.domain.MemberClassExt">
+        SELECT mc.memberId as memberId,
+        pc.id as id,
+        pc.startDate as startDate
+        FROM member_class mc LEFT JOIN private_class pc ON mc.classId=pc.id
+        WHERE mc.memberId=#{memberId}
+        AND date_format(pc.startDate,'%Y-%m-%d')=#{date}
+        AND pc.status='1'
+    </select>
+
+    <!--根据日期查询私教课日程信息数量-->
+    <select id="schedulePrivateClassCount" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM member_class mc LEFT JOIN private_class pc ON mc.classId=pc.id
+        WHERE mc.memberId=#{memberId}
+        AND date_format(pc.startDate,'%Y-%m-%d')=#{date}
+        AND pc.status='1'
+    </select>
+
 </mapper>

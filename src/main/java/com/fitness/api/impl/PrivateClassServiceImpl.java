@@ -188,4 +188,22 @@ public class PrivateClassServiceImpl implements PrivateClassService, PageService
             return BaseResult.nonSuchResult();
         return BaseResult.success(privateClass);
     }
+
+    /**
+     * 根据日期查询私教课  分页
+     *
+     * @param pageNo
+     * @param pageSize
+     * @param date
+     * @param memberId
+     * @return
+     */
+    @Override
+    public PageResult schedulePrivateClass(Integer pageNo, Integer pageSize, String date, Long memberId) {
+        Integer count = privateClassDao.schedulePrivateClassCount(date, memberId);
+        if (count <= 0)
+            return new PageResult(null, 0);
+        List<MemberClassExt> list = privateClassDao.schedulePrivateClass(rowBounds(pageNo, pageSize), date, memberId);
+        return new PageResult(list, count, pageNo, pageSize);
+    }
 }

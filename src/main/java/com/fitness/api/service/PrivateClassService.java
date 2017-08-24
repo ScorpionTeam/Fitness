@@ -80,5 +80,15 @@ public interface PrivateClassService {
      */
     BaseResult classInfo(Long id);
 
+    /**
+     * 私教日程信息
+     * @param pageNo
+     * @param pageSize
+     * @param date
+     * @param memberId
+     * @return
+     */
+    PageResult schedulePrivateClass(Integer pageNo,Integer pageSize,String date,Long memberId);
+
 
 }

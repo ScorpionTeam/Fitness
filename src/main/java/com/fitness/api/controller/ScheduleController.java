@@ -29,11 +29,13 @@ public class ScheduleController {
      * @param pageNo
      * @param pageSize
      * @param date
+     * @param memberId
      * @return
      */
     @RequestMapping(value = "/privateClassInfo", method = RequestMethod.GET)
-    public PageResult privateClassInfo(Integer pageNo, Integer pageSize, String date) {
-        return null;
+    public PageResult privateClassInfo(Integer pageNo, Integer pageSize, String date,Long memberId) {
+
+        return privateClassService.schedulePrivateClass(pageNo,pageSize,date,memberId);
     }
 
     /**
@@ -44,7 +46,7 @@ public class ScheduleController {
      * @return
      */
     @RequestMapping(value = "/groupClassInfo", method = RequestMethod.GET)
-    public PageResult groupClassInfo(Integer pageNo, Integer pageSize, String date) {
+    public PageResult groupClassInfo(Integer pageNo, Integer pageSize, String date,Long memberId) {
         return null;
     }
 
